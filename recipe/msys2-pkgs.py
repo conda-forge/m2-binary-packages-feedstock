@@ -213,8 +213,8 @@ meta = f"""recipe:
 
 sources_template = """
       - url:
-            - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
             - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
+            - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}            
         sha256: {{ sha256 }}
         target_directory: {{ type }}-{{ name }}{{ patches }}
 """
