@@ -290,7 +290,8 @@ output_template = """
       version: "{{ version }}"
     build:
       noarch: generic
-      script: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      script: 
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
     requirements:
       host:
 {{ depends }}
