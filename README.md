@@ -13,956 +13,6 @@ Package license:
 
 Summary: Repackaged msys2 x86_64 binaries
 
-About m2-msys2-runtime
-----------------------
-
-Home: https://www.cygwin.com/
-
-Package license: GPL
-
-Summary: Posix emulation engine for Windows
-
-
-About m2-filesystem
--------------------
-
-Home: https://github.com/msys2/MSYS2-packages/tree/master/filesystem
-
-Package license: BSD-3-Clause
-
-Summary: Base filesystem
-
-
-About m2-gcc-libs
------------------
-
-Home: https://gcc.gnu.org/
-
-Package license: GPL
-
-Summary: Runtime libraries shipped by GCC
-
-
-About m2-gmp
-------------
-
-Home: https://gmplib.org/
-
-Package license: LGPL3
-
-Summary: A free library for arbitrary precision arithmetic
-
-
-About m2-libargp
-----------------
-
-Home: https://www.gnu.org/software/libc/libc.html
-
-Package license: GPL
-
-Summary: Interface for parsing command-line arguments
-
-
-About m2-libcbor
-----------------
-
-Home: https://github.com/PJK/libcbor
-
-Package license: MIT
-
-Summary: A C library for parsing and generating CBOR, a general-purpose schema-less binary data format
-
-
-About m2-libffi
----------------
-
-Home: https://sourceware.org/libffi/
-
-Package license: MIT
-
-Summary: Portable, high level programming interface to various calling conventions
-
-
-About m2-libltdl
-----------------
-
-Home: https://www.gnu.org/software/libtool/
-
-Package license: GPL-2.0-or-later
-
-Summary: A system independent dlopen wrapper for GNU libtool
-
-
-About m2-libopenssl
--------------------
-
-Home: https://www.openssl.org
-
-Package license: Apache-2.0
-
-Summary: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
-
-
-About m2-libsqlite
-------------------
-
-Home: https://www.sqlite.org/
-
-Package license: PublicDomain
-
-Summary: Sqlite3 library
-
-
-About m2-libxcrypt
-------------------
-
-Home: https://github.com/besser82/libxcrypt/
-
-Package license: LGPL-2.1-or-later
-
-Summary: Modern library for one-way hashing of passwords
-
-
-About m2-msys2-keyring
-----------------------
-
-Home: https://github.com/msys2/MSYS2-keyring
-
-Package license: GPL
-
-Summary: MSYS2 PGP keyring
-
-
-About m2-patch
---------------
-
-Home: https://www.gnu.org/software/patch/patch.html
-
-Package license: GPL
-
-Summary: A utility to apply patch files to original sources
-
-
-About m2-time
--------------
-
-Home: https://www.gnu.org/directory/time.html
-
-Package license: GPL
-
-Summary: Utility for monitoring a program's use of system resources
-
-
-About m2-bash
--------------
-
-Home: https://www.gnu.org/software/bash/bash.html
-
-Package license: GPL
-
-Summary: The GNU Bourne Again shell
-
-
-About m2-brotli
----------------
-
-Home: https://github.com/google/brotli
-
-Package license: MIT
-
-Summary: Brotli compression library
-
-
-About m2-getent
----------------
-
-Home: https://www.gnu.org/software/libc/libc.html
-
-Package license: LGPL
-
-Summary: Get entries from Name Service Switch libraries
-
-
-About m2-libasprintf
---------------------
-
-Home: https://www.gnu.org/software/gettext/
-
-Package license: GPL
-
-Summary: C-style formatted output in C++ (runtime)
-
-
-About m2-libbz2
----------------
-
-Home: http://www.bzip.org
-
-Package license: custom
-
-Summary: A high-quality data compression program
-
-
-About m2-libdb
---------------
-
-Home: https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
-
-Package license: custom
-
-Summary: The Berkeley DB embedded database system
-
-
-About m2-libexpat
------------------
-
-Home: https://libexpat.github.io/
-
-Package license: MIT
-
-Summary: An XML parser library
-
-
-About m2-libgettextpo
----------------------
-
-Home: https://www.gnu.org/software/gettext/
-
-Package license: GPL
-
-Summary: GNU Internationalization runtime library
-
-
-About m2-libhogweed
--------------------
-
-Home: https://www.lysator.liu.se/~nisse/nettle/
-
-Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
-
-Summary: A low-level cryptographic library
-
-
-About m2-libiconv
------------------
-
-Home: https://www.gnu.org/software/libiconv/
-
-Package license: LGPL
-
-Summary: Libiconv is a conversion library
-
-
-About m2-liblz4
----------------
-
-Home: https://lz4.github.io/lz4/
-
-Package license: LGPL
-
-Summary: Very fast lossless compression algorithm
-
-
-About m2-libnghttp2
--------------------
-
-Home: https://nghttp2.org/
-
-Package license: MIT
-
-Summary: Framing layer of HTTP/2 is implemented as a reusable C library (runtime)
-
-
-About m2-libnpth
-----------------
-
-Home: https://gnupg.org/
-
-Package license: LGPL
-
-Summary: New portable threads library
-
-
-About m2-libpcre
-----------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-libpcre2_16
---------------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-libpcre2_32
---------------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-libpcre2_8
--------------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-libzstd
-----------------
-
-Home: https://facebook.github.io/zstd/
-
-Package license: BSD
-
-Summary: Zstandard - Fast real-time compression algorithm
-
-
-About m2-mpfr
--------------
-
-Home: https://www.mpfr.org/
-
-Package license: LGPL-3.0-or-later
-
-Summary: Multiple-precision floating-point library
-
-
-About m2-ncurses
-----------------
-
-Home: https://www.gnu.org/software/ncurses/
-
-Package license: MIT
-
-Summary: System V Release 4.0 curses emulation library
-
-
-About m2-openssl
-----------------
-
-Home: https://www.openssl.org
-
-Package license: Apache-2.0
-
-Summary: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
-
-
-About m2-zlib
--------------
-
-Home: https://www.zlib.net/
-
-Package license: custom
-
-Summary: Compression library implementing the deflate compression method found in gzip and PKZIP
-
-
-About m2-bash-completion
-------------------------
-
-Home: https://github.com/scop/bash-completion
-
-Package license: GPL
-
-Summary: Programmable completion for the bash shell
-
-
-About m2-bzip2
---------------
-
-Home: http://www.bzip.org
-
-Package license: custom
-
-Summary: A high-quality data compression program
-
-
-About m2-db
------------
-
-Home: https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
-
-Package license: custom
-
-Summary: The Berkeley DB embedded database system
-
-
-About m2-less
--------------
-
-Home: http://www.greenwoodsoftware.com/less
-
-Package license: GPL3
-
-Summary: A terminal based program for viewing text files
-
-
-About m2-libedit
-----------------
-
-Home: https://www.thrysoee.dk/editline/
-
-Package license: BSD
-
-Summary: Libedit is an autotool- and libtoolized port of the NetBSD Editline library.
-
-
-About m2-libfido2
------------------
-
-Home: https://developers.yubico.com/libfido2/
-
-Package license: BSD-2-Clause
-
-Summary: Library functionality for FIDO 2.0, including communication with a device over USB
-
-
-About m2-libintl
-----------------
-
-Home: https://www.gnu.org/software/gettext/
-
-Package license: GPL
-
-Summary: GNU Internationalization runtime library
-
-
-About m2-libnettle
-------------------
-
-Home: https://www.lysator.liu.se/~nisse/nettle/
-
-Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
-
-Summary: A low-level cryptographic library
-
-
-About m2-libpcre2posix
-----------------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-libreadline
---------------------
-
-Home: https://tiswww.case.edu/php/chet/readline/rltop.html
-
-Package license: GPL
-
-Summary: GNU readline library
-
-
-About m2-libunistring
----------------------
-
-Home: https://www.gnu.org/software/libunistring/
-
-Package license: LGPL-3.0-or-later OR GPL-2.0-or-later
-
-Summary: Library for manipulating Unicode strings and C strings.
-
-
-About m2-m4
------------
-
-Home: https://www.gnu.org/software/m4
-
-Package license: GPL3
-
-Summary: The GNU macro processor
-
-
-About m2-mintty
----------------
-
-Home: https://mintty.github.io
-
-Package license: GPL-3.0-or-later
-
-Summary: Terminal emulator with native Windows look and feel
-
-
-About m2-p7zip
---------------
-
-Home: https://github.com/p7zip-project/p7zip
-
-Package license: LGPL
-
-Summary: Command-line version of the 7zip compressed file archiver
-
-
-About m2-perl-net-ssleay
-------------------------
-
-Home: https://metacpan.org/dist/Net-SSLeay/
-
-Package license: custom:BSD
-
-Summary: Perl extension for using OpenSSL
-
-
-About m2-pkg-config
--------------------
-
-Home: https://www.freedesktop.org/wiki/Software/pkg-config/
-
-Package license: GPL
-
-Summary: A system for managing library compile/link flags
-
-
-About m2-unzip
---------------
-
-Home: http://www.info-zip.org/
-
-Package license: custom
-
-Summary: Unpacks .zip archives such as those made by PKZIP
-
-
-About m2-which
---------------
-
-Home: https://savannah.gnu.org/projects/which/
-
-Package license: GPL3
-
-Summary: A utility to show the full path of commands
-
-
-About m2-zip
-------------
-
-Home: http://www.info-zip.org/Zip.html
-
-Package license: BSD
-
-Summary: Creates PKZIP-compatible .zip files
-
-
-About m2-zstd
--------------
-
-Home: https://facebook.github.io/zstd/
-
-Package license: BSD
-
-Summary: Zstandard - Fast real-time compression algorithm
-
-
-About m2-coreutils
-------------------
-
-Home: https://www.gnu.org/software/coreutils
-
-Package license: GPL3
-
-Summary: The basic file, shell and text manipulation utilities of the GNU operating system
-
-
-About m2-diffutils
-------------------
-
-Home: https://www.gnu.org/software/diffutils
-
-Package license: GPL-3.0-or-later
-
-Summary: Utility programs used for creating patch files
-
-
-About m2-findutils
-------------------
-
-Home: https://www.gnu.org/software/findutils
-
-Package license: GPL3
-
-Summary: GNU utilities to locate files
-
-
-About m2-gawk
--------------
-
-Home: https://www.gnu.org/software/gawk/
-
-Package license: GPL
-
-Summary: GNU version of awk
-
-
-About m2-gettext
-----------------
-
-Home: https://www.gnu.org/software/gettext/
-
-Package license: GPL
-
-Summary: GNU internationalization library
-
-
-About m2-grep
--------------
-
-Home: https://www.gnu.org/software/grep/
-
-Package license: GPL3
-
-Summary: A string search utility
-
-
-About m2-gzip
--------------
-
-Home: https://www.gnu.org/software/gzip/
-
-Package license: GPL3
-
-Summary: GNU compression utility
-
-
-About m2-heimdal-libs
----------------------
-
-Home: https://www.h5l.org/
-
-Package license: custom
-
-Summary: Implementation of Kerberos V5 libraries
-
-
-About m2-inetutils
-------------------
-
-Home: https://www.gnu.org/software/inetutils/
-
-Package license: GPL-3.0-or-later
-
-Summary: A collection of common network programs.
-
-
-About m2-libgdbm
-----------------
-
-Home: https://www.gnu.org/software/gdbm/gdbm.html
-
-Package license: GPL3
-
-Summary: GNU database library
-
-
-About m2-libgpg-error
----------------------
-
-Home: https://gnupg.org
-
-Package license: LGPL-2.1-or-later
-
-Summary: Support library for libgcrypt
-
-
-About m2-libidn2
-----------------
-
-Home: https://www.gnu.org/software/libidn/
-
-Package license: GPL3
-
-Summary: Implementation of the Stringprep, Punycode and IDNA specifications
-
-
-About m2-libutil-linux
-----------------------
-
-Home: https://www.kernel.org/pub/linux/utils/util-linux/
-
-Package license: GPL3
-
-Summary: Block device ID and Universally Unique ID libraries
-
-
-About m2-make
--------------
-
-Home: https://www.gnu.org/software/make
-
-Package license: GPL3
-
-Summary: GNU make utility to maintain groups of programs
-
-
-About m2-msys2-launcher
------------------------
-
-
-
-Package license: MIT
-
-Summary: Helper for launching MSYS2 shells
-
-
-About m2-nettle
----------------
-
-Home: https://www.lysator.liu.se/~nisse/nettle/
-
-Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
-
-Summary: A low-level cryptographic library
-
-
-About m2-pcre2
---------------
-
-Home: https://www.pcre.org/
-
-Package license: BSD
-
-Summary: A library that implements Perl 5-style regular expressions
-
-
-About m2-sed
-------------
-
-Home: https://www.gnu.org/software/sed
-
-Package license: GPL3
-
-Summary: GNU stream editor
-
-
-About m2-tar
-------------
-
-Home: https://www.gnu.org/software/tar/tar.html
-
-Package license: GPL3
-
-Summary: Utility used to store, backup, and transport files
-
-
-About m2-dash
--------------
-
-Home: http://gondor.apana.org.au/~herbert/dash/
-
-Package license: BSD
-
-Summary: A POSIX compliant shell that aims to be as small as possible
-
-
-About m2-gdbm
--------------
-
-Home: https://www.gnu.org/software/gdbm/gdbm.html
-
-Package license: GPL3
-
-Summary: GNU database library
-
-
-About m2-heimdal
-----------------
-
-Home: https://www.h5l.org/
-
-Package license: custom
-
-Summary: Implementation of Kerberos V5 libraries
-
-
-About m2-info
--------------
-
-Home: https://www.gnu.org/software/texinfo/
-
-Package license: GPL-3.0-or-later
-
-Summary: Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
-
-
-About m2-libassuan
-------------------
-
-Home: https://gnupg.org/related_software/libassuan
-
-Package license: GPL
-
-Summary: A IPC library used by some GnuPG related software
-
-
-About m2-libgcrypt
-------------------
-
-Home: https://gnupg.org
-
-Package license: LGPL
-
-Summary: General purpose cryptographic library based on the code from GnuPG
-
-
-About m2-libksba
-----------------
-
-Home: https://www.gnupg.org/related_software/libksba/
-
-Package license: LGPL-3.0-or-later OR GPL-2.0-or-later
-
-Summary: A CMS and X.509 access library
-
-
-About m2-liblzma
-----------------
-
-Home: https://tukaani.org/xz/
-
-Package license: GPL
-
-Summary: Library for XZ and LZMA compressed files
-
-
-About m2-libtool
-----------------
-
-Home: https://www.gnu.org/software/libtool/
-
-Package license: GPL-2.0-or-later
-
-Summary: A generic library support script
-
-
-About m2-patchutils
--------------------
-
-Home: http://cyberelk.net/tim/software/patchutils/
-
-Package license: GPL
-
-Summary: Utilities to work with patches
-
-
-About m2-tzcode
----------------
-
-Home: https://www.iana.org/time-zones
-
-Package license: GPL
-
-Summary: Sources for time zone and daylight saving time data
-
-
-About m2-util-linux
--------------------
-
-Home: https://www.kernel.org/pub/linux/utils/util-linux/
-
-Package license: GPL3
-
-Summary: Collection of basic system utilities
-
-
-About m2-bsdtar
----------------
-
-Home: https://libarchive.org/
-
-Package license: BSD
-
-Summary: Multi-format archive and compression library
-
-
-About m2-file
--------------
-
-Home: https://www.darwinsys.com/file/
-
-Package license: custom
-
-Summary: File type identification utility
-
-
-About m2-libtasn1
------------------
-
-Home: https://www.gnu.org/software/libtasn1/
-
-Package license: GPL3
-
-Summary: A library for Abstract Syntax Notation One (ASN.1) and Distinguish Encoding Rules (DER) manipulation
-
-
-About m2-libxml2
-----------------
-
-Home: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/
-
-Package license: MIT
-
-Summary: XML parsing library, version 2
-
-
-About m2-openssh
-----------------
-
-Home: https://www.openssh.com/portable.html
-
-Package license: custom:BSD
-
-Summary: Free version of the SSH connectivity tools
-
-
-About m2-perl
--------------
-
-Home: https://www.perl.org/
-
-Package license: GPL
-
-Summary: A highly capable, feature-rich programming language
-
-
-About m2-pinentry
------------------
-
-Home: https://gnupg.org/related_software/pinentry/
-
-Package license: GPL
-
-Summary: A collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
-
-
-About m2-rebase
----------------
-
-Home: https://www.cygwin.com/
-
-Package license: custom
-
-Summary: The Cygwin rebase distribution contains four utilities, rebase, rebaseall, peflags, and peflagsall
-
-
 About m2-autoconf
 -----------------
 
@@ -971,6 +21,16 @@ Home: https://www.gnu.org/software/autoconf
 Package license: GPL2
 
 Summary: A GNU tool for automatically configuring source code
+
+
+About m2-automake-wrapper
+-------------------------
+
+Home: https://gitweb.gentoo.org/proj/autotools-wrappers.git/
+
+Package license: GPL-2.0-only
+
+Summary: Wrapper scripts for automake commands
 
 
 About m2-automake1.11
@@ -1033,6 +93,596 @@ Package license: GPL
 Summary: A GNU tool for automatically creating Makefiles
 
 
+About m2-base
+-------------
+
+Home: https://www.msys2.org
+
+Package license: GPL
+
+Summary: Minimal package set to define a basic MSYS2 installation
+
+
+About m2-bash
+-------------
+
+Home: https://www.gnu.org/software/bash/bash.html
+
+Package license: GPL
+
+Summary: The GNU Bourne Again shell
+
+
+About m2-bash-completion
+------------------------
+
+Home: https://github.com/scop/bash-completion
+
+Package license: GPL
+
+Summary: Programmable completion for the bash shell
+
+
+About m2-brotli
+---------------
+
+Home: https://github.com/google/brotli
+
+Package license: MIT
+
+Summary: Brotli compression library
+
+
+About m2-bsdtar
+---------------
+
+Home: https://libarchive.org/
+
+Package license: BSD
+
+Summary: Multi-format archive and compression library
+
+
+About m2-bzip2
+--------------
+
+Home: http://www.bzip.org
+
+Package license: custom
+
+Summary: A high-quality data compression program
+
+
+About m2-ca-certificates
+------------------------
+
+Home: https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/
+
+Package license: MPL
+
+Summary: Common CA certificates
+
+
+About m2-coreutils
+------------------
+
+Home: https://www.gnu.org/software/coreutils
+
+Package license: GPL3
+
+Summary: The basic file, shell and text manipulation utilities of the GNU operating system
+
+
+About m2-curl
+-------------
+
+Home: https://curl.haxx.se
+
+Package license: MIT
+
+Summary: Multi-protocol file transfer utility
+
+
+About m2-dash
+-------------
+
+Home: http://gondor.apana.org.au/~herbert/dash/
+
+Package license: BSD
+
+Summary: A POSIX compliant shell that aims to be as small as possible
+
+
+About m2-db
+-----------
+
+Home: https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
+
+Package license: custom
+
+Summary: The Berkeley DB embedded database system
+
+
+About m2-diffutils
+------------------
+
+Home: https://www.gnu.org/software/diffutils
+
+Package license: GPL-3.0-or-later
+
+Summary: Utility programs used for creating patch files
+
+
+About m2-file
+-------------
+
+Home: https://www.darwinsys.com/file/
+
+Package license: custom
+
+Summary: File type identification utility
+
+
+About m2-filesystem
+-------------------
+
+Home: https://github.com/msys2/MSYS2-packages/tree/master/filesystem
+
+Package license: BSD-3-Clause
+
+Summary: Base filesystem
+
+
+About m2-findutils
+------------------
+
+Home: https://www.gnu.org/software/findutils
+
+Package license: GPL3
+
+Summary: GNU utilities to locate files
+
+
+About m2-gawk
+-------------
+
+Home: https://www.gnu.org/software/gawk/
+
+Package license: GPL
+
+Summary: GNU version of awk
+
+
+About m2-gcc-libs
+-----------------
+
+Home: https://gcc.gnu.org/
+
+Package license: GPL
+
+Summary: Runtime libraries shipped by GCC
+
+
+About m2-gdbm
+-------------
+
+Home: https://www.gnu.org/software/gdbm/gdbm.html
+
+Package license: GPL3
+
+Summary: GNU database library
+
+
+About m2-getent
+---------------
+
+Home: https://www.gnu.org/software/libc/libc.html
+
+Package license: LGPL
+
+Summary: Get entries from Name Service Switch libraries
+
+
+About m2-gettext
+----------------
+
+Home: https://www.gnu.org/software/gettext/
+
+Package license: GPL
+
+Summary: GNU internationalization library
+
+
+About m2-git
+------------
+
+Home: https://git-scm.com/
+
+Package license: GPL2
+
+Summary: The fast distributed version control system
+
+
+About m2-gmp
+------------
+
+Home: https://gmplib.org/
+
+Package license: LGPL3
+
+Summary: A free library for arbitrary precision arithmetic
+
+
+About m2-gnupg
+--------------
+
+Home: https://gnupg.org/
+
+Package license: GPL
+
+Summary: Complete and free implementation of the OpenPGP standard
+
+
+About m2-grep
+-------------
+
+Home: https://www.gnu.org/software/grep/
+
+Package license: GPL3
+
+Summary: A string search utility
+
+
+About m2-gzip
+-------------
+
+Home: https://www.gnu.org/software/gzip/
+
+Package license: GPL3
+
+Summary: GNU compression utility
+
+
+About m2-heimdal
+----------------
+
+Home: https://www.h5l.org/
+
+Package license: custom
+
+Summary: Implementation of Kerberos V5 libraries
+
+
+About m2-heimdal-libs
+---------------------
+
+Home: https://www.h5l.org/
+
+Package license: custom
+
+Summary: Implementation of Kerberos V5 libraries
+
+
+About m2-inetutils
+------------------
+
+Home: https://www.gnu.org/software/inetutils/
+
+Package license: GPL-3.0-or-later
+
+Summary: A collection of common network programs.
+
+
+About m2-info
+-------------
+
+Home: https://www.gnu.org/software/texinfo/
+
+Package license: GPL-3.0-or-later
+
+Summary: Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
+
+
+About m2-less
+-------------
+
+Home: http://www.greenwoodsoftware.com/less
+
+Package license: GPL3
+
+Summary: A terminal based program for viewing text files
+
+
+About m2-libargp
+----------------
+
+Home: https://www.gnu.org/software/libc/libc.html
+
+Package license: GPL
+
+Summary: Interface for parsing command-line arguments
+
+
+About m2-libasprintf
+--------------------
+
+Home: https://www.gnu.org/software/gettext/
+
+Package license: GPL
+
+Summary: C-style formatted output in C++ (runtime)
+
+
+About m2-libassuan
+------------------
+
+Home: https://gnupg.org/related_software/libassuan
+
+Package license: GPL
+
+Summary: A IPC library used by some GnuPG related software
+
+
+About m2-libbz2
+---------------
+
+Home: http://www.bzip.org
+
+Package license: custom
+
+Summary: A high-quality data compression program
+
+
+About m2-libcbor
+----------------
+
+Home: https://github.com/PJK/libcbor
+
+Package license: MIT
+
+Summary: A C library for parsing and generating CBOR, a general-purpose schema-less binary data format
+
+
+About m2-libcurl
+----------------
+
+Home: https://curl.haxx.se
+
+Package license: MIT
+
+Summary: Multi-protocol file transfer library (runtime)
+
+
+About m2-libdb
+--------------
+
+Home: https://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
+
+Package license: custom
+
+Summary: The Berkeley DB embedded database system
+
+
+About m2-libedit
+----------------
+
+Home: https://www.thrysoee.dk/editline/
+
+Package license: BSD
+
+Summary: Libedit is an autotool- and libtoolized port of the NetBSD Editline library.
+
+
+About m2-libexpat
+-----------------
+
+Home: https://libexpat.github.io/
+
+Package license: MIT
+
+Summary: An XML parser library
+
+
+About m2-libffi
+---------------
+
+Home: https://sourceware.org/libffi/
+
+Package license: MIT
+
+Summary: Portable, high level programming interface to various calling conventions
+
+
+About m2-libfido2
+-----------------
+
+Home: https://developers.yubico.com/libfido2/
+
+Package license: BSD-2-Clause
+
+Summary: Library functionality for FIDO 2.0, including communication with a device over USB
+
+
+About m2-libgcrypt
+------------------
+
+Home: https://gnupg.org
+
+Package license: LGPL
+
+Summary: General purpose cryptographic library based on the code from GnuPG
+
+
+About m2-libgdbm
+----------------
+
+Home: https://www.gnu.org/software/gdbm/gdbm.html
+
+Package license: GPL3
+
+Summary: GNU database library
+
+
+About m2-libgettextpo
+---------------------
+
+Home: https://www.gnu.org/software/gettext/
+
+Package license: GPL
+
+Summary: GNU Internationalization runtime library
+
+
+About m2-libgnutls
+------------------
+
+Home: https://www.gnutls.org/
+
+Package license: GPL-3.0-or-later
+
+Summary: A library which provides a secure layer over a reliable transport layer
+
+
+About m2-libgpg-error
+---------------------
+
+Home: https://gnupg.org
+
+Package license: LGPL-2.1-or-later
+
+Summary: Support library for libgcrypt
+
+
+About m2-libgpgme
+-----------------
+
+Home: https://gnupg.org/related_software/gpgme/
+
+Package license: LGPL
+
+Summary: A C wrapper library for GnuPG
+
+
+About m2-libhogweed
+-------------------
+
+Home: https://www.lysator.liu.se/~nisse/nettle/
+
+Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
+
+Summary: A low-level cryptographic library
+
+
+About m2-libiconv
+-----------------
+
+Home: https://www.gnu.org/software/libiconv/
+
+Package license: LGPL
+
+Summary: Libiconv is a conversion library
+
+
+About m2-libidn2
+----------------
+
+Home: https://www.gnu.org/software/libidn/
+
+Package license: GPL3
+
+Summary: Implementation of the Stringprep, Punycode and IDNA specifications
+
+
+About m2-libintl
+----------------
+
+Home: https://www.gnu.org/software/gettext/
+
+Package license: GPL
+
+Summary: GNU Internationalization runtime library
+
+
+About m2-libksba
+----------------
+
+Home: https://www.gnupg.org/related_software/libksba/
+
+Package license: LGPL-3.0-or-later OR GPL-2.0-or-later
+
+Summary: A CMS and X.509 access library
+
+
+About m2-libltdl
+----------------
+
+Home: https://www.gnu.org/software/libtool/
+
+Package license: GPL-2.0-or-later
+
+Summary: A system independent dlopen wrapper for GNU libtool
+
+
+About m2-liblz4
+---------------
+
+Home: https://lz4.github.io/lz4/
+
+Package license: LGPL
+
+Summary: Very fast lossless compression algorithm
+
+
+About m2-liblzma
+----------------
+
+Home: https://tukaani.org/xz/
+
+Package license: GPL
+
+Summary: Library for XZ and LZMA compressed files
+
+
+About m2-libnettle
+------------------
+
+Home: https://www.lysator.liu.se/~nisse/nettle/
+
+Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
+
+Summary: A low-level cryptographic library
+
+
+About m2-libnghttp2
+-------------------
+
+Home: https://nghttp2.org/
+
+Package license: MIT
+
+Summary: Framing layer of HTTP/2 is implemented as a reusable C library (runtime)
+
+
+About m2-libnpth
+----------------
+
+Home: https://gnupg.org/
+
+Package license: LGPL
+
+Summary: New portable threads library
+
+
+About m2-libopenssl
+-------------------
+
+Home: https://www.openssl.org
+
+Package license: Apache-2.0
+
+Summary: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+
+
 About m2-libp11-kit
 -------------------
 
@@ -1041,6 +691,156 @@ Home: https://p11-glue.freedesktop.org/p11-kit.html
 Package license: BSD
 
 Summary: Library to work with PKCS#11 modules
+
+
+About m2-libpcre
+----------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-libpcre2_16
+--------------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-libpcre2_32
+--------------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-libpcre2_8
+-------------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-libpcre2posix
+----------------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-libpsl
+---------------
+
+Home: https://github.com/rockdaboot/libpsl
+
+Package license: MIT
+
+Summary: Public Suffix List library (runtime)
+
+
+About m2-libreadline
+--------------------
+
+Home: https://tiswww.case.edu/php/chet/readline/rltop.html
+
+Package license: GPL
+
+Summary: GNU readline library
+
+
+About m2-libsqlite
+------------------
+
+Home: https://www.sqlite.org/
+
+Package license: PublicDomain
+
+Summary: Sqlite3 library
+
+
+About m2-libssh2
+----------------
+
+Home: https://libssh2.org/
+
+Package license: BSD
+
+Summary: Multi-protocol file transfer library (runtime)
+
+
+About m2-libtasn1
+-----------------
+
+Home: https://www.gnu.org/software/libtasn1/
+
+Package license: GPL3
+
+Summary: A library for Abstract Syntax Notation One (ASN.1) and Distinguish Encoding Rules (DER) manipulation
+
+
+About m2-libtool
+----------------
+
+Home: https://www.gnu.org/software/libtool/
+
+Package license: GPL-2.0-or-later
+
+Summary: A generic library support script
+
+
+About m2-libunistring
+---------------------
+
+Home: https://www.gnu.org/software/libunistring/
+
+Package license: LGPL-3.0-or-later OR GPL-2.0-or-later
+
+Summary: Library for manipulating Unicode strings and C strings.
+
+
+About m2-libutil-linux
+----------------------
+
+Home: https://www.kernel.org/pub/linux/utils/util-linux/
+
+Package license: GPL3
+
+Summary: Block device ID and Universally Unique ID libraries
+
+
+About m2-libxcrypt
+------------------
+
+Home: https://github.com/besser82/libxcrypt/
+
+Package license: LGPL-2.1-or-later
+
+Summary: Modern library for one-way hashing of passwords
+
+
+About m2-libxml2
+----------------
+
+Home: https://gitlab.gnome.org/GNOME/libxml2/-/wikis/
+
+Package license: MIT
+
+Summary: XML parsing library, version 2
 
 
 About m2-libxslt
@@ -1053,6 +853,86 @@ Package license: custom
 Summary: XML stylesheet transformation library
 
 
+About m2-libzstd
+----------------
+
+Home: https://facebook.github.io/zstd/
+
+Package license: BSD
+
+Summary: Zstandard - Fast real-time compression algorithm
+
+
+About m2-m4
+-----------
+
+Home: https://www.gnu.org/software/m4
+
+Package license: GPL3
+
+Summary: The GNU macro processor
+
+
+About m2-make
+-------------
+
+Home: https://www.gnu.org/software/make
+
+Package license: GPL3
+
+Summary: GNU make utility to maintain groups of programs
+
+
+About m2-mintty
+---------------
+
+Home: https://mintty.github.io
+
+Package license: GPL-3.0-or-later
+
+Summary: Terminal emulator with native Windows look and feel
+
+
+About m2-mpfr
+-------------
+
+Home: https://www.mpfr.org/
+
+Package license: LGPL-3.0-or-later
+
+Summary: Multiple-precision floating-point library
+
+
+About m2-msys2-keyring
+----------------------
+
+Home: https://github.com/msys2/MSYS2-keyring
+
+Package license: GPL
+
+Summary: MSYS2 PGP keyring
+
+
+About m2-msys2-launcher
+-----------------------
+
+
+
+Package license: MIT
+
+Summary: Helper for launching MSYS2 shells
+
+
+About m2-msys2-runtime
+----------------------
+
+Home: https://www.cygwin.com/
+
+Package license: GPL
+
+Summary: Posix emulation engine for Windows
+
+
 About m2-nano
 -------------
 
@@ -1061,6 +941,106 @@ Home: https://www.nano-editor.org
 Package license: GPL-3.0-or-later
 
 Summary: Pico editor clone with enhancements
+
+
+About m2-ncurses
+----------------
+
+Home: https://www.gnu.org/software/ncurses/
+
+Package license: MIT
+
+Summary: System V Release 4.0 curses emulation library
+
+
+About m2-nettle
+---------------
+
+Home: https://www.lysator.liu.se/~nisse/nettle/
+
+Package license: GPL-2.0-or-later OR LGPL-3.0-or-later
+
+Summary: A low-level cryptographic library
+
+
+About m2-openssh
+----------------
+
+Home: https://www.openssh.com/portable.html
+
+Package license: custom:BSD
+
+Summary: Free version of the SSH connectivity tools
+
+
+About m2-openssl
+----------------
+
+Home: https://www.openssl.org
+
+Package license: Apache-2.0
+
+Summary: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+
+
+About m2-p11-kit
+----------------
+
+Home: https://p11-glue.freedesktop.org/p11-kit.html
+
+Package license: BSD
+
+Summary: Library to work with PKCS#11 modules
+
+
+About m2-p7zip
+--------------
+
+Home: https://github.com/p7zip-project/p7zip
+
+Package license: LGPL
+
+Summary: Command-line version of the 7zip compressed file archiver
+
+
+About m2-patch
+--------------
+
+Home: https://www.gnu.org/software/patch/patch.html
+
+Package license: GPL
+
+Summary: A utility to apply patch files to original sources
+
+
+About m2-patchutils
+-------------------
+
+Home: http://cyberelk.net/tim/software/patchutils/
+
+Package license: GPL
+
+Summary: Utilities to work with patches
+
+
+About m2-pcre2
+--------------
+
+Home: https://www.pcre.org/
+
+Package license: BSD
+
+Summary: A library that implements Perl 5-style regular expressions
+
+
+About m2-perl
+-------------
+
+Home: https://www.perl.org/
+
+Package license: GPL
+
+Summary: A highly capable, feature-rich programming language
 
 
 About m2-perl-authen-sasl
@@ -1113,6 +1093,26 @@ Package license: PerlArtistic
 Summary: Perl/CPAN Error module - Error/exception handling in an OO-ish way
 
 
+About m2-perl-file-listing
+--------------------------
+
+Home: https://metacpan.org/dist/File-Listing
+
+Package license: Artistic-1.0-Perl
+
+Summary: parse directory listing
+
+
+About m2-perl-html-parser
+-------------------------
+
+Home: https://metacpan.org/dist/HTML-Parser
+
+Package license: Artistic-1.0-Perl
+
+Summary: Perl HTML parser class
+
+
 About m2-perl-html-tagset
 -------------------------
 
@@ -1123,6 +1123,26 @@ Package license: PerlArtistic
 Summary: Data tables useful in parsing HTML
 
 
+About m2-perl-http-cookies
+--------------------------
+
+Home: https://metacpan.org/release/HTTP-Cookies
+
+Package license: PerlArtistic
+
+Summary: HTTP cookie jars
+
+
+About m2-perl-http-daemon
+-------------------------
+
+Home: https://metacpan.org/dist/HTTP-Daemon
+
+Package license: Artistic-1.0-Perl
+
+Summary: A simple http server class
+
+
 About m2-perl-http-date
 -----------------------
 
@@ -1131,6 +1151,26 @@ Home: https://metacpan.org/release/HTTP-Date
 Package license: PerlArtistic
 
 Summary: Date conversion routines
+
+
+About m2-perl-http-message
+--------------------------
+
+Home: https://metacpan.org/release/HTTP-Message
+
+Package license: PerlArtistic
+
+Summary: HTTP style messages
+
+
+About m2-perl-http-negotiate
+----------------------------
+
+Home: https://metacpan.org/dist/HTTP-Negotiate
+
+Package license: PerlArtistic
+
+Summary: choose a variant to serve
 
 
 About m2-perl-io-html
@@ -1153,6 +1193,16 @@ Package license: PerlArtistic
 Summary: Family-neutral IP socket supporting both IPv4 and IPv6
 
 
+About m2-perl-io-socket-ssl
+---------------------------
+
+Home: https://metacpan.org/release/IO-Socket-SSL
+
+Package license: GPL
+
+Summary: Nearly transparent SSL encapsulation for IO::Socket::INET
+
+
 About m2-perl-io-stringy
 ------------------------
 
@@ -1161,6 +1211,16 @@ Home: https://metacpan.org/release/IO-stringy
 Package license: GPL
 
 Summary: I/O on in-core objects like strings/arrays
+
+
+About m2-perl-libwww
+--------------------
+
+Home: https://metacpan.org/dist/libwww-perl
+
+Package license: Artistic-1.0-Perl
+
+Summary: The World-Wide Web library for Perl
 
 
 About m2-perl-lwp-mediatypes
@@ -1173,6 +1233,26 @@ Package license: PerlArtistic
 Summary: Guess the media type of a file or a URL
 
 
+About m2-perl-mailtools
+-----------------------
+
+Home: https://metacpan.org/release/MailTools
+
+Package license: PerlArtistic
+
+Summary: Various e-mail related modules
+
+
+About m2-perl-mime-tools
+------------------------
+
+Home: https://metacpan.org/release/MIME-tools
+
+Package license: GPL
+
+Summary: Parses streams to create MIME entities
+
+
 About m2-perl-net-http
 ----------------------
 
@@ -1181,6 +1261,26 @@ Home: https://metacpan.org/release/Net-HTTP
 Package license: PerlArtistic
 
 Summary: Low-level HTTP connection (client)
+
+
+About m2-perl-net-smtp-ssl
+--------------------------
+
+Home: https://metacpan.org/dist/Net-SMTP-SSL
+
+Package license: GPL
+
+Summary: SSL support for Net::SMTP
+
+
+About m2-perl-net-ssleay
+------------------------
+
+Home: https://metacpan.org/dist/Net-SSLeay/
+
+Package license: custom:BSD
+
+Summary: Perl extension for using OpenSSL
 
 
 About m2-perl-termreadkey
@@ -1223,6 +1323,66 @@ Package license: PerlArtistic
 Summary: Uniform Resource Identifiers (absolute and relative)
 
 
+About m2-perl-www-robotrules
+----------------------------
+
+Home: https://metacpan.org/release/WWW-RobotRules
+
+Package license: PerlArtistic
+
+Summary: Database of robots.txt-derived permissions
+
+
+About m2-pinentry
+-----------------
+
+Home: https://gnupg.org/related_software/pinentry/
+
+Package license: GPL
+
+Summary: A collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
+
+
+About m2-pkg-config
+-------------------
+
+Home: https://www.freedesktop.org/wiki/Software/pkg-config/
+
+Package license: GPL
+
+Summary: A system for managing library compile/link flags
+
+
+About m2-rebase
+---------------
+
+Home: https://www.cygwin.com/
+
+Package license: custom
+
+Summary: The Cygwin rebase distribution contains four utilities, rebase, rebaseall, peflags, and peflagsall
+
+
+About m2-sed
+------------
+
+Home: https://www.gnu.org/software/sed
+
+Package license: GPL3
+
+Summary: GNU stream editor
+
+
+About m2-tar
+------------
+
+Home: https://www.gnu.org/software/tar/tar.html
+
+Package license: GPL3
+
+Summary: Utility used to store, backup, and transport files
+
+
 About m2-texinfo
 ----------------
 
@@ -1243,234 +1403,44 @@ Package license: GPL-3.0-or-later
 Summary: Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
 
 
-About m2-automake-wrapper
--------------------------
-
-Home: https://gitweb.gentoo.org/proj/autotools-wrappers.git/
-
-Package license: GPL-2.0-only
-
-Summary: Wrapper scripts for automake commands
-
-
-About m2-libgnutls
-------------------
-
-Home: https://www.gnutls.org/
-
-Package license: GPL-3.0-or-later
-
-Summary: A library which provides a secure layer over a reliable transport layer
-
-
-About m2-libpsl
----------------
-
-Home: https://github.com/rockdaboot/libpsl
-
-Package license: MIT
-
-Summary: Public Suffix List library (runtime)
-
-
-About m2-p11-kit
-----------------
-
-Home: https://p11-glue.freedesktop.org/p11-kit.html
-
-Package license: BSD
-
-Summary: Library to work with PKCS#11 modules
-
-
-About m2-perl-file-listing
---------------------------
-
-Home: https://metacpan.org/dist/File-Listing
-
-Package license: Artistic-1.0-Perl
-
-Summary: parse directory listing
-
-
-About m2-perl-http-message
---------------------------
-
-Home: https://metacpan.org/release/HTTP-Message
-
-Package license: PerlArtistic
-
-Summary: HTTP style messages
-
-
-About m2-perl-io-socket-ssl
----------------------------
-
-Home: https://metacpan.org/release/IO-Socket-SSL
-
-Package license: GPL
-
-Summary: Nearly transparent SSL encapsulation for IO::Socket::INET
-
-
-About m2-perl-mailtools
------------------------
-
-Home: https://metacpan.org/release/MailTools
-
-Package license: PerlArtistic
-
-Summary: Various e-mail related modules
-
-
-About m2-perl-www-robotrules
-----------------------------
-
-Home: https://metacpan.org/release/WWW-RobotRules
-
-Package license: PerlArtistic
-
-Summary: Database of robots.txt-derived permissions
-
-
-About m2-ca-certificates
-------------------------
-
-Home: https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/
-
-Package license: MPL
-
-Summary: Common CA certificates
-
-
-About m2-perl-html-parser
--------------------------
-
-Home: https://metacpan.org/dist/HTML-Parser
-
-Package license: Artistic-1.0-Perl
-
-Summary: Perl HTML parser class
-
-
-About m2-perl-http-cookies
---------------------------
-
-Home: https://metacpan.org/release/HTTP-Cookies
-
-Package license: PerlArtistic
-
-Summary: HTTP cookie jars
-
-
-About m2-perl-http-daemon
--------------------------
-
-Home: https://metacpan.org/dist/HTTP-Daemon
-
-Package license: Artistic-1.0-Perl
-
-Summary: A simple http server class
-
-
-About m2-perl-http-negotiate
-----------------------------
-
-Home: https://metacpan.org/dist/HTTP-Negotiate
-
-Package license: PerlArtistic
-
-Summary: choose a variant to serve
-
-
-About m2-perl-mime-tools
-------------------------
-
-Home: https://metacpan.org/release/MIME-tools
-
-Package license: GPL
-
-Summary: Parses streams to create MIME entities
-
-
-About m2-perl-net-smtp-ssl
---------------------------
-
-Home: https://metacpan.org/dist/Net-SMTP-SSL
-
-Package license: GPL
-
-Summary: SSL support for Net::SMTP
-
-
-About m2-libssh2
-----------------
-
-Home: https://libssh2.org/
-
-Package license: BSD
-
-Summary: Multi-protocol file transfer library (runtime)
-
-
-About m2-perl-libwww
---------------------
-
-Home: https://metacpan.org/dist/libwww-perl
-
-Package license: Artistic-1.0-Perl
-
-Summary: The World-Wide Web library for Perl
-
-
-About m2-libcurl
-----------------
-
-Home: https://curl.haxx.se
-
-Package license: MIT
-
-Summary: Multi-protocol file transfer library (runtime)
-
-
-About m2-curl
+About m2-time
 -------------
 
-Home: https://curl.haxx.se
-
-Package license: MIT
-
-Summary: Multi-protocol file transfer utility
-
-
-About m2-gnupg
---------------
-
-Home: https://gnupg.org/
+Home: https://www.gnu.org/directory/time.html
 
 Package license: GPL
 
-Summary: Complete and free implementation of the OpenPGP standard
+Summary: Utility for monitoring a program's use of system resources
 
 
-About m2-git
-------------
+About m2-tzcode
+---------------
 
-Home: https://git-scm.com/
+Home: https://www.iana.org/time-zones
 
-Package license: GPL2
+Package license: GPL
 
-Summary: The fast distributed version control system
+Summary: Sources for time zone and daylight saving time data
 
 
-About m2-libgpgme
------------------
+About m2-unzip
+--------------
 
-Home: https://gnupg.org/related_software/gpgme/
+Home: http://www.info-zip.org/
 
-Package license: LGPL
+Package license: custom
 
-Summary: A C wrapper library for GnuPG
+Summary: Unpacks .zip archives such as those made by PKZIP
+
+
+About m2-util-linux
+-------------------
+
+Home: https://www.kernel.org/pub/linux/utils/util-linux/
+
+Package license: GPL3
+
+Summary: Collection of basic system utilities
 
 
 About m2-wget
@@ -1483,14 +1453,44 @@ Package license: GPL3
 Summary: A network utility to retrieve files from the Web
 
 
-About m2-base
+About m2-which
+--------------
+
+Home: https://savannah.gnu.org/projects/which/
+
+Package license: GPL3
+
+Summary: A utility to show the full path of commands
+
+
+About m2-zip
+------------
+
+Home: http://www.info-zip.org/Zip.html
+
+Package license: BSD
+
+Summary: Creates PKZIP-compatible .zip files
+
+
+About m2-zlib
 -------------
 
-Home: https://www.msys2.org
+Home: https://www.zlib.net/
 
-Package license: GPL
+Package license: custom
 
-Summary: Minimal package set to define a basic MSYS2 installation
+Summary: Compression library implementing the deflate compression method found in gzip and PKZIP
+
+
+About m2-zstd
+-------------
+
+Home: https://facebook.github.io/zstd/
+
+Package license: BSD
+
+Summary: Zstandard - Fast real-time compression algorithm
 
 
 Current build status
@@ -1580,9 +1580,9 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libopenssl-green.svg)](https://anaconda.org/conda-forge/m2-libopenssl) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libopenssl.svg)](https://anaconda.org/conda-forge/m2-libopenssl) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libopenssl.svg)](https://anaconda.org/conda-forge/m2-libopenssl) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libopenssl.svg)](https://anaconda.org/conda-forge/m2-libopenssl) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libp11--kit-green.svg)](https://anaconda.org/conda-forge/m2-libp11-kit) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libp11-kit.svg)](https://anaconda.org/conda-forge/m2-libp11-kit) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libp11-kit.svg)](https://anaconda.org/conda-forge/m2-libp11-kit) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libp11-kit.svg)](https://anaconda.org/conda-forge/m2-libp11-kit) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre-green.svg)](https://anaconda.org/conda-forge/m2-libpcre) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre.svg)](https://anaconda.org/conda-forge/m2-libpcre) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre.svg)](https://anaconda.org/conda-forge/m2-libpcre) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre.svg)](https://anaconda.org/conda-forge/m2-libpcre) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2_16-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2_32-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2_8-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2__16-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_16.svg)](https://anaconda.org/conda-forge/m2-libpcre2_16) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2__32-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_32.svg)](https://anaconda.org/conda-forge/m2-libpcre2_32) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2__8-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2_8.svg)](https://anaconda.org/conda-forge/m2-libpcre2_8) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpcre2posix-green.svg)](https://anaconda.org/conda-forge/m2-libpcre2posix) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpcre2posix.svg)](https://anaconda.org/conda-forge/m2-libpcre2posix) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpcre2posix.svg)](https://anaconda.org/conda-forge/m2-libpcre2posix) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpcre2posix.svg)](https://anaconda.org/conda-forge/m2-libpcre2posix) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libpsl-green.svg)](https://anaconda.org/conda-forge/m2-libpsl) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libpsl.svg)](https://anaconda.org/conda-forge/m2-libpsl) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libpsl.svg)](https://anaconda.org/conda-forge/m2-libpsl) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libpsl.svg)](https://anaconda.org/conda-forge/m2-libpsl) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-m2--libreadline-green.svg)](https://anaconda.org/conda-forge/m2-libreadline) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/m2-libreadline.svg)](https://anaconda.org/conda-forge/m2-libreadline) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/m2-libreadline.svg)](https://anaconda.org/conda-forge/m2-libreadline) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/m2-libreadline.svg)](https://anaconda.org/conda-forge/m2-libreadline) |
