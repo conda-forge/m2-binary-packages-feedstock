@@ -1,3 +1,6 @@
+:: rattler-build does not define LIBRARY_PREFIX for noarch generic packages.
+set LIBRARY_PREFIX=%PREFIX%\Library
+
 mkdir %LIBRARY_PREFIX%
 xcopy %SRC_DIR%\binary-%PKG_NAME%\ %LIBRARY_PREFIX%\ /s /e /y
 
