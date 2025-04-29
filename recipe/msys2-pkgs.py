@@ -213,7 +213,8 @@ meta = f"""recipe:
 
 sources_template = """
       - url:
-          - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
+            - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
+            - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
         sha256: {{ sha256 }}
         target_directory: {{ type }}-{{ name }}{{ patches }}
 """
@@ -257,8 +258,9 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     filename = pkg_latest_ver[pkg]
 
     sources = []
-    for t in ["binary-m2"]:
-        patches = ""
+    for t in ["binary-m2", "source"]:
+        if t == "source" and not src_url:
+            continue
 
         if t == "source":
             sha256 = (
@@ -279,6 +281,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
             msys_type = "x86_64"
             url_base = f"{pkg}-{filename}"
 
+        patches = ""
         if t == "binary-m2" and pkg.lower() == "filesystem":
             patches = """
         patches:
@@ -286,7 +289,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
           - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
             """.rstrip()
 
-        info = {
+        source_info = {
             "name": pkg.lower(),
             "tarname": f"{pkg}-{filename}",
             "url_base": url_base.replace("~", "."),
@@ -298,7 +301,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
         }
 
         text = sources_template.strip("\n")
-        for k, v in info.items():
+        for k, v in source_info.items():
             text = text.replace(f"{{{{ {k} }}}}", v)
         sources.append(text)
 
