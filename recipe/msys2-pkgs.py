@@ -209,71 +209,14 @@ while to_process:
 meta = f"""recipe:
   name: m2-binary-packages
   version: "{date}"
-
-source:"""
-
-sources_template = """
-  - url:
-      - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
-    sha256: {{ sha256 }}
-    target_directory: {{ type }}-{{ name }}{{ patches }}
 """
 
-sources = {}
-
-for pkg, (depends, spdx, desc, url, src_url) in seen.items():
-    print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
-    info = pkg_latest_ver[pkg]
-
-    for t in ["binary-m2", "source"]:
-        if t == "source" and not src_url:
-            continue
-        patches = ""
-
-        if t == "source":
-            sha256 = (
-                subprocess.check_output(
-                    ["sha256sum", "src-cache/" + os.path.basename(src_url)]
-                )
-                .decode("utf-8")
-                .split(" ")[0]
-            )
-            msys_type = "sources"
-            url_base = os.path.basename(src_url)
-        else:
-            sha256 = (
-                subprocess.check_output(["sha256sum", f"cache/{pkg}-{info}"])
-                .decode("utf-8")
-                .split(" ")[0]
-            )
-            msys_type = "x86_64"
-            url_base = f"{pkg}-{info}"
-
-        if t == "binary-m2" and pkg.lower() == "filesystem":
-            patches = """
-    patches:
-      - patches/filesystem/0001-Remove-etc-post-install-07-pacman-key-post.patch
-      - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
-            """.rstrip()
-
-        info = {
-            "name": pkg.lower(),
-            "tarname": f"{pkg}-{info}",
-            "url_base": url_base.replace("~", "."),
-            "sha256": sha256,
-            "type": t,
-            "msys_type": msys_type,
-            "patches": patches,
-            "date": date,
-        }
-
-        text = sources_template
-        for k, v in info.items():
-            text = text.replace(f"{{{{ {k} }}}}", v)
-        sources[text] = True
-
-
-meta += "".join(sources.keys())
+sources_template = """
+      - url:
+          - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
+        sha256: {{ sha256 }}
+        target_directory: {{ type }}-{{ name }}{{ patches }}
+"""
 
 meta += """
 build:
@@ -288,6 +231,8 @@ output_template = """
   - package:
       name: m2-{{ name }}
       version: "{{ version }}"
+    source:
+{{ sources }}
     build:
       noarch: generic
       script: 
@@ -309,23 +254,75 @@ dep_map = {}
 
 for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
-    info = pkg_latest_ver[pkg]
+    filename = pkg_latest_ver[pkg]
+
+    sources = []
+    for t in ["binary-m2", "source"]:
+        if t == "source" and not src_url:
+            continue
+        patches = ""
+
+        if t == "source":
+            sha256 = (
+                subprocess.check_output(
+                    ["sha256sum", "src-cache/" + os.path.basename(src_url)]
+                )
+                .decode("utf-8")
+                .split(" ")[0]
+            )
+            msys_type = "sources"
+            url_base = os.path.basename(src_url)
+        else:
+            sha256 = (
+                subprocess.check_output(["sha256sum", f"cache/{pkg}-{filename}"])
+                .decode("utf-8")
+                .split(" ")[0]
+            )
+            msys_type = "x86_64"
+            url_base = f"{pkg}-{filename}"
+
+        if t == "binary-m2" and pkg.lower() == "filesystem":
+            patches = """
+        patches:
+          - patches/filesystem/0001-Remove-etc-post-install-07-pacman-key-post.patch
+          - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
+            """.rstrip()
+
+        info = {
+            "name": pkg.lower(),
+            "tarname": f"{pkg}-{filename}",
+            "url_base": url_base.replace("~", "."),
+            "sha256": sha256,
+            "type": t,
+            "msys_type": msys_type,
+            "patches": patches,
+            "date": date,
+        }
+
+        text = sources_template.strip("\n")
+        for k, v in info.items():
+            text = text.replace(f"{{{{ {k} }}}}", v)
+        sources.append(text)
+
     text = output_template
     depends += [f"conda-epoch ={date}"]
     if pkg.lower() != "msys2-runtime":
         depends += ["msys2-runtime"]
     info = {
         "name": pkg.lower(),
-        "version": ".".join(info.split("-")[:2]).replace("~", "!"),
+        "version": ".".join(filename.split("-")[:2]).replace("~", "!"),
         "depends": "\n".join(f"        - m2-{dep.lower()}" for dep in depends),
         "license": spdx,
         "summary": desc,
         "url": url,
+        "sources": "\n".join(sources),
     }
     dep_map[pkg] = depends
     for k, v in info.items():
         text = text.replace(f"{{{{ {k} }}}}", v)
     meta += text
+
+    
 
 # print(dep_map)
 
