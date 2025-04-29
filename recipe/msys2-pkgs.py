@@ -55,6 +55,22 @@ provides = {
     "perl-IO-stringy": "perl-IO-Stringy",
 }
 
+license_text_to_spdx = {
+    "GPL2": "GPL-2.0-or-later",
+    "GPL": "GPL-3.0-or-later",
+    "GPL3": "GPL-3.0-or-later",
+    "LGPL": "LGPL-3.0-or-later", 
+    "LGPL3": "LGPL-3.0-or-later",
+    "BSD": "BSD-3-Clause",
+    "custom:BSD": "BSD-3-Clause",
+    "BSD-2-Clause": "BSD-2-Clause",
+    "MIT": "MIT",
+    "custom": "LicenseRef-CustomLicense",
+    "PublicDomain": "LicenseRef-Public-Domain",
+    "MPL": "MPL-2.0",
+    "PerlArtistic": "Artistic-1.0-Perl",
+}
+
 seen = {}
 
 
@@ -86,6 +102,15 @@ def get_info(pkginfo, desc):
         for line in pkginfo
         if line.startswith(f"{desc} = ")
     ]
+
+def as_spdx(license_text):
+    if license_text.startswith("spdx:"):
+        return license_text[5:]
+    
+    if license_text in license_text_to_spdx:
+        return license_text_to_spdx[license_text]
+
+    assert False, f"Unknown license {license_text}"
 
 
 def get_depends(pkg):
@@ -159,7 +184,7 @@ def get_depends(pkg):
         # break a cycle
         depends.remove("libintl")
     license_text = get_info(pkginfo, "license")[0]
-    spdx = license_text[5:] if license_text.startswith("spdx:") else license_text
+    spdx = as_spdx(license_text)
     desc = get_info(pkginfo, "pkgdesc")[0]
     url = get_info(pkginfo, "url")[0]
     return depends, spdx, desc, url, src_name
@@ -181,18 +206,17 @@ while to_process:
     seen[pkg] = depends, spdx, desc, url, src_name
 
 
-meta = f"""package:
+meta = f"""recipe:
   name: m2-binary-packages
-  version: {date}
+  version: "{date}"
 
 source:"""
 
 sources_template = """
   - url:
-      - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
       - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
     sha256: {{ sha256 }}
-    folder: {{ type }}-{{ name }}{{ patches }}
+    target_directory: {{ type }}-{{ name }}{{ patches }}
 """
 
 sources = {}
@@ -235,7 +259,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
         info = {
             "name": pkg.lower(),
             "tarname": f"{pkg}-{info}",
-            "url_base": url_base,
+            "url_base": url_base.replace("~", "."),
             "sha256": sha256,
             "type": t,
             "msys_type": msys_type,
@@ -255,24 +279,25 @@ meta += """
 build:
   number: 1
   noarch: generic
-  error_overlinking: false
+  dynamic_linking:
+    overlinking_behavior: ignore
 
 outputs:"""
 
 output_template = """
-  - name: m2-{{ name }}
-    version: "{{ version }}"
-    script: install_pkg.bat  # [build_platform.startswith("win-")]
-    script: install_pkg.sh   # [not build_platform.startswith("win-")]
+  - package:
+      name: m2-{{ name }}
+      version: "{{ version }}"
     build:
       noarch: generic
+      script: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
     requirements:
       host:
 {{ depends }}
       run:
 {{ depends }}
     about:
-      home: {{ url }}
+      homepage: {{ url }}
       license: {{ license }}
       summary: |
         {{ summary }}
@@ -285,7 +310,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
     info = pkg_latest_ver[pkg]
     text = output_template
-    depends += [f"conda-epoch {date}"]
+    depends += [f"conda-epoch ={date}"]
     if pkg.lower() != "msys2-runtime":
         depends += ["msys2-runtime"]
     info = {
@@ -305,7 +330,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
 
 meta += """
 about:
-  home: https://github.com/conda-forge/m2-recipes-feedstock
+  homepage: https://github.com/conda-forge/m2-recipes-feedstock
   summary: Repackaged msys2 x86_64 binaries
 
 extra:
@@ -319,5 +344,5 @@ recipe_dir = (
     else "recipe"
 )
 
-with open(os.path.join(recipe_dir, "meta.yaml"), "w") as f:
+with open(os.path.join(recipe_dir, "recipe.yaml"), "w") as f:
     f.write(meta)
