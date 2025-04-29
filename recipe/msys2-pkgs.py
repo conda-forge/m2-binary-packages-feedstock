@@ -239,9 +239,9 @@ output_template = """
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
     requirements:
       host:
-{{ depends }}
+{{ host_depends }}
       run:
-{{ depends }}
+{{ run_depends }}
     about:
       homepage: {{ url }}
       license: {{ license }}
@@ -257,9 +257,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     filename = pkg_latest_ver[pkg]
 
     sources = []
-    for t in ["binary-m2", "source"]:
-        if t == "source" and not src_url:
-            continue
+    for t in ["binary-m2"]:
         patches = ""
 
         if t == "source":
@@ -304,20 +302,25 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
             text = text.replace(f"{{{{ {k} }}}}", v)
         sources.append(text)
 
-    text = output_template
-    depends += [f"conda-epoch ={date}"]
     if pkg.lower() != "msys2-runtime":
         depends += ["msys2-runtime"]
+    dep_map[pkg] = depends
+
+    host_depends = depends.copy()
+    host_depends += [f"conda-epoch ={date}"]
+
     info = {
         "name": pkg.lower(),
         "version": ".".join(filename.split("-")[:2]).replace("~", "!"),
-        "depends": "\n".join(f"        - m2-{dep.lower()}" for dep in depends),
+        "run_depends": "\n".join(f"        - m2-{dep.lower()}" for dep in depends),
+        "host_depends": "\n".join(f"        - m2-{dep.lower()}" for dep in host_depends),
         "license": spdx,
         "summary": desc,
         "url": url,
         "sources": "\n".join(sources),
     }
-    dep_map[pkg] = depends
+    
+    text = output_template
     for k, v in info.items():
         text = text.replace(f"{{{{ {k} }}}}", v)
     meta += text
