@@ -12,12 +12,14 @@ import shutil
 from ordered_set import OrderedSet
 
 
-date = "20230914"
+date = "20250430"
 binary_index_url = (
-    f"https://github.com/conda-forge/msys2-recipes/releases/download/{date}/"
+    #"https://repo.msys2.org/msys/x86_64/"
+    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
 )
 source_url = (
-    f"https://github.com/conda-forge/msys2-recipes/releases/download/{date}/"
+    #"https://repo.msys2.org/msys/sources/"
+    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
 )
 
 to_process = OrderedSet([
@@ -75,25 +77,27 @@ seen = {}
 
 
 def get_pkgs():
-    directory_listing = requests.get(binary_index_url + "index.html").text
+    if "github" in binary_index_url:
+        directory_listing = requests.get(binary_index_url + "index.html").text
+    else:
+        directory_listing = requests.get(binary_index_url).text
     s = BeautifulSoup(directory_listing, "html.parser")
     full_names = [
         node.get("href")
         for node in s.find_all("a")
         if node.get("href").endswith((".tar.zst", "tar.xz"))
     ]
+
+    def get_name_ver(pkg):
+        b = os.path.basename(pkg)
+        return ("-".join(b.split("-")[:-3]), "-".join(b.split("-")[-3:]))
+
     # format: msy2-w32api-headers-10.0.0.r16.g49a56d453-1-x86_64.pkg.tar.zst
-    return list(
-        sorted(
-            [
-                ("-".join(pkg.split("-")[:-3]), "-".join(pkg.split("-")[-3:]))
-                for pkg in full_names
-            ]
-        )
-    )
+    return list(sorted([get_name_ver(pkg) for pkg in full_names]))
 
 
 pkg_latest_ver = dict(get_pkgs())
+print(pkg_latest_ver)
 
 
 def get_info(pkginfo, desc):
@@ -214,7 +218,7 @@ meta = f"""recipe:
 sources_template = """
       - url:
             - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
-            - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}            
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{{ date }}/{{ url_base }}
         sha256: {{ sha256 }}
         target_directory: {{ type }}-{{ name }}{{ patches }}
 """
@@ -236,7 +240,7 @@ output_template = """
 {{ sources }}
     build:
       noarch: generic
-      script: 
+      script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
     requirements:
       host:
@@ -334,7 +338,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
 
 meta += """
 about:
-  homepage: https://github.com/conda-forge/m2-recipes-feedstock
+  homepage: https://github.com/conda-forge/m2-binary-packages-feedstock
   summary: Repackaged msys2 x86_64 binaries
 
 extra:
