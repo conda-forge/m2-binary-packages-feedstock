@@ -12,12 +12,14 @@ import shutil
 from ordered_set import OrderedSet
 
 
-date = "20230914"
+date = "20250430"
 binary_index_url = (
-    f"https://github.com/conda-forge/msys2-recipes/releases/download/{date}/"
+    #"https://repo.msys2.org/msys/x86_64/"
+    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
 )
 source_url = (
-    f"https://github.com/conda-forge/msys2-recipes/releases/download/{date}/"
+    #"https://repo.msys2.org/msys/sources/"
+    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
 )
 
 to_process = OrderedSet([
@@ -55,29 +57,47 @@ provides = {
     "perl-IO-stringy": "perl-IO-Stringy",
 }
 
+license_text_to_spdx = {
+    "GPL2": "GPL-2.0-or-later",
+    "GPL": "GPL-3.0-or-later",
+    "GPL3": "GPL-3.0-or-later",
+    "LGPL": "LGPL-3.0-or-later", 
+    "LGPL3": "LGPL-3.0-or-later",
+    "BSD": "BSD-3-Clause",
+    "custom:BSD": "BSD-3-Clause",
+    "BSD-2-Clause": "BSD-2-Clause",
+    "MIT": "MIT",
+    "custom": "LicenseRef-CustomLicense",
+    "PublicDomain": "LicenseRef-Public-Domain",
+    "MPL": "MPL-2.0",
+    "PerlArtistic": "Artistic-1.0-Perl",
+}
+
 seen = {}
 
 
 def get_pkgs():
-    directory_listing = requests.get(binary_index_url + "index.html").text
+    if "github" in binary_index_url:
+        directory_listing = requests.get(binary_index_url + "index.html").text
+    else:
+        directory_listing = requests.get(binary_index_url).text
     s = BeautifulSoup(directory_listing, "html.parser")
     full_names = [
         node.get("href")
         for node in s.find_all("a")
         if node.get("href").endswith((".tar.zst", "tar.xz"))
     ]
+
+    def get_name_ver(pkg):
+        b = os.path.basename(pkg)
+        return ("-".join(b.split("-")[:-3]), "-".join(b.split("-")[-3:]))
+
     # format: msy2-w32api-headers-10.0.0.r16.g49a56d453-1-x86_64.pkg.tar.zst
-    return list(
-        sorted(
-            [
-                ("-".join(pkg.split("-")[:-3]), "-".join(pkg.split("-")[-3:]))
-                for pkg in full_names
-            ]
-        )
-    )
+    return list(sorted([get_name_ver(pkg) for pkg in full_names]))
 
 
 pkg_latest_ver = dict(get_pkgs())
+print(pkg_latest_ver)
 
 
 def get_info(pkginfo, desc):
@@ -86,6 +106,15 @@ def get_info(pkginfo, desc):
         for line in pkginfo
         if line.startswith(f"{desc} = ")
     ]
+
+def as_spdx(license_text):
+    if license_text.startswith("spdx:"):
+        return license_text[5:].replace("AND GCC-exception", "WITH GCC-exception")
+    
+    if license_text in license_text_to_spdx:
+        return license_text_to_spdx[license_text]
+
+    assert False, f"Unknown license {license_text}"
 
 
 def get_depends(pkg):
@@ -159,7 +188,7 @@ def get_depends(pkg):
         # break a cycle
         depends.remove("libintl")
     license_text = get_info(pkginfo, "license")[0]
-    spdx = license_text[5:] if license_text.startswith("spdx:") else license_text
+    spdx = as_spdx(license_text)
     desc = get_info(pkginfo, "pkgdesc")[0]
     url = get_info(pkginfo, "url")[0]
     return depends, spdx, desc, url, src_name
@@ -181,30 +210,61 @@ while to_process:
     seen[pkg] = depends, spdx, desc, url, src_name
 
 
-meta = f"""package:
+meta = f"""recipe:
   name: m2-binary-packages
-  version: {date}
-
-source:"""
-
-sources_template = """
-  - url:
-      - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
-      - https://github.com/conda-forge/msys2-recipes/releases/download/{{ date }}/{{ url_base }}
-    sha256: {{ sha256 }}
-    folder: {{ type }}-{{ name }}{{ patches }}
+  version: "{date}"
 """
 
-sources = {}
+sources_template = """
+      - url:
+            - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{{ date }}/{{ url_base }}
+        sha256: {{ sha256 }}
+        target_directory: {{ type }}-{{ name }}{{ patches }}
+"""
+
+meta += """
+build:
+  number: 5
+  noarch: generic
+  dynamic_linking:
+    overlinking_behavior: ignore
+
+outputs:"""
+
+output_template = """
+  - package:
+      name: m2-{{ name }}
+      version: "{{ version }}"
+    source:
+{{ sources }}
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+{{ host_depends }}
+      run:
+{{ run_depends }}
+    about:
+      homepage: {{ url }}
+      license: {{ license }}
+      summary: |
+        {{ summary }}
+"""
+
+
+dep_map = {}
 
 for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
-    info = pkg_latest_ver[pkg]
+    filename = pkg_latest_ver[pkg]
 
+    sources = []
     for t in ["binary-m2", "source"]:
         if t == "source" and not src_url:
             continue
-        patches = ""
 
         if t == "source":
             sha256 = (
@@ -218,24 +278,25 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
             url_base = os.path.basename(src_url)
         else:
             sha256 = (
-                subprocess.check_output(["sha256sum", f"cache/{pkg}-{info}"])
+                subprocess.check_output(["sha256sum", f"cache/{pkg}-{filename}"])
                 .decode("utf-8")
                 .split(" ")[0]
             )
             msys_type = "x86_64"
-            url_base = f"{pkg}-{info}"
+            url_base = f"{pkg}-{filename}"
 
+        patches = ""
         if t == "binary-m2" and pkg.lower() == "filesystem":
             patches = """
-    patches:
-      - patches/filesystem/0001-Remove-etc-post-install-07-pacman-key-post.patch
-      - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
+        patches:
+          - patches/filesystem/0001-Remove-etc-post-install-07-pacman-key-post.patch
+          - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
             """.rstrip()
 
-        info = {
+        source_info = {
             "name": pkg.lower(),
-            "tarname": f"{pkg}-{info}",
-            "url_base": url_base,
+            "tarname": f"{pkg}-{filename}",
+            "url_base": url_base.replace("~", "."),
             "sha256": sha256,
             "type": t,
             "msys_type": msys_type,
@@ -243,69 +304,41 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
             "date": date,
         }
 
-        text = sources_template
-        for k, v in info.items():
+        text = sources_template.strip("\n")
+        for k, v in source_info.items():
             text = text.replace(f"{{{{ {k} }}}}", v)
-        sources[text] = True
+        sources.append(text)
 
-
-meta += "".join(sources.keys())
-
-meta += """
-build:
-  number: 1
-  noarch: generic
-  error_overlinking: false
-
-outputs:"""
-
-output_template = """
-  - name: m2-{{ name }}
-    version: "{{ version }}"
-    script: install_pkg.bat  # [build_platform.startswith("win-")]
-    script: install_pkg.sh   # [not build_platform.startswith("win-")]
-    build:
-      noarch: generic
-    requirements:
-      host:
-{{ depends }}
-      run:
-{{ depends }}
-    about:
-      home: {{ url }}
-      license: {{ license }}
-      summary: |
-        {{ summary }}
-"""
-
-
-dep_map = {}
-
-for pkg, (depends, spdx, desc, url, src_url) in seen.items():
-    print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
-    info = pkg_latest_ver[pkg]
-    text = output_template
-    depends += [f"conda-epoch {date}"]
     if pkg.lower() != "msys2-runtime":
         depends += ["msys2-runtime"]
+    dep_map[pkg] = depends
+
+    host_depends = depends.copy()
+    host_depends += [f"conda-epoch ={date}"]
+
     info = {
         "name": pkg.lower(),
-        "version": ".".join(info.split("-")[:2]).replace("~", "!"),
-        "depends": "\n".join(f"        - m2-{dep.lower()}" for dep in depends),
+        "version": ".".join(filename.split("-")[:2]).replace("~", "!"),
+        "run_depends": "\n".join(f"        - m2-{dep.lower()}" for dep in depends),
+        "host_depends": "\n".join(f"        - m2-{dep.lower()}" for dep in host_depends),
         "license": spdx,
         "summary": desc,
         "url": url,
+        "sources": "\n".join(sources),
     }
-    dep_map[pkg] = depends
+    
+    text = output_template
     for k, v in info.items():
         text = text.replace(f"{{{{ {k} }}}}", v)
     meta += text
+
+    
 
 # print(dep_map)
 
 meta += """
 about:
-  home: https://github.com/conda-forge/m2-recipes-feedstock
+  homepage: https://github.com/conda-forge/m2-binary-packages-feedstock
   summary: Repackaged msys2 x86_64 binaries
 
 extra:
@@ -319,5 +352,5 @@ recipe_dir = (
     else "recipe"
 )
 
-with open(os.path.join(recipe_dir, "meta.yaml"), "w") as f:
+with open(os.path.join(recipe_dir, "recipe.yaml"), "w") as f:
     f.write(meta)

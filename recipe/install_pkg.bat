@@ -1,3 +1,6 @@
+:: rattler-build does not define LIBRARY_PREFIX for noarch generic packages.
+set LIBRARY_PREFIX=%PREFIX%\Library
+
 mkdir %LIBRARY_PREFIX%
 xcopy %SRC_DIR%\binary-%PKG_NAME%\ %LIBRARY_PREFIX%\ /s /e /y
 
@@ -5,6 +8,7 @@ if "%PKG_NAME%" == "m2-file" (
   rmdir /s /q %PREFIX%\Library\usr\lib\python3.11\site-packages\__pycache__\
 )
 
+del %LIBRARY_PREFIX%\.INSTALL
 del %LIBRARY_PREFIX%\.BUILDINFO
 del %LIBRARY_PREFIX%\.MTREE
 del %LIBRARY_PREFIX%\.PKGINFO
