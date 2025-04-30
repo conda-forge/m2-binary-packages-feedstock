@@ -1,6 +1,7 @@
 mkdir $PREFIX/Library
 cp -R $SRC_DIR/binary-${PKG_NAME}/* $PREFIX/Library/
 
+rm $PREFIX/Library/.INSTALL
 rm $PREFIX/Library/.BUILDINFO
 rm $PREFIX/Library/.MTREE
 rm $PREFIX/Library/.PKGINFO

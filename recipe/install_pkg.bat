@@ -8,6 +8,7 @@ if "%PKG_NAME%" == "m2-file" (
   rmdir /s /q %PREFIX%\Library\usr\lib\python3.11\site-packages\__pycache__\
 )
 
+del %LIBRARY_PREFIX%\.INSTALL
 del %LIBRARY_PREFIX%\.BUILDINFO
 del %LIBRARY_PREFIX%\.MTREE
 del %LIBRARY_PREFIX%\.PKGINFO
