@@ -109,7 +109,7 @@ def get_info(pkginfo, desc):
 
 def as_spdx(license_text):
     if license_text.startswith("spdx:"):
-        return license_text[5:]
+        return license_text[5:].replace("AND GCC-exception", "WITH GCC-exception")
     
     if license_text in license_text_to_spdx:
         return license_text_to_spdx[license_text]

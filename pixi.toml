@@ -14,7 +14,7 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-64", "win-64"]
 
 [dependencies]
-conda-build = "3.28.4.*"
+conda-build = ">=24.1"
 conda-forge-ci-setup = "4.*"
 rattler-build = "*"
 
