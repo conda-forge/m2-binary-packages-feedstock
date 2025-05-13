@@ -3,7 +3,7 @@ recipe:
   version: "20250430"
 
 build:
-  number: 5
+  number: 6
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -3097,17 +3097,17 @@ outputs:
 
   - package:
       name: m2-autoconf
-      version: "2.71.3"
+      version: "2.72.3"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/autoconf-2.71-3-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.71-3-any.pkg.tar.zst
-        sha256: 703ea0566c4ec85278d23c626eee976af5bfec2d935d1ef3b5995f1ed4c180e7
+            - https://repo.msys2.org/msys/x86_64/autoconf2.72-2.72-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.72-3-any.pkg.tar.zst
+        sha256: e11d605053e8f059e503d163c2a87724ef15e50463fccd6e7802ffc7129d7b8e
         target_directory: binary-m2-autoconf
       - url:
-            - https://repo.msys2.org/msys/sources/autoconf-2.71-3.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.71-3.src.tar.gz
-        sha256: 0a3cec38e60a2a39620aa8f194e0e5a36aa26930b7c4ce56c47e3d6033e76e1c
+            - https://repo.msys2.org/msys/sources/autoconf2.72-2.72-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.72-3.src.tar.gz
+        sha256: cf3eacc1b3e5a5e0e552846300d706e873a9a67b147186b0e54f5a21076127df
         target_directory: source-autoconf
     build:
       noarch: generic
