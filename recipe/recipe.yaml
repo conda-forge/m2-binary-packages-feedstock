@@ -10,113 +10,19 @@ build:
 
 outputs:
   - package:
-      name: m2-pkg-config
-      version: "0.29.2.4"
+      name: m2-autoconf2.72
+      version: "2.72.3"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
-        sha256: b78e685dfc5e428678dfabb80b707be60a5cd144a3e836000c534f05c8fccced
-        target_directory: binary-m2-pkg-config
+            - https://repo.msys2.org/msys/x86_64/autoconf2.72-2.72-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf2.72-2.72-3-any.pkg.tar.zst
+        sha256: e11d605053e8f059e503d163c2a87724ef15e50463fccd6e7802ffc7129d7b8e
+        target_directory: binary-m2-autoconf2.72
       - url:
-            - https://repo.msys2.org/msys/sources/pkg-config-0.29.2-4.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4.src.tar.gz
-        sha256: c5f857af168120f42aac03348d849f3e32e77fc64ec801de4681f71817823c60
-        target_directory: source-pkg-config
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-libiconv
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250515
-      run:
-        - m2-libiconv
-        - m2-msys2-runtime
-    about:
-      homepage: https://www.freedesktop.org/wiki/Software/pkg-config/
-      license: GPL-3.0-or-later
-      summary: |
-        A system for managing library compile/link flags
-
-  - package:
-      name: m2-libiconv
-      version: "1.18.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1-x86_64.pkg.tar.zst
-        sha256: 9e298b072b86fa7f4ba4d8c00176b80fb5ab2c5eae2b9dc05e781ae4958efb77
-        target_directory: binary-m2-libiconv
-      - url:
-            - https://repo.msys2.org/msys/sources/libiconv-1.18-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1.src.tar.zst
-        sha256: f126a38c3b1f84c2240c44aeb3c824796cbf37d5c206a09ef83e58d55b82aa8a
-        target_directory: source-libiconv
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-gcc-libs
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250515
-      run:
-        - m2-gcc-libs
-        - m2-msys2-runtime
-    about:
-      homepage: https://www.gnu.org/software/libiconv/
-      license: LGPL-3.0-or-later
-      summary: |
-        Libiconv is a conversion library
-
-  - package:
-      name: m2-gcc-libs
-      version: "13.3.0.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
-        sha256: 38b6cd7df7476ce8e1b095f8f5901f93427fa901135501231295263ba171a36d
-        target_directory: binary-m2-gcc-libs
-      - url:
-            - https://repo.msys2.org/msys/sources/gcc-13.3.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-13.3.0-1.src.tar.zst
-        sha256: 72f93b87a75e8c46d6e5a4f448e335e16837cb57beeb6666b5d677941eb96523
-        target_directory: source-gcc-libs
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250515
-      run:
-        - m2-msys2-runtime
-    about:
-      homepage: https://gcc.gnu.org/
-      license: GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later
-      summary: |
-        Runtime libraries shipped by GCC
-
-  - package:
-      name: m2-texinfo-tex
-      version: "7.2.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
-        sha256: cf19aa5a772f3c805bd0432cfc669274eeef41fb4bc94aabd44f71cba9678eb4
-        target_directory: binary-m2-texinfo-tex
-      - url:
-            - https://repo.msys2.org/msys/sources/texinfo-7.2-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1.src.tar.zst
-        sha256: 7e560e338e12880585568bf44e3570dd9de97f3fcaf9c4bda13328fbab94548b
-        target_directory: source-texinfo-tex
+            - https://repo.msys2.org/msys/sources/autoconf2.72-2.72-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf2.72-2.72-3.src.tar.zst
+        sha256: cf3eacc1b3e5a5e0e552846300d706e873a9a67b147186b0e54f5a21076127df
+        target_directory: source-autoconf2.72
     build:
       noarch: generic
       script:
@@ -124,20 +30,26 @@ outputs:
     requirements:
       host:
         - m2-gawk
-        - m2-perl
+        - m2-m4
+        - m2-diffutils
         - m2-bash
+        - m2-perl
+        - m2-sed
         - m2-msys2-runtime
         - m2-conda-epoch =20250515
       run:
         - m2-gawk
-        - m2-perl
+        - m2-m4
+        - m2-diffutils
         - m2-bash
+        - m2-perl
+        - m2-sed
         - m2-msys2-runtime
     about:
-      homepage: https://www.gnu.org/software/texinfo/
-      license: GPL-3.0-or-later
+      homepage: https://www.gnu.org/software/autoconf
+      license: GPL-2.0-or-later
       summary: |
-        Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
+        A GNU tool for automatically configuring source code
 
   - package:
       name: m2-perl
@@ -248,6 +160,68 @@ outputs:
       license: GPL-3.0-or-later
       summary: |
         GNU Internationalization runtime library
+
+  - package:
+      name: m2-gcc-libs
+      version: "13.3.0.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+        sha256: 38b6cd7df7476ce8e1b095f8f5901f93427fa901135501231295263ba171a36d
+        target_directory: binary-m2-gcc-libs
+      - url:
+            - https://repo.msys2.org/msys/sources/gcc-13.3.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-13.3.0-1.src.tar.zst
+        sha256: 72f93b87a75e8c46d6e5a4f448e335e16837cb57beeb6666b5d677941eb96523
+        target_directory: source-gcc-libs
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-msys2-runtime
+    about:
+      homepage: https://gcc.gnu.org/
+      license: GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later
+      summary: |
+        Runtime libraries shipped by GCC
+
+  - package:
+      name: m2-libiconv
+      version: "1.18.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1-x86_64.pkg.tar.zst
+        sha256: 9e298b072b86fa7f4ba4d8c00176b80fb5ab2c5eae2b9dc05e781ae4958efb77
+        target_directory: binary-m2-libiconv
+      - url:
+            - https://repo.msys2.org/msys/sources/libiconv-1.18-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1.src.tar.zst
+        sha256: f126a38c3b1f84c2240c44aeb3c824796cbf37d5c206a09ef83e58d55b82aa8a
+        target_directory: source-libiconv
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-gcc-libs
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-gcc-libs
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.gnu.org/software/libiconv/
+      license: LGPL-3.0-or-later
+      summary: |
+        Libiconv is a conversion library
 
   - package:
       name: m2-gmp
@@ -578,6 +552,74 @@ outputs:
       license: LGPL-3.0-or-later
       summary: |
         Multiple-precision floating-point library
+
+  - package:
+      name: m2-pkg-config
+      version: "0.29.2.4"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
+        sha256: b78e685dfc5e428678dfabb80b707be60a5cd144a3e836000c534f05c8fccced
+        target_directory: binary-m2-pkg-config
+      - url:
+            - https://repo.msys2.org/msys/sources/pkg-config-0.29.2-4.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4.src.tar.gz
+        sha256: c5f857af168120f42aac03348d849f3e32e77fc64ec801de4681f71817823c60
+        target_directory: source-pkg-config
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-libiconv
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-libiconv
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.freedesktop.org/wiki/Software/pkg-config/
+      license: GPL-3.0-or-later
+      summary: |
+        A system for managing library compile/link flags
+
+  - package:
+      name: m2-texinfo-tex
+      version: "7.2.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
+        sha256: cf19aa5a772f3c805bd0432cfc669274eeef41fb4bc94aabd44f71cba9678eb4
+        target_directory: binary-m2-texinfo-tex
+      - url:
+            - https://repo.msys2.org/msys/sources/texinfo-7.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1.src.tar.zst
+        sha256: 7e560e338e12880585568bf44e3570dd9de97f3fcaf9c4bda13328fbab94548b
+        target_directory: source-texinfo-tex
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-gawk
+        - m2-perl
+        - m2-bash
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-gawk
+        - m2-perl
+        - m2-bash
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.gnu.org/software/texinfo/
+      license: GPL-3.0-or-later
+      summary: |
+        Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
 
   - package:
       name: m2-patchutils

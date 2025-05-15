@@ -44,6 +44,8 @@ to_process = OrderedSet([
         "patchutils",
         "texinfo-tex",
         "pkg-config",
+        # autoconf is 2.71, we need 2.72 as well
+        "autoconf2.72"
     ])
 
 #to_process = OrderedSet([
@@ -78,10 +80,11 @@ seen = {}
 
 def get_pkgs():
     if "github" in binary_index_url:
-        directory_listing = requests.get(binary_index_url + "index.html").text
+        url = binary_index_url + "index.html"
     else:
-        directory_listing = requests.get(binary_index_url).text
-    s = BeautifulSoup(directory_listing, "html.parser")
+        url = binary_index_url
+    subprocess.check_call(["wget", url, "-O", "src-cache/index.html"])
+    s = BeautifulSoup(requests.get(url).text, "html.parser")
     full_names = [
         node.get("href")
         for node in s.find_all("a")
