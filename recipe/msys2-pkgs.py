@@ -12,7 +12,7 @@ import shutil
 from ordered_set import OrderedSet
 
 
-date = "20250430"
+date = "20250515"
 binary_index_url = (
     #"https://repo.msys2.org/msys/x86_64/"
     f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
