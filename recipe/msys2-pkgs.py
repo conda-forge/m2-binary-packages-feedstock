@@ -228,7 +228,7 @@ sources_template = """
 
 meta += """
 build:
-  number: 5
+  number: 6
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
