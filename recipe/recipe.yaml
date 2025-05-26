@@ -1,122 +1,28 @@
 recipe:
   name: m2-binary-packages
-  version: "20250430"
+  version: "20250515"
 
 build:
-  number: 5
+  number: 6
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
 
 outputs:
   - package:
-      name: m2-pkg-config
-      version: "0.29.2.4"
+      name: m2-autoconf2.72
+      version: "2.72.3"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
-        sha256: b78e685dfc5e428678dfabb80b707be60a5cd144a3e836000c534f05c8fccced
-        target_directory: binary-m2-pkg-config
+            - https://repo.msys2.org/msys/x86_64/autoconf2.72-2.72-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf2.72-2.72-3-any.pkg.tar.zst
+        sha256: e11d605053e8f059e503d163c2a87724ef15e50463fccd6e7802ffc7129d7b8e
+        target_directory: binary-m2-autoconf2.72
       - url:
-            - https://repo.msys2.org/msys/sources/pkg-config-0.29.2-4.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pkg-config-0.29.2-4.src.tar.gz
-        sha256: c5f857af168120f42aac03348d849f3e32e77fc64ec801de4681f71817823c60
-        target_directory: source-pkg-config
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-libiconv
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250430
-      run:
-        - m2-libiconv
-        - m2-msys2-runtime
-    about:
-      homepage: https://www.freedesktop.org/wiki/Software/pkg-config/
-      license: GPL-3.0-or-later
-      summary: |
-        A system for managing library compile/link flags
-
-  - package:
-      name: m2-libiconv
-      version: "1.18.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libiconv-1.18-1-x86_64.pkg.tar.zst
-        sha256: 9e298b072b86fa7f4ba4d8c00176b80fb5ab2c5eae2b9dc05e781ae4958efb77
-        target_directory: binary-m2-libiconv
-      - url:
-            - https://repo.msys2.org/msys/sources/libiconv-1.18-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libiconv-1.18-1.src.tar.zst
-        sha256: f126a38c3b1f84c2240c44aeb3c824796cbf37d5c206a09ef83e58d55b82aa8a
-        target_directory: source-libiconv
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-gcc-libs
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250430
-      run:
-        - m2-gcc-libs
-        - m2-msys2-runtime
-    about:
-      homepage: https://www.gnu.org/software/libiconv/
-      license: LGPL-3.0-or-later
-      summary: |
-        Libiconv is a conversion library
-
-  - package:
-      name: m2-gcc-libs
-      version: "13.3.0.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
-        sha256: 38b6cd7df7476ce8e1b095f8f5901f93427fa901135501231295263ba171a36d
-        target_directory: binary-m2-gcc-libs
-      - url:
-            - https://repo.msys2.org/msys/sources/gcc-13.3.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gcc-13.3.0-1.src.tar.zst
-        sha256: 72f93b87a75e8c46d6e5a4f448e335e16837cb57beeb6666b5d677941eb96523
-        target_directory: source-gcc-libs
-    build:
-      noarch: generic
-      script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
-    requirements:
-      host:
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250430
-      run:
-        - m2-msys2-runtime
-    about:
-      homepage: https://gcc.gnu.org/
-      license: GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later
-      summary: |
-        Runtime libraries shipped by GCC
-
-  - package:
-      name: m2-texinfo-tex
-      version: "7.1.1.1"
-    source:
-      - url:
-            - https://repo.msys2.org/msys/x86_64/texinfo-tex-7.1.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/texinfo-tex-7.1.1-1-x86_64.pkg.tar.zst
-        sha256: 532a215104d9025743767600844ace91e512f7f0dacf69982834d0a5938ca755
-        target_directory: binary-m2-texinfo-tex
-      - url:
-            - https://repo.msys2.org/msys/sources/texinfo-7.1.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/texinfo-7.1.1-1.src.tar.zst
-        sha256: 506a0e3024e427c5b6c88b6f49da915a4567eac64e19aeea9d11b73020110ebe
-        target_directory: source-texinfo-tex
+            - https://repo.msys2.org/msys/sources/autoconf2.72-2.72-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf2.72-2.72-3.src.tar.zst
+        sha256: cf3eacc1b3e5a5e0e552846300d706e873a9a67b147186b0e54f5a21076127df
+        target_directory: source-autoconf2.72
     build:
       noarch: generic
       script:
@@ -124,20 +30,26 @@ outputs:
     requirements:
       host:
         - m2-gawk
-        - m2-perl
+        - m2-m4
+        - m2-diffutils
         - m2-bash
+        - m2-perl
+        - m2-sed
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gawk
-        - m2-perl
+        - m2-m4
+        - m2-diffutils
         - m2-bash
+        - m2-perl
+        - m2-sed
         - m2-msys2-runtime
     about:
-      homepage: https://www.gnu.org/software/texinfo/
-      license: GPL-3.0-or-later
+      homepage: https://www.gnu.org/software/autoconf
+      license: GPL-2.0-or-later
       summary: |
-        Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
+        A GNU tool for automatically configuring source code
 
   - package:
       name: m2-perl
@@ -145,12 +57,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-5.38.4-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-5.38.4-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-5.38.4-2-x86_64.pkg.tar.zst
         sha256: 4bfc2e8183c43753aecadd29bb65b10740a07a560746a54b6f3f2470d31e0ed5
         target_directory: binary-m2-perl
       - url:
             - https://repo.msys2.org/msys/sources/perl-5.38.4-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-5.38.4-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-5.38.4-2.src.tar.zst
         sha256: 7d2001beb72ba0aaed4c2b7724f29dc5bc7ac6d9674a5b68dbbbb97492ec41ca
         target_directory: source-perl
     build:
@@ -165,7 +77,7 @@ outputs:
         - m2-coreutils
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-db
         - m2-gdbm
@@ -185,12 +97,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/coreutils-8.32-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/coreutils-8.32-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/coreutils-8.32-5-x86_64.pkg.tar.zst
         sha256: 62dfee1c39fd15f99c39802b35e82643bc14fffc16d6c76d4001caa385ec77e3
         target_directory: binary-m2-coreutils
       - url:
             - https://repo.msys2.org/msys/sources/coreutils-8.32-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/coreutils-8.32-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/coreutils-8.32-5.src.tar.zst
         sha256: 2b8689413bc50367a9995adf50ea84cd3caaff0ec68a8f32d8328842c3f83835
         target_directory: source-coreutils
     build:
@@ -203,7 +115,7 @@ outputs:
         - m2-libiconv
         - m2-libintl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gmp
         - m2-libiconv
@@ -221,12 +133,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libintl-0.22.5-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libintl-0.22.5-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libintl-0.22.5-1-x86_64.pkg.tar.zst
         sha256: 336d66b9d95cf9c1804958f8e260762a3e83bf158ed5981f783bc772a31073cf
         target_directory: binary-m2-libintl
       - url:
             - https://repo.msys2.org/msys/sources/gettext-0.22.5-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gettext-0.22.5-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gettext-0.22.5-1.src.tar.zst
         sha256: e07a0b3e6716aae86dc0edd2dcdc8864731d56051345592b53659a3840ccfbd8
         target_directory: source-libintl
     build:
@@ -238,7 +150,7 @@ outputs:
         - m2-gcc-libs
         - m2-libiconv
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libiconv
@@ -250,17 +162,79 @@ outputs:
         GNU Internationalization runtime library
 
   - package:
+      name: m2-gcc-libs
+      version: "13.3.0.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-libs-13.3.0-1-x86_64.pkg.tar.zst
+        sha256: 38b6cd7df7476ce8e1b095f8f5901f93427fa901135501231295263ba171a36d
+        target_directory: binary-m2-gcc-libs
+      - url:
+            - https://repo.msys2.org/msys/sources/gcc-13.3.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gcc-13.3.0-1.src.tar.zst
+        sha256: 72f93b87a75e8c46d6e5a4f448e335e16837cb57beeb6666b5d677941eb96523
+        target_directory: source-gcc-libs
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-msys2-runtime
+    about:
+      homepage: https://gcc.gnu.org/
+      license: GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later
+      summary: |
+        Runtime libraries shipped by GCC
+
+  - package:
+      name: m2-libiconv
+      version: "1.18.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/libiconv-1.18-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1-x86_64.pkg.tar.zst
+        sha256: 9e298b072b86fa7f4ba4d8c00176b80fb5ab2c5eae2b9dc05e781ae4958efb77
+        target_directory: binary-m2-libiconv
+      - url:
+            - https://repo.msys2.org/msys/sources/libiconv-1.18-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libiconv-1.18-1.src.tar.zst
+        sha256: f126a38c3b1f84c2240c44aeb3c824796cbf37d5c206a09ef83e58d55b82aa8a
+        target_directory: source-libiconv
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-gcc-libs
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-gcc-libs
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.gnu.org/software/libiconv/
+      license: LGPL-3.0-or-later
+      summary: |
+        Libiconv is a conversion library
+
+  - package:
       name: m2-gmp
       version: "6.3.0.1"
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/gmp-6.3.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gmp-6.3.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gmp-6.3.0-1-x86_64.pkg.tar.zst
         sha256: d52634e1b0b99237e3ea457e5b4b114fdf39576d85efef3acb6c22069533b611
         target_directory: binary-m2-gmp
       - url:
             - https://repo.msys2.org/msys/sources/gmp-6.3.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gmp-6.3.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gmp-6.3.0-1.src.tar.zst
         sha256: 50d4088a4607fdb01f6639b262cb5c27dbc09eccda11d4157b2664ec7e2cb4b7
         target_directory: source-gmp
     build:
@@ -270,7 +244,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -285,12 +259,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libxcrypt-4.4.38-1-x86_64.pkg.tar.zst
         sha256: 8f43bb43935f2daf231c41ccacaadfeac5237960c8eb9994dcb2316c0fea027a
         target_directory: binary-m2-libxcrypt
       - url:
             - https://repo.msys2.org/msys/sources/libxcrypt-4.4.38-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libxcrypt-4.4.38-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libxcrypt-4.4.38-1.src.tar.zst
         sha256: 13c9ea3c926efac150aa0da308ba7358bf05d47ad2edbc5a67b4644a88f37bf1
         target_directory: source-libxcrypt
     build:
@@ -300,7 +274,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -315,12 +289,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/gdbm-1.25-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gdbm-1.25-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gdbm-1.25-1-x86_64.pkg.tar.zst
         sha256: 07df5d2865d0a686ede83b267146fe1a0d124cce1cc29632b9848dd1d8e22155
         target_directory: binary-m2-gdbm
       - url:
             - https://repo.msys2.org/msys/sources/gdbm-1.25-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gdbm-1.25-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gdbm-1.25-1.src.tar.zst
         sha256: cff115d3bcb4b7e4a9970dc5670bad321bd711c3352dc534e55d1a64198a86f2
         target_directory: source-gdbm
     build:
@@ -331,7 +305,7 @@ outputs:
       host:
         - m2-libgdbm =1.25
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libgdbm =1.25
         - m2-msys2-runtime
@@ -347,12 +321,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libgdbm-1.25-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libgdbm-1.25-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libgdbm-1.25-1-x86_64.pkg.tar.zst
         sha256: b2348740e0590b244450496fe94eb836e6b65d08516e0a72af7f5de9763643b6
         target_directory: binary-m2-libgdbm
       - url:
             - https://repo.msys2.org/msys/sources/gdbm-1.25-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gdbm-1.25-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gdbm-1.25-1.src.tar.zst
         sha256: cff115d3bcb4b7e4a9970dc5670bad321bd711c3352dc534e55d1a64198a86f2
         target_directory: source-libgdbm
     build:
@@ -367,7 +341,7 @@ outputs:
         - m2-libintl
         - m2-ncurses
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libreadline
@@ -387,12 +361,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/ncurses-6.5.20240831-2-x86_64.pkg.tar.zst
         sha256: 9f2db80641574caa58636d1bf3f4737f9b572f148a644dbb02a854b38e008dce
         target_directory: binary-m2-ncurses
       - url:
             - https://repo.msys2.org/msys/sources/ncurses-6.5.20240831-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/ncurses-6.5.20240831-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/ncurses-6.5.20240831-2.src.tar.zst
         sha256: 786a20b0c38c2f9cc209ebcff5fff5c173fc568d7fbacad7dea393fc8a104639
         target_directory: source-ncurses
     build:
@@ -403,7 +377,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -419,12 +393,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libreadline-8.2.013-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libreadline-8.2.013-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libreadline-8.2.013-1-x86_64.pkg.tar.zst
         sha256: 43b0c2235e7416ff9284de6c20e75b22590bcdbb898d8564489f23615bbe2490
         target_directory: binary-m2-libreadline
       - url:
             - https://repo.msys2.org/msys/sources/readline-8.2.013-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/readline-8.2.013-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/readline-8.2.013-1.src.tar.zst
         sha256: ad655ca45db2efb27bc127478dbde3b38596d14d7741e14103dfc07162b4be51
         target_directory: source-libreadline
     build:
@@ -435,7 +409,7 @@ outputs:
       host:
         - m2-ncurses
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-ncurses
         - m2-msys2-runtime
@@ -451,12 +425,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/db-6.2.32-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/db-6.2.32-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/db-6.2.32-5-x86_64.pkg.tar.zst
         sha256: 8638212ee6c98fdb695496c383244a8672a18b908ef85b0d0e36f70291ba0a4b
         target_directory: binary-m2-db
       - url:
             - https://repo.msys2.org/msys/sources/db-6.2.32-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/db-6.2.32-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/db-6.2.32-5.src.tar.zst
         sha256: 9679608d2a867afd197ffeb6e48d1652ac3bddba5be504b3ddec750af5d5735e
         target_directory: source-db
     build:
@@ -467,7 +441,7 @@ outputs:
       host:
         - m2-libdb =6.2.32
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libdb =6.2.32
         - m2-msys2-runtime
@@ -483,12 +457,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libdb-6.2.32-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libdb-6.2.32-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libdb-6.2.32-5-x86_64.pkg.tar.zst
         sha256: 10494f707251c5afcbf73250f0aeae407c1c775d612a7ee8da058ee7fa5a89a5
         target_directory: binary-m2-libdb
       - url:
             - https://repo.msys2.org/msys/sources/db-6.2.32-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/db-6.2.32-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/db-6.2.32-5.src.tar.zst
         sha256: 9679608d2a867afd197ffeb6e48d1652ac3bddba5be504b3ddec750af5d5735e
         target_directory: source-libdb
     build:
@@ -499,7 +473,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -515,12 +489,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/gawk-5.3.2-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gawk-5.3.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gawk-5.3.2-1-x86_64.pkg.tar.zst
         sha256: 5cc13c15f7be5b328c2b1f9d8a21d9e95b76d0782aeb469c2762f32f0e7e509e
         target_directory: binary-m2-gawk
       - url:
             - https://repo.msys2.org/msys/sources/gawk-5.3.2-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gawk-5.3.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gawk-5.3.2-1.src.tar.zst
         sha256: 0b62bc9cc7c1d1371b8ada968449e5dcd0088a66ce57b11bd4affefbb7c69bdf
         target_directory: source-gawk
     build:
@@ -534,7 +508,7 @@ outputs:
         - m2-libintl
         - m2-libreadline
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-mpfr
@@ -553,12 +527,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/mpfr-4.2.2-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/mpfr-4.2.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/mpfr-4.2.2-1-x86_64.pkg.tar.zst
         sha256: 8f1b6c17c53e00494a488e03dfdf8fc742027ed03a5bd7b1b3a6a33f595a7498
         target_directory: binary-m2-mpfr
       - url:
             - https://repo.msys2.org/msys/sources/mpfr-4.2.2-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/mpfr-4.2.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/mpfr-4.2.2-1.src.tar.zst
         sha256: e0c56e3af3819471e74dd37e32660e4eb8f58761c4d214dabd2d62f57c548869
         target_directory: source-mpfr
     build:
@@ -569,7 +543,7 @@ outputs:
       host:
         - m2-gmp >=5.0
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gmp >=5.0
         - m2-msys2-runtime
@@ -580,17 +554,85 @@ outputs:
         Multiple-precision floating-point library
 
   - package:
+      name: m2-pkg-config
+      version: "0.29.2.4"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4-x86_64.pkg.tar.zst
+        sha256: b78e685dfc5e428678dfabb80b707be60a5cd144a3e836000c534f05c8fccced
+        target_directory: binary-m2-pkg-config
+      - url:
+            - https://repo.msys2.org/msys/sources/pkg-config-0.29.2-4.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pkg-config-0.29.2-4.src.tar.gz
+        sha256: c5f857af168120f42aac03348d849f3e32e77fc64ec801de4681f71817823c60
+        target_directory: source-pkg-config
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-libiconv
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-libiconv
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.freedesktop.org/wiki/Software/pkg-config/
+      license: GPL-3.0-or-later
+      summary: |
+        A system for managing library compile/link flags
+
+  - package:
+      name: m2-texinfo-tex
+      version: "7.2.1"
+    source:
+      - url:
+            - https://repo.msys2.org/msys/x86_64/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-tex-7.2-1-x86_64.pkg.tar.zst
+        sha256: cf19aa5a772f3c805bd0432cfc669274eeef41fb4bc94aabd44f71cba9678eb4
+        target_directory: binary-m2-texinfo-tex
+      - url:
+            - https://repo.msys2.org/msys/sources/texinfo-7.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1.src.tar.zst
+        sha256: 7e560e338e12880585568bf44e3570dd9de97f3fcaf9c4bda13328fbab94548b
+        target_directory: source-texinfo-tex
+    build:
+      noarch: generic
+      script:
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+    requirements:
+      host:
+        - m2-gawk
+        - m2-perl
+        - m2-bash
+        - m2-msys2-runtime
+        - m2-conda-epoch =20250515
+      run:
+        - m2-gawk
+        - m2-perl
+        - m2-bash
+        - m2-msys2-runtime
+    about:
+      homepage: https://www.gnu.org/software/texinfo/
+      license: GPL-3.0-or-later
+      summary: |
+        Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
+
+  - package:
       name: m2-patchutils
       version: "0.4.2.3"
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/patchutils-0.4.2-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/patchutils-0.4.2-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/patchutils-0.4.2-3-x86_64.pkg.tar.zst
         sha256: 084bf945a9bb2157d38e7bef129432ce30719a514d6df62d7847bd2eb292a728
         target_directory: binary-m2-patchutils
       - url:
             - https://repo.msys2.org/msys/sources/patchutils-0.4.2-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/patchutils-0.4.2-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/patchutils-0.4.2-3.src.tar.zst
         sha256: 61d0ebcccb1f61166fdd0b585fd39c28345882503d1e45bcc2a783a5860de8d8
         target_directory: source-patchutils
     build:
@@ -601,7 +643,7 @@ outputs:
       host:
         - m2-pcre2
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-pcre2
         - m2-msys2-runtime
@@ -617,12 +659,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/pcre2-10.45-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1-x86_64.pkg.tar.zst
         sha256: 7ce8036f9b999762b8ac0f047db7fc7541171c028a5209462853c0fa49cefd9b
         target_directory: binary-m2-pcre2
       - url:
             - https://repo.msys2.org/msys/sources/pcre2-10.45-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1.src.tar.zst
         sha256: 4db6b55b0918e5a1c6f9d747a2d87896681d75f8a22762c18968e89ee5596797
         target_directory: source-pcre2
     build:
@@ -639,7 +681,7 @@ outputs:
         - m2-libpcre2_32 =10.45
         - m2-libpcre2posix =10.45
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libreadline
         - m2-libbz2
@@ -661,12 +703,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpcre2posix-10.45-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpcre2posix-10.45-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpcre2posix-10.45-1-x86_64.pkg.tar.zst
         sha256: ec1b0290976f28a723308566721700ce295432c8373e6d2219f308ad36ae9af6
         target_directory: binary-m2-libpcre2posix
       - url:
             - https://repo.msys2.org/msys/sources/pcre2-10.45-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1.src.tar.zst
         sha256: 4db6b55b0918e5a1c6f9d747a2d87896681d75f8a22762c18968e89ee5596797
         target_directory: source-libpcre2posix
     build:
@@ -677,7 +719,7 @@ outputs:
       host:
         - m2-libpcre2_8 =10.45
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libpcre2_8 =10.45
         - m2-msys2-runtime
@@ -693,12 +735,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpcre2_32-10.45-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpcre2_32-10.45-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpcre2_32-10.45-1-x86_64.pkg.tar.zst
         sha256: a712acf5975e49682aa9f22457ea4dbf5be038c476b3a685d4a236d752e0c12d
         target_directory: binary-m2-libpcre2_32
       - url:
             - https://repo.msys2.org/msys/sources/pcre2-10.45-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1.src.tar.zst
         sha256: 4db6b55b0918e5a1c6f9d747a2d87896681d75f8a22762c18968e89ee5596797
         target_directory: source-libpcre2_32
     build:
@@ -709,7 +751,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -725,12 +767,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpcre2_16-10.45-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpcre2_16-10.45-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpcre2_16-10.45-1-x86_64.pkg.tar.zst
         sha256: f97c3f293ff6f6ecacee8a2b1f171b213f998c961954c5b4560a0bf934c5e9f7
         target_directory: binary-m2-libpcre2_16
       - url:
             - https://repo.msys2.org/msys/sources/pcre2-10.45-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1.src.tar.zst
         sha256: 4db6b55b0918e5a1c6f9d747a2d87896681d75f8a22762c18968e89ee5596797
         target_directory: source-libpcre2_16
     build:
@@ -741,7 +783,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -757,12 +799,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpcre2_8-10.45-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpcre2_8-10.45-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpcre2_8-10.45-1-x86_64.pkg.tar.zst
         sha256: 99d3a2276544af496aa303265a0b06f6e894a7ef08971a825a6eb7342c531257
         target_directory: binary-m2-libpcre2_8
       - url:
             - https://repo.msys2.org/msys/sources/pcre2-10.45-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre2-10.45-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre2-10.45-1.src.tar.zst
         sha256: 4db6b55b0918e5a1c6f9d747a2d87896681d75f8a22762c18968e89ee5596797
         target_directory: source-libpcre2_8
     build:
@@ -773,7 +815,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -789,12 +831,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/zlib-1.3.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zlib-1.3.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zlib-1.3.1-1-x86_64.pkg.tar.zst
         sha256: 8f027ac1b9404196a146efbf46ab12edf7fa20c7d9f6ca500d5cd275e492ef30
         target_directory: binary-m2-zlib
       - url:
             - https://repo.msys2.org/msys/sources/zlib-1.3.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zlib-1.3.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zlib-1.3.1-1.src.tar.zst
         sha256: 84c07b395d0e83e0e6a93acb85e3544dff66d084b9ad8dd17e0e8e576fb56c89
         target_directory: source-zlib
     build:
@@ -805,7 +847,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -821,12 +863,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libbz2-1.0.8-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libbz2-1.0.8-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libbz2-1.0.8-4-x86_64.pkg.tar.zst
         sha256: 89fb0e1478b22b80effda55ab4ae7549388d01245d3841a096d8a2d63236c2a1
         target_directory: binary-m2-libbz2
       - url:
             - https://repo.msys2.org/msys/sources/bzip2-1.0.8-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bzip2-1.0.8-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bzip2-1.0.8-4.src.tar.zst
         sha256: a7e9ea6335ef2902508de0bbbb70e2e9909b6b7b6d05fc207f8fdf0cf44ad053
         target_directory: source-libbz2
     build:
@@ -837,7 +879,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -853,12 +895,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/patch-2.7.6-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/patch-2.7.6-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/patch-2.7.6-3-x86_64.pkg.tar.zst
         sha256: dd75ca0f715dd9c71a43af6a0ff3d068faeee1d768e02282d319671201cd5d45
         target_directory: binary-m2-patch
       - url:
             - https://repo.msys2.org/msys/sources/patch-2.7.6-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/patch-2.7.6-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/patch-2.7.6-3.src.tar.zst
         sha256: df9a99ee825845b761911f2d1f29024468cb7a7811d1717fe8fa8d08348314e1
         target_directory: source-patch
     build:
@@ -868,7 +910,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -883,12 +925,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/diffutils-3.12-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/diffutils-3.12-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/diffutils-3.12-1-x86_64.pkg.tar.zst
         sha256: 7902c8ce3d4dd69a0f5e98dc9d5c83c17b23314ba486169db57ef6e2835ce3b6
         target_directory: binary-m2-diffutils
       - url:
             - https://repo.msys2.org/msys/sources/diffutils-3.12-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/diffutils-3.12-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/diffutils-3.12-1.src.tar.zst
         sha256: 474c4a3528a2afbb8d9608c65ad1bdbbd81ff42c143a438d7d56272a61b1bfac
         target_directory: source-diffutils
     build:
@@ -901,7 +943,7 @@ outputs:
         - m2-libiconv
         - m2-libintl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-libiconv
@@ -919,12 +961,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/unzip-6.0-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/unzip-6.0-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/unzip-6.0-3-x86_64.pkg.tar.zst
         sha256: c98ebac31ea92a63cf61c6190ed3e8284ccc0c29c43973f1b2c0de2874e5acfe
         target_directory: binary-m2-unzip
       - url:
             - https://repo.msys2.org/msys/sources/unzip-6.0-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/unzip-6.0-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/unzip-6.0-3.src.tar.zst
         sha256: cac4880eed19117a26ee8827619e6a22110adf2ba18f4ca0d94ba5dd5d4d1453
         target_directory: source-unzip
     build:
@@ -936,7 +978,7 @@ outputs:
         - m2-libbz2
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libbz2
         - m2-bash
@@ -953,12 +995,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/zip-3.0-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zip-3.0-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zip-3.0-4-x86_64.pkg.tar.zst
         sha256: 571b21408f5718e2346a3d80a9d98933b0384f9937a969194ed459a206fa1fae
         target_directory: binary-m2-zip
       - url:
             - https://repo.msys2.org/msys/sources/zip-3.0-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zip-3.0-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zip-3.0-4.src.tar.zst
         sha256: 67d4e418be4a55956625e3e78450c6f8be627a7190b088653d0352f7a87be122
         target_directory: source-zip
     build:
@@ -969,7 +1011,7 @@ outputs:
       host:
         - m2-libbz2
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libbz2
         - m2-msys2-runtime
@@ -985,12 +1027,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/tar-1.35-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/tar-1.35-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/tar-1.35-2-x86_64.pkg.tar.zst
         sha256: 1bfdfbbf51b45f53cf6b5f6f4155fc0a8ede1d740fde7fec5764f043accd76e4
         target_directory: binary-m2-tar
       - url:
             - https://repo.msys2.org/msys/sources/tar-1.35-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/tar-1.35-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/tar-1.35-2.src.tar.zst
         sha256: 170ce94f2283238aae92a94ff31ea46860cbaa25af32d21c685b43ee716f4c76
         target_directory: source-tar
     build:
@@ -1003,7 +1045,7 @@ outputs:
         - m2-libintl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libiconv
         - m2-libintl
@@ -1021,12 +1063,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/base-2022.06-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/base-2022.06-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/base-2022.06-1-any.pkg.tar.zst
         sha256: 1501b0f9e8859c4cee080cf89ea07dc16bcc5cd490383484bbff861ed88c3f4f
         target_directory: binary-m2-base
       - url:
             - https://repo.msys2.org/msys/sources/base-2022.06-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/base-2022.06-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/base-2022.06-1.src.tar.zst
         sha256: ae8db568ec9b22a634d52bd0d3d03c8058631d42418cd040976f5c2b3e586d7f
         target_directory: source-base
     build:
@@ -1067,7 +1109,7 @@ outputs:
         - m2-which
         - m2-zstd
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-bash-completion
@@ -1113,12 +1155,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/zstd-1.5.7-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zstd-1.5.7-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zstd-1.5.7-1-x86_64.pkg.tar.zst
         sha256: 7b8ab77828c5a1efe53ebc53e3ea9d719bfbd609bf4c810eaa88d626188ed407
         target_directory: binary-m2-zstd
       - url:
             - https://repo.msys2.org/msys/sources/zstd-1.5.7-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zstd-1.5.7-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zstd-1.5.7-1.src.tar.zst
         sha256: 19e11d517b005cba22d0f04969a74ffa08443429ff9dc80596d323b9483534f5
         target_directory: source-zstd
     build:
@@ -1130,7 +1172,7 @@ outputs:
         - m2-gcc-libs
         - m2-libzstd
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libzstd
@@ -1147,12 +1189,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libzstd-1.5.7-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libzstd-1.5.7-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libzstd-1.5.7-1-x86_64.pkg.tar.zst
         sha256: 5e370b2e725a0a7e5ff58d84653c9a0cd5a10b9cfe930f2d949a28ad2a11c1f2
         target_directory: binary-m2-libzstd
       - url:
             - https://repo.msys2.org/msys/sources/zstd-1.5.7-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/zstd-1.5.7-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/zstd-1.5.7-1.src.tar.zst
         sha256: 19e11d517b005cba22d0f04969a74ffa08443429ff9dc80596d323b9483534f5
         target_directory: source-libzstd
     build:
@@ -1163,7 +1205,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -1179,12 +1221,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/which-2.23-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/which-2.23-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/which-2.23-4-x86_64.pkg.tar.zst
         sha256: 318f53004a95994087f5cb1fd6b63919ebe127ed7c0e3d8ab41fda786f23efd7
         target_directory: binary-m2-which
       - url:
             - https://repo.msys2.org/msys/sources/which-2.23-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/which-2.23-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/which-2.23-4.src.tar.zst
         sha256: 8d63c3d19b860fed1fd63c70b91455d7039b4a66a8d256aa3f32749eeab0ee36
         target_directory: source-which
     build:
@@ -1195,7 +1237,7 @@ outputs:
       host:
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-msys2-runtime
@@ -1211,12 +1253,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/wget-1.25.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/wget-1.25.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/wget-1.25.0-1-x86_64.pkg.tar.zst
         sha256: dd75ba6f4f8fd0da4cc0729b7ff5ee959034fd2652e181cca0f31dcddb811151
         target_directory: binary-m2-wget
       - url:
             - https://repo.msys2.org/msys/sources/wget-1.25.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/wget-1.25.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/wget-1.25.0-1.src.tar.zst
         sha256: 4d78e26f77ae5e4c0fa891f1f310e37b03baf7a137676cec8fc82b4e2226c8ef
         target_directory: source-wget
     build:
@@ -1235,7 +1277,7 @@ outputs:
         - m2-libgnutls
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libiconv
@@ -1259,12 +1301,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libgnutls-3.8.9-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libgnutls-3.8.9-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libgnutls-3.8.9-1-x86_64.pkg.tar.zst
         sha256: cfdfb7ec64f9cf4763c4a68ad776dd5f7abc1df650403bfc81fc0772c8efe4a8
         target_directory: binary-m2-libgnutls
       - url:
             - https://repo.msys2.org/msys/sources/gnutls-3.8.9-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gnutls-3.8.9-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gnutls-3.8.9-1.src.tar.zst
         sha256: b7450d2685ef5c66a7ae4b049c1f2e44cbabb6348579d94b2d4dcc5dbe84ba39
         target_directory: source-libgnutls
     build:
@@ -1283,7 +1325,7 @@ outputs:
         - m2-libtasn1
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libidn2
@@ -1307,12 +1349,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libtasn1-4.20.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libtasn1-4.20.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libtasn1-4.20.0-1-x86_64.pkg.tar.zst
         sha256: ba948616632b65612dbe4943c1054e11215e1d01356dd88b8946afb9435e6456
         target_directory: binary-m2-libtasn1
       - url:
             - https://repo.msys2.org/msys/sources/libtasn1-4.20.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libtasn1-4.20.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libtasn1-4.20.0-1.src.tar.zst
         sha256: b6dba6a68ab14dded12735616f17723df722b14af2c3330904c771f6e660b7bd
         target_directory: source-libtasn1
     build:
@@ -1323,7 +1365,7 @@ outputs:
       host:
         - m2-info
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-info
         - m2-msys2-runtime
@@ -1339,12 +1381,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libp11-kit-0.25.5-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libp11-kit-0.25.5-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libp11-kit-0.25.5-2-x86_64.pkg.tar.zst
         sha256: 26ea69da9e00e989c2fe43b74e53a2168db28d970c12d8af92148ae930b223ff
         target_directory: binary-m2-libp11-kit
       - url:
             - https://repo.msys2.org/msys/sources/p11-kit-0.25.5-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/p11-kit-0.25.5-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/p11-kit-0.25.5-2.src.tar.zst
         sha256: 56625ecc7de1cca6ed7292b9a0a2f51273990c378c817a5d6f58fe0da1e258e7
         target_directory: source-libp11-kit
     build:
@@ -1357,7 +1399,7 @@ outputs:
         - m2-libintl
         - m2-libtasn1
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libffi
         - m2-libintl
@@ -1375,12 +1417,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libffi-3.4.8-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libffi-3.4.8-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libffi-3.4.8-1-x86_64.pkg.tar.zst
         sha256: f7302f8d527542c8f99f28ec9312058d9d87c4bfeb4ae16da201fe247c725a62
         target_directory: binary-m2-libffi
       - url:
             - https://repo.msys2.org/msys/sources/libffi-3.4.8-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libffi-3.4.8-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libffi-3.4.8-1.src.tar.zst
         sha256: 41860341aa27ea0add780e1b25a6f56aa049b5fd8e6cacaa32673047d6eeab09
         target_directory: source-libffi
     build:
@@ -1390,7 +1432,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -1405,12 +1447,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libnettle-3.9.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libnettle-3.9.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libnettle-3.9.1-1-x86_64.pkg.tar.zst
         sha256: cf8110867a6ff3d8ecdb6c5b556bdce94a1f29960f02c6740529ebb190b9406a
         target_directory: binary-m2-libnettle
       - url:
             - https://repo.msys2.org/msys/sources/nettle-3.9.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/nettle-3.9.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/nettle-3.9.1-1.src.tar.zst
         sha256: b1010c71872ef82295dc46abfe74ff0a0f5efff51c7c8e787beffc125081296d
         target_directory: source-libnettle
     build:
@@ -1421,7 +1463,7 @@ outputs:
       host:
         - m2-libhogweed
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libhogweed
         - m2-msys2-runtime
@@ -1437,12 +1479,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libhogweed-3.9.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libhogweed-3.9.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libhogweed-3.9.1-1-x86_64.pkg.tar.zst
         sha256: 3f5fc78a3bd917955dd8601849c75b1a48e69a8fff787330408c0992318c22ae
         target_directory: binary-m2-libhogweed
       - url:
             - https://repo.msys2.org/msys/sources/nettle-3.9.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/nettle-3.9.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/nettle-3.9.1-1.src.tar.zst
         sha256: b1010c71872ef82295dc46abfe74ff0a0f5efff51c7c8e787beffc125081296d
         target_directory: source-libhogweed
     build:
@@ -1453,7 +1495,7 @@ outputs:
       host:
         - m2-gmp
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gmp
         - m2-msys2-runtime
@@ -1469,12 +1511,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libutil-linux-2.40.2-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libutil-linux-2.40.2-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libutil-linux-2.40.2-2-x86_64.pkg.tar.zst
         sha256: 148ec8e668cb0a30ea0c4e2687e16e0953d6628305598f4c3225bedf2564192d
         target_directory: binary-m2-libutil-linux
       - url:
             - https://repo.msys2.org/msys/sources/util-linux-2.40.2-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/util-linux-2.40.2-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/util-linux-2.40.2-2.src.tar.zst
         sha256: ea018e116866c0e2d9a3d6cee3f0d09801e6725789b6f99fd1979dfc7a68b703
         target_directory: source-libutil-linux
     build:
@@ -1486,7 +1528,7 @@ outputs:
         - m2-gcc-libs
         - m2-libintl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libintl
@@ -1503,12 +1545,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpsl-0.21.5-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpsl-0.21.5-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpsl-0.21.5-2-x86_64.pkg.tar.zst
         sha256: 26f9ba0969243231d2b9c0a7c181052b78494aaf6cc58cd59ee3064c72f80d6b
         target_directory: binary-m2-libpsl
       - url:
             - https://repo.msys2.org/msys/sources/libpsl-0.21.5-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpsl-0.21.5-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpsl-0.21.5-2.src.tar.zst
         sha256: d874c779d65dc19b6dfadbcf3aab7039e74870e2d5ecca6b61d3fc5e56c3b115
         target_directory: source-libpsl
     build:
@@ -1520,7 +1562,7 @@ outputs:
         - m2-libidn2
         - m2-libunistring
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libidn2
         - m2-libunistring
@@ -1537,12 +1579,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libunistring-1.3-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libunistring-1.3-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libunistring-1.3-1-x86_64.pkg.tar.zst
         sha256: 2ec02a4fa3bb484b9413284669a79726a6ef9606e801c0cf9688f4902e67429a
         target_directory: binary-m2-libunistring
       - url:
             - https://repo.msys2.org/msys/sources/libunistring-1.3-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libunistring-1.3-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libunistring-1.3-1.src.tar.zst
         sha256: 4aebdaab90715a86abb38435ffdb610f25bee0ee48f9d492c546967bf801df56
         target_directory: source-libunistring
     build:
@@ -1553,7 +1595,7 @@ outputs:
       host:
         - m2-libiconv
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libiconv
         - m2-msys2-runtime
@@ -1569,12 +1611,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libidn2-2.3.8-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libidn2-2.3.8-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libidn2-2.3.8-1-x86_64.pkg.tar.zst
         sha256: 55e0de96b893e9f67f14a4283d411fc2a45d7b59333bc16e2a9b16e5bfc9282f
         target_directory: binary-m2-libidn2
       - url:
             - https://repo.msys2.org/msys/sources/libidn2-2.3.8-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libidn2-2.3.8-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libidn2-2.3.8-1.src.tar.zst
         sha256: c77c550e8cc2f595ed10b4a3996085cc6e6a3f5f650916a14701bd48d5d9fd7d
         target_directory: source-libidn2
     build:
@@ -1586,7 +1628,7 @@ outputs:
         - m2-libunistring
         - m2-libintl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libunistring
         - m2-libintl
@@ -1603,12 +1645,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/util-linux-2.40.2-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/util-linux-2.40.2-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/util-linux-2.40.2-2-x86_64.pkg.tar.zst
         sha256: 969edb185d37986e6feddb3c54807598e3cc6774b736fec3a27d5d27731f7fdd
         target_directory: binary-m2-util-linux
       - url:
             - https://repo.msys2.org/msys/sources/util-linux-2.40.2-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/util-linux-2.40.2-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/util-linux-2.40.2-2.src.tar.zst
         sha256: ea018e116866c0e2d9a3d6cee3f0d09801e6725789b6f99fd1979dfc7a68b703
         target_directory: source-util-linux
     build:
@@ -1623,7 +1665,7 @@ outputs:
         - m2-libreadline
         - m2-libsqlite
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-coreutils
         - m2-libutil-linux
@@ -1639,17 +1681,17 @@ outputs:
 
   - package:
       name: m2-libsqlite
-      version: "3.46.1.1"
+      version: "3.49.1.2"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/libsqlite-3.46.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libsqlite-3.46.1-1-x86_64.pkg.tar.zst
-        sha256: e0b80f0426d8cee0114f37f7579725a2117bb4dd9ffb0a7d94ee6610cfbd162d
+            - https://repo.msys2.org/msys/x86_64/libsqlite-3.49.1-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libsqlite-3.49.1-2-x86_64.pkg.tar.zst
+        sha256: 25fe427d0f3919fe59b4fad94753037953be37b2bbb982271cfa27315e8b99d4
         target_directory: binary-m2-libsqlite
       - url:
-            - https://repo.msys2.org/msys/sources/sqlite-3.46.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/sqlite-3.46.1-1.src.tar.zst
-        sha256: 7d372ca0befeaa8ea565b145f8ab5928d32d3729f77c4b4e9900b8d129cbc175
+            - https://repo.msys2.org/msys/sources/sqlite-3.49.1-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/sqlite-3.49.1-2.src.tar.zst
+        sha256: b26b7451e8c34beb5e4c84656a9c3d4adb7f78731367bc53b2a9c035952f896f
         target_directory: source-libsqlite
     build:
       noarch: generic
@@ -1658,7 +1700,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -1673,12 +1715,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/tzcode-2025b-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/tzcode-2025b-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/tzcode-2025b-1-x86_64.pkg.tar.zst
         sha256: bd0d874dfe7355c3fcda07f044cdf9f77a1184d2ec7c1b2d2668fbda11a5f2b6
         target_directory: binary-m2-tzcode
       - url:
             - https://repo.msys2.org/msys/sources/tzcode-2025b-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/tzcode-2025b-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/tzcode-2025b-1.src.tar.zst
         sha256: e78e3aa5918d1a02f43dea0916632e1ffe908ef24545948fea049cfb8d67b87e
         target_directory: source-tzcode
     build:
@@ -1691,7 +1733,7 @@ outputs:
         - m2-gawk
         - m2-sed
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-coreutils
         - m2-gawk
@@ -1709,12 +1751,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/time-1.9-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/time-1.9-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/time-1.9-3-x86_64.pkg.tar.zst
         sha256: 149a03422d0680e3a66c704de3a472ef628ed354149deca46bbfea69ba9d2d79
         target_directory: binary-m2-time
       - url:
             - https://repo.msys2.org/msys/sources/time-1.9-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/time-1.9-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/time-1.9-3.src.tar.zst
         sha256: a42d016c327f423ac4da1edf9b622aabb6a19697259972ad9f74ee92fa65686e
         target_directory: source-time
     build:
@@ -1724,7 +1766,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -1739,12 +1781,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/rebase-4.5.0-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/rebase-4.5.0-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/rebase-4.5.0-4-x86_64.pkg.tar.zst
         sha256: 60d400a402f3f623f94e38fe1f6d126558d103690a2eca616ae787c0de09935f
         target_directory: binary-m2-rebase
       - url:
             - https://repo.msys2.org/msys/sources/rebase-4.5.0-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/rebase-4.5.0-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/rebase-4.5.0-4.src.tar.zst
         sha256: 86b701bed8324acff0b220c77d7df39e32ba4441581e821e82058f810221e17d
         target_directory: source-rebase
     build:
@@ -1755,7 +1797,7 @@ outputs:
       host:
         - m2-dash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-dash
         - m2-msys2-runtime
@@ -1771,12 +1813,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/nano-8.4-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/nano-8.4-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/nano-8.4-1-x86_64.pkg.tar.zst
         sha256: 1240657bf9a503512e10a5d760b4592377e306b7763d14e9bf10e2ed85b4a72f
         target_directory: binary-m2-nano
       - url:
             - https://repo.msys2.org/msys/sources/nano-8.4-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/nano-8.4-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/nano-8.4-1.src.tar.zst
         sha256: cc55f6ef0c3faacdfbdcfdd22e8e3dd206c1c35c7439812ffdc5d8bb704c887a
         target_directory: source-nano
     build:
@@ -1790,7 +1832,7 @@ outputs:
         - m2-ncurses
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-file
         - m2-libintl
@@ -1809,12 +1851,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/msys2-runtime-3.6.1-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-runtime-3.6.1-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-runtime-3.6.1-4-x86_64.pkg.tar.zst
         sha256: 24a9c6a084d2ac558580f4e07761dd94d6c59f5d509ce465dbc4ca1c5962ddd1
         target_directory: binary-m2-msys2-runtime
       - url:
             - https://repo.msys2.org/msys/sources/msys2-runtime-3.6.1-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-runtime-3.6.1-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-runtime-3.6.1-4.src.tar.zst
         sha256: 73b0423e3ee8e6d83b4661e502fcc4ed033eb3b5d449f8af26e0f919d1fe8321
         target_directory: source-msys2-runtime
     build:
@@ -1823,7 +1865,7 @@ outputs:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
     requirements:
       host:
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
 
     about:
@@ -1838,12 +1880,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/msys2-launcher-1.5-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-launcher-1.5-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-launcher-1.5-3-x86_64.pkg.tar.zst
         sha256: 56b1170274fc33014e6d857e4e4d32a20975be0e23ed8385bb7372520118aa84
         target_directory: binary-m2-msys2-launcher
       - url:
             - https://repo.msys2.org/msys/sources/msys2-launcher-1.5-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-launcher-1.5-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-launcher-1.5-3.src.tar.zst
         sha256: f1b6973834195f468976af8af85867943b5bc831653f88027848151e1892eff3
         target_directory: source-msys2-launcher
     build:
@@ -1854,7 +1896,7 @@ outputs:
       host:
         - m2-mintty >=1!2.2.1
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-mintty >=1!2.2.1
         - m2-msys2-runtime
@@ -1870,12 +1912,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/msys2-keyring-1.20250214-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-keyring-1.20250214-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-keyring-1.20250214-1-any.pkg.tar.zst
         sha256: bb5ad0ca040a331dcab945e21f5ded3427df4377490e751053dce8cf81eb64c1
         target_directory: binary-m2-msys2-keyring
       - url:
             - https://repo.msys2.org/msys/sources/msys2-keyring-1.20250214-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/msys2-keyring-1.20250214-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/msys2-keyring-1.20250214-1.src.tar.zst
         sha256: 16f70010e9f6807e2dc4c6c84adaca14bd747284b51ec550e04946cdfc876c91
         target_directory: source-msys2-keyring
     build:
@@ -1885,7 +1927,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -1900,12 +1942,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/mintty-1.3.7.8-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/mintty-1.3.7.8-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/mintty-1.3.7.8-1-x86_64.pkg.tar.zst
         sha256: fbf76335ac20f7e97407b0a0d860b08aa6bbf7834dc7727ad82d46fd997bfcaa
         target_directory: binary-m2-mintty
       - url:
             - https://repo.msys2.org/msys/sources/mintty-1.3.7.8-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/mintty-1.3.7.8-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/mintty-1.3.7.8-1.src.tar.zst
         sha256: fb1ea61199614003ebc7d41374e31d5ea7fda5a78e81ebc673b26289279b9ae6
         target_directory: source-mintty
     build:
@@ -1916,7 +1958,7 @@ outputs:
       host:
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-msys2-runtime
@@ -1932,12 +1974,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/less-668-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/less-668-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/less-668-1-x86_64.pkg.tar.zst
         sha256: bf3a3c8eb23a30340f7c52452625cd1996daeebe7196340ee5a81de77bfae055
         target_directory: binary-m2-less
       - url:
             - https://repo.msys2.org/msys/sources/less-668-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/less-668-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/less-668-1.src.tar.zst
         sha256: 6ef51ae97684f65fdbcafdafb7f1b18bd552a0a56361d7f9366e4bebb2977109
         target_directory: source-less
     build:
@@ -1949,7 +1991,7 @@ outputs:
         - m2-ncurses
         - m2-libpcre2_8
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-ncurses
         - m2-libpcre2_8
@@ -1962,17 +2004,17 @@ outputs:
 
   - package:
       name: m2-info
-      version: "7.1.1.1"
+      version: "7.2.1"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/info-7.1.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/info-7.1.1-1-x86_64.pkg.tar.zst
-        sha256: 48adce5f3fe5a2a24f0206bbdc9d7a2b381024211f44859ea6a8da4174e1ed6d
+            - https://repo.msys2.org/msys/x86_64/info-7.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/info-7.2-1-x86_64.pkg.tar.zst
+        sha256: 80d78b29bc7dae8d27b7f5d6174ce9bc829e22d5b616bcd14912cab73cc30d0f
         target_directory: binary-m2-info
       - url:
-            - https://repo.msys2.org/msys/sources/texinfo-7.1.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/texinfo-7.1.1-1.src.tar.zst
-        sha256: 506a0e3024e427c5b6c88b6f49da915a4567eac64e19aeea9d11b73020110ebe
+            - https://repo.msys2.org/msys/sources/texinfo-7.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1.src.tar.zst
+        sha256: 7e560e338e12880585568bf44e3570dd9de97f3fcaf9c4bda13328fbab94548b
         target_directory: source-info
     build:
       noarch: generic
@@ -1985,7 +2027,7 @@ outputs:
         - m2-libintl
         - m2-ncurses
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gzip
         - m2-libxcrypt
@@ -2004,12 +2046,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/inetutils-2.5-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/inetutils-2.5-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/inetutils-2.5-2-x86_64.pkg.tar.zst
         sha256: c3cd0a60d9349692a26f738bb31e774215ddac45cca7915830095b51ac9c2be1
         target_directory: binary-m2-inetutils
       - url:
             - https://repo.msys2.org/msys/sources/inetutils-2.5-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/inetutils-2.5-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/inetutils-2.5-2.src.tar.zst
         sha256: 3318a74a69da9e95f1f42e5cd4a71f74eb2c4b9b76cc65cb945bdb62db7df5ce
         target_directory: source-inetutils
     build:
@@ -2023,7 +2065,7 @@ outputs:
         - m2-libreadline
         - m2-ncurses
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libintl
@@ -2042,12 +2084,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/gzip-1.14-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gzip-1.14-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gzip-1.14-1-x86_64.pkg.tar.zst
         sha256: 0816b19ef2dae3988d5e9150058dfdf83ed994b80ca6075a88b5618bbd9c0c25
         target_directory: binary-m2-gzip
       - url:
             - https://repo.msys2.org/msys/sources/gzip-1.14-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/gzip-1.14-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/gzip-1.14-1.src.tar.zst
         sha256: c9840b33e803a33ee94b56236f78cae2d36574667360d865fc79777beb969bd5
         target_directory: source-gzip
     build:
@@ -2059,7 +2101,7 @@ outputs:
         - m2-bash
         - m2-less
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-less
@@ -2076,12 +2118,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/grep-1.3.0-7-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/grep-1.3.0-7-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/grep-1.3.0-7-x86_64.pkg.tar.zst
         sha256: 2909b3bbef8d33d66980339fb7bd2d3d9145bae0f04191e6671df39868aea427
         target_directory: binary-m2-grep
       - url:
             - https://repo.msys2.org/msys/sources/grep-1.3.0-7.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/grep-1.3.0-7.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/grep-1.3.0-7.src.tar.zst
         sha256: acba43b9b2c3eb393f9a75d02a1eca34fa23d959541150a7ac4ffbafce3cae4e
         target_directory: source-grep
     build:
@@ -2095,7 +2137,7 @@ outputs:
         - m2-libpcre
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libiconv
         - m2-libintl
@@ -2114,12 +2156,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libpcre-8.45-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libpcre-8.45-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libpcre-8.45-5-x86_64.pkg.tar.zst
         sha256: b4dc2eb7795cbacaa683101d720fa67f536262497a1d89934a58f5dab8d17d17
         target_directory: binary-m2-libpcre
       - url:
             - https://repo.msys2.org/msys/sources/pcre-8.45-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/pcre-8.45-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/pcre-8.45-5.src.tar.zst
         sha256: f7104aa31f29655689b404ead9923332e2fa6aadfe97c060d0dfc02f4661d6b5
         target_directory: source-libpcre
     build:
@@ -2130,7 +2172,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -2146,12 +2188,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/getent-2.18.90-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/getent-2.18.90-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/getent-2.18.90-5-x86_64.pkg.tar.zst
         sha256: 1937cbc03d1330fc56609868750c2d7da4a33785ad1712242b09cdec6283dbac
         target_directory: binary-m2-getent
       - url:
             - https://repo.msys2.org/msys/sources/getent-2.18.90-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/getent-2.18.90-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/getent-2.18.90-5.src.tar.zst
         sha256: 2c7f3844d5ef6a45c7c87d1852142cb0be72ef23ed0653c4e74da461c8bd91fc
         target_directory: source-getent
     build:
@@ -2162,7 +2204,7 @@ outputs:
       host:
         - m2-libargp
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libargp
         - m2-msys2-runtime
@@ -2178,12 +2220,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libargp-20241207-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libargp-20241207-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libargp-20241207-1-x86_64.pkg.tar.zst
         sha256: a522f0443464348a8126df3181f349409f0d1925c864003cae966ef8c4e71d60
         target_directory: binary-m2-libargp
       - url:
             - https://repo.msys2.org/msys/sources/libargp-20241207-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libargp-20241207-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libargp-20241207-1.src.tar.zst
         sha256: e6d59d5799947d45e43c15dc99ff02ce94ab6f793dda3524306c716f92f5f650
         target_directory: source-libargp
     build:
@@ -2193,7 +2235,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -2208,7 +2250,7 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/filesystem-2025.02.23-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/filesystem-2025.02.23-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/filesystem-2025.02.23-1-x86_64.pkg.tar.zst
         sha256: 42a7d034a9933494c435598e1b15fd329927de6f9c90cb9d6fa2436cd99bb009
         target_directory: binary-m2-filesystem
         patches:
@@ -2216,7 +2258,7 @@ outputs:
           - patches/filesystem/0002-Use-Windows-users-temporary-directory-as-tmp.patch
       - url:
             - https://repo.msys2.org/msys/sources/filesystem-2025.02.23-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/filesystem-2025.02.23-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/filesystem-2025.02.23-1.src.tar.zst
         sha256: cf39f001c8f50cd9bc31eeddef943b867d9f1776b952536a1ec7fb81ee9e5b76
         target_directory: source-filesystem
     build:
@@ -2226,7 +2268,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -2241,12 +2283,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/file-5.46-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/file-5.46-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/file-5.46-2-x86_64.pkg.tar.zst
         sha256: f1f81dad30fc927a3b7ad58b9b5a54e2b284bd6dc396e67746a5a3903ed339c2
         target_directory: binary-m2-file
       - url:
             - https://repo.msys2.org/msys/sources/file-5.46-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/file-5.46-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/file-5.46-2.src.tar.zst
         sha256: fa5960ee27bdf5f142e6621c436d1ee04cf4cc5a57a028d1e7d018d7341018d2
         target_directory: source-file
     build:
@@ -2261,7 +2303,7 @@ outputs:
         - m2-liblzma
         - m2-libzstd
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-zlib
@@ -2281,12 +2323,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/liblzma-5.8.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/liblzma-5.8.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/liblzma-5.8.1-1-x86_64.pkg.tar.zst
         sha256: 28cd861325dab1d7b1ebd63893e93f1d8e7cedc77f1e78dfdd9434386b9f8aa1
         target_directory: binary-m2-liblzma
       - url:
             - https://repo.msys2.org/msys/sources/xz-5.8.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/xz-5.8.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/xz-5.8.1-1.src.tar.zst
         sha256: 7258628700491106ec202bef72c6ca3effca53239074a7d3ad8694836523161e
         target_directory: source-liblzma
     build:
@@ -2296,7 +2338,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -2311,12 +2353,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/dash-0.5.12-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/dash-0.5.12-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/dash-0.5.12-1-x86_64.pkg.tar.zst
         sha256: 6499dcccdb7e3a58e473c695bf7de27cbb3579759e3f6312b002815fafae1147
         target_directory: binary-m2-dash
       - url:
             - https://repo.msys2.org/msys/sources/dash-0.5.12-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/dash-0.5.12-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/dash-0.5.12-1.src.tar.zst
         sha256: e222faac57086250a959f322e480e932840f541409162713b87d944502b4b3b4
         target_directory: source-dash
     build:
@@ -2329,7 +2371,7 @@ outputs:
         - m2-sed
         - m2-filesystem
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-grep
         - m2-sed
@@ -2347,12 +2389,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/bzip2-1.0.8-4-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bzip2-1.0.8-4-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bzip2-1.0.8-4-x86_64.pkg.tar.zst
         sha256: 635c483775de60663bd38859bb4624e6aaa1086354acf8e36513b75c24f64b3c
         target_directory: binary-m2-bzip2
       - url:
             - https://repo.msys2.org/msys/sources/bzip2-1.0.8-4.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bzip2-1.0.8-4.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bzip2-1.0.8-4.src.tar.zst
         sha256: a7e9ea6335ef2902508de0bbbb70e2e9909b6b7b6d05fc207f8fdf0cf44ad053
         target_directory: source-bzip2
     build:
@@ -2363,7 +2405,7 @@ outputs:
       host:
         - m2-libbz2
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libbz2
         - m2-msys2-runtime
@@ -2379,12 +2421,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/bsdtar-3.7.9-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bsdtar-3.7.9-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bsdtar-3.7.9-1-x86_64.pkg.tar.zst
         sha256: a74a0cf11b87a396f2b1456853f779882852808b361a290d7528290482a72804
         target_directory: binary-m2-bsdtar
       - url:
             - https://repo.msys2.org/msys/sources/libarchive-3.7.9-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libarchive-3.7.9-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libarchive-3.7.9-1.src.tar.zst
         sha256: 4622f8bb3f8301156b829f1a901b88b5cf6a89bee1301d6b0f23926bf88e15df
         target_directory: source-bsdtar
     build:
@@ -2403,7 +2445,7 @@ outputs:
         - m2-libzstd
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-libbz2
@@ -2427,12 +2469,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libopenssl-3.5.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libopenssl-3.5.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libopenssl-3.5.0-1-x86_64.pkg.tar.zst
         sha256: 23285fba144bb289a373f72c5bd67ade4241c44fd394abc6ba549901fea3d5f0
         target_directory: binary-m2-libopenssl
       - url:
             - https://repo.msys2.org/msys/sources/openssl-3.5.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/openssl-3.5.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/openssl-3.5.0-1.src.tar.zst
         sha256: f0487e2226c924244614fabe065a2805767b6c3a2e998fad72c6720266af0aaa
         target_directory: source-libopenssl
     build:
@@ -2442,7 +2484,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -2457,12 +2499,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/liblz4-1.9.4-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/liblz4-1.9.4-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/liblz4-1.9.4-1-x86_64.pkg.tar.zst
         sha256: 0d77c9cb778052603b48091a6ded48134640b95f313ec444673f087795c97800
         target_directory: binary-m2-liblz4
       - url:
             - https://repo.msys2.org/msys/sources/lz4-1.9.4-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/lz4-1.9.4-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/lz4-1.9.4-1.src.tar.zst
         sha256: 91422971a635bc67a94af65709863b659902ecb0a4357b57fa2b6c5a4acbf8d6
         target_directory: source-liblz4
     build:
@@ -2473,7 +2515,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -2489,12 +2531,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libexpat-2.7.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libexpat-2.7.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libexpat-2.7.1-1-x86_64.pkg.tar.zst
         sha256: ff2ab2c6527ec49bd30e6cc281879b4e57809f91051dc41884adb144bf637443
         target_directory: binary-m2-libexpat
       - url:
             - https://repo.msys2.org/msys/sources/expat-2.7.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/expat-2.7.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/expat-2.7.1-1.src.tar.zst
         sha256: 06e50d019127cbe464e407cbbf758901e02553fe6e11d941965b8f17eaf1ae11
         target_directory: source-libexpat
     build:
@@ -2505,7 +2547,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -2521,12 +2563,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/bash-completion-2.16.0-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bash-completion-2.16.0-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bash-completion-2.16.0-1-any.pkg.tar.zst
         sha256: 9453116a1c9808d033a311365baa91a34c9516071925d197b37c464f447d8f57
         target_directory: binary-m2-bash-completion
       - url:
             - https://repo.msys2.org/msys/sources/bash-completion-2.16.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bash-completion-2.16.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bash-completion-2.16.0-1.src.tar.zst
         sha256: 5fb62d5a6281c09e1b8a161000f9605e0498f197f23f0700d2e7f44593db31c4
         target_directory: source-bash-completion
     build:
@@ -2537,7 +2579,7 @@ outputs:
       host:
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-msys2-runtime
@@ -2553,12 +2595,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/curl-8.9.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/curl-8.9.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/curl-8.9.1-1-x86_64.pkg.tar.zst
         sha256: 916c18766d2e4bcf8a5dfc95818df23cab99fe49e79e6d13a6cb76b1d556ba93
         target_directory: binary-m2-curl
       - url:
             - https://repo.msys2.org/msys/sources/curl-8.9.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/curl-8.9.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/curl-8.9.1-1.src.tar.zst
         sha256: 7aafaeb3c055a5e992030b8086b263715cff9fc24cb4b468149b684080898185
         target_directory: source-curl
     build:
@@ -2575,7 +2617,7 @@ outputs:
         - m2-openssl
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-ca-certificates
         - m2-libcurl
@@ -2597,12 +2639,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/openssl-3.5.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/openssl-3.5.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/openssl-3.5.0-1-x86_64.pkg.tar.zst
         sha256: 2609a0dd58d4c8ac6504eba70e92c2b458d86af7fc937436ff4f9da57132f568
         target_directory: binary-m2-openssl
       - url:
             - https://repo.msys2.org/msys/sources/openssl-3.5.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/openssl-3.5.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/openssl-3.5.0-1.src.tar.zst
         sha256: f0487e2226c924244614fabe065a2805767b6c3a2e998fad72c6720266af0aaa
         target_directory: source-openssl
     build:
@@ -2613,7 +2655,7 @@ outputs:
       host:
         - m2-libopenssl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libopenssl
         - m2-msys2-runtime
@@ -2629,12 +2671,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libnghttp2-1.65.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libnghttp2-1.65.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libnghttp2-1.65.0-1-x86_64.pkg.tar.zst
         sha256: f804b7730af124857d8a9b1108936bc35df1db4418ef915eacf055fc26ff9f17
         target_directory: binary-m2-libnghttp2
       - url:
             - https://repo.msys2.org/msys/sources/nghttp2-1.65.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/nghttp2-1.65.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/nghttp2-1.65.0-1.src.tar.zst
         sha256: 3ba07e28a49e1312b4abeb9b4408e914f6415f8249662ef05fba55702bfee2f0
         target_directory: source-libnghttp2
     build:
@@ -2645,7 +2687,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -2661,12 +2703,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libcurl-8.9.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libcurl-8.9.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libcurl-8.9.1-1-x86_64.pkg.tar.zst
         sha256: 3fa6d0fd9e9ee8e0b0b1b2dbf65bd53878c9906539d732a45a6a8d05ac460cd2
         target_directory: binary-m2-libcurl
       - url:
             - https://repo.msys2.org/msys/sources/curl-8.9.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/curl-8.9.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/curl-8.9.1-1.src.tar.zst
         sha256: 7aafaeb3c055a5e992030b8086b263715cff9fc24cb4b468149b684080898185
         target_directory: source-libcurl
     build:
@@ -2687,7 +2729,7 @@ outputs:
         - m2-zlib
         - m2-libzstd
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-brotli
         - m2-ca-certificates
@@ -2713,12 +2755,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libssh2-1.11.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libssh2-1.11.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libssh2-1.11.1-1-x86_64.pkg.tar.zst
         sha256: f79883af85a2bb4778e1352c0b7ea27737a05e4110ef14461f0a842a40ff893d
         target_directory: binary-m2-libssh2
       - url:
             - https://repo.msys2.org/msys/sources/libssh2-1.11.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libssh2-1.11.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libssh2-1.11.1-1.src.tar.zst
         sha256: 264ad84471969ca2868b8a7f74ea8095a933c6112d49325cb127ce59f0b90af4
         target_directory: source-libssh2
     build:
@@ -2731,7 +2773,7 @@ outputs:
         - m2-openssl
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-ca-certificates
         - m2-openssl
@@ -2749,12 +2791,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/heimdal-libs-7.8.0-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/heimdal-libs-7.8.0-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/heimdal-libs-7.8.0-5-x86_64.pkg.tar.zst
         sha256: d5f139b6feebd75f0b5fefec952c7fbb4cdfa16235601c223dabc3b1bcead19f
         target_directory: binary-m2-heimdal-libs
       - url:
             - https://repo.msys2.org/msys/sources/heimdal-7.8.0-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/heimdal-7.8.0-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/heimdal-7.8.0-5.src.tar.zst
         sha256: 8c11d29e88431abffac4e79f1a14f4a72cb71adfc532faafd35831efaabe7f19
         target_directory: source-heimdal-libs
     build:
@@ -2769,7 +2811,7 @@ outputs:
         - m2-libsqlite
         - m2-libopenssl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libdb
         - m2-libxcrypt
@@ -2789,12 +2831,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libedit-20240808_3.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libedit-20240808_3.1-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libedit-20240808_3.1-1-x86_64.pkg.tar.zst
         sha256: aada8ba7dfe41fdcac28d3706c0dc7c621b7667035a5e629cb5f3af7fb3f7de0
         target_directory: binary-m2-libedit
       - url:
             - https://repo.msys2.org/msys/sources/libedit-20240808_3.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libedit-20240808_3.1-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libedit-20240808_3.1-1.src.tar.zst
         sha256: a76c0a19cbd69ef01c6c304d4776f96fc5b31dcbca7b446e6d99272affbffb97
         target_directory: source-libedit
     build:
@@ -2806,7 +2848,7 @@ outputs:
         - m2-ncurses
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-ncurses
         - m2-bash
@@ -2823,12 +2865,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/brotli-1.1.0-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/brotli-1.1.0-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/brotli-1.1.0-2-x86_64.pkg.tar.zst
         sha256: 8072dd8a47da4e13d4d133a205b05bb26ea90da5aaa5a2e172e1245189cb83b7
         target_directory: binary-m2-brotli
       - url:
             - https://repo.msys2.org/msys/sources/brotli-1.1.0-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/brotli-1.1.0-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/brotli-1.1.0-2.src.tar.zst
         sha256: ab6354c119ee1a5caaed59f0b03202717450276779b5a4da411e8d868bcb88e0
         target_directory: source-brotli
     build:
@@ -2839,7 +2881,7 @@ outputs:
       host:
         - m2-gcc-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-msys2-runtime
@@ -2855,12 +2897,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/ca-certificates-20241223-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/ca-certificates-20241223-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/ca-certificates-20241223-1-any.pkg.tar.zst
         sha256: 4f81a37ea92e41a77f93209ea7f80c5ccc7b0b19203e55fd3ba1e58e42a9d661
         target_directory: binary-m2-ca-certificates
       - url:
             - https://repo.msys2.org/msys/sources/ca-certificates-20241223-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/ca-certificates-20241223-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/ca-certificates-20241223-1.src.tar.zst
         sha256: c6129e7df499634f5d80c82d48276954d4676e318e7bea0b7526bd6539903477
         target_directory: source-ca-certificates
     build:
@@ -2876,7 +2918,7 @@ outputs:
         - m2-sed
         - m2-p11-kit
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-openssl
@@ -2897,12 +2939,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/p11-kit-0.25.5-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/p11-kit-0.25.5-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/p11-kit-0.25.5-2-x86_64.pkg.tar.zst
         sha256: 6dcf222a28ec2528c8dd0b1f069993a966a5fecb9c4f8a64b7390df700a26020
         target_directory: binary-m2-p11-kit
       - url:
             - https://repo.msys2.org/msys/sources/p11-kit-0.25.5-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/p11-kit-0.25.5-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/p11-kit-0.25.5-2.src.tar.zst
         sha256: 56625ecc7de1cca6ed7292b9a0a2f51273990c378c817a5d6f58fe0da1e258e7
         target_directory: source-p11-kit
     build:
@@ -2913,7 +2955,7 @@ outputs:
       host:
         - m2-libp11-kit
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libp11-kit
         - m2-msys2-runtime
@@ -2929,12 +2971,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/p7zip-17.05-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/p7zip-17.05-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/p7zip-17.05-2-x86_64.pkg.tar.zst
         sha256: 475a50f276e65e97b7a30c5e3ed763b5cec01aa5fc7893dc10a1d85449842401
         target_directory: binary-m2-p7zip
       - url:
             - https://repo.msys2.org/msys/sources/p7zip-17.05-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/p7zip-17.05-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/p7zip-17.05-2.src.tar.zst
         sha256: be30debb1cea6ff1081d965f46159c81ddecde50f7d7756cebff467e5362271b
         target_directory: source-p7zip
     build:
@@ -2946,7 +2988,7 @@ outputs:
         - m2-gcc-libs
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gcc-libs
         - m2-bash
@@ -2959,17 +3001,17 @@ outputs:
 
   - package:
       name: m2-texinfo
-      version: "7.1.1.1"
+      version: "7.2.1"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/texinfo-7.1.1-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/texinfo-7.1.1-1-x86_64.pkg.tar.zst
-        sha256: 762842a85b1d0f161fdcb677150da02002e92afd9c1ad544e955b36b14649b37
+            - https://repo.msys2.org/msys/x86_64/texinfo-7.2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1-x86_64.pkg.tar.zst
+        sha256: f87b4544788c812b7ffafa9c624b6e421fbbeb973453d1194f4db69ee5bef667
         target_directory: binary-m2-texinfo
       - url:
-            - https://repo.msys2.org/msys/sources/texinfo-7.1.1-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/texinfo-7.1.1-1.src.tar.zst
-        sha256: 506a0e3024e427c5b6c88b6f49da915a4567eac64e19aeea9d11b73020110ebe
+            - https://repo.msys2.org/msys/sources/texinfo-7.2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/texinfo-7.2-1.src.tar.zst
+        sha256: 7e560e338e12880585568bf44e3570dd9de97f3fcaf9c4bda13328fbab94548b
         target_directory: source-texinfo
     build:
       noarch: generic
@@ -2981,7 +3023,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-info
         - m2-perl
@@ -2999,12 +3041,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/bash-5.2.037-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bash-5.2.037-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bash-5.2.037-2-x86_64.pkg.tar.zst
         sha256: 5ad290cb4d730d37d6b1644defa09dffa040f34adf75d21d0e3dd8595b94c883
         target_directory: binary-m2-bash
       - url:
             - https://repo.msys2.org/msys/sources/bash-5.2.037-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/bash-5.2.037-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/bash-5.2.037-2.src.tar.zst
         sha256: aff1580b5ecbb020dd8af489b84b9070e6a405a9b05f4a178494e2fc45ca477f
         target_directory: source-bash
     build:
@@ -3015,7 +3057,7 @@ outputs:
       host:
         - m2-filesystem
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-filesystem
         - m2-msys2-runtime
@@ -3031,12 +3073,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/m4-1.4.19-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/m4-1.4.19-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/m4-1.4.19-2-x86_64.pkg.tar.zst
         sha256: 4a1d296571afa7b8837fd5e227e16c9cb7e26c0f31f03b364e11c1ae8ee2a913
         target_directory: binary-m2-m4
       - url:
             - https://repo.msys2.org/msys/sources/m4-1.4.19-2.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/m4-1.4.19-2.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/m4-1.4.19-2.src.tar.gz
         sha256: 8f16ccc0ff7e21b99ec7df33d4ae881034090f15f50a668fe5a69c9f59befb76
         target_directory: source-m4
     build:
@@ -3049,7 +3091,7 @@ outputs:
         - m2-gcc-libs
         - m2-libiconv
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-gcc-libs
@@ -3067,12 +3109,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/findutils-4.9.0-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/findutils-4.9.0-3-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/findutils-4.9.0-3-x86_64.pkg.tar.zst
         sha256: 7cdbeb891be60cede94a2f9b0eb85bcf9742396b957347eb9043966d8663a831
         target_directory: binary-m2-findutils
       - url:
             - https://repo.msys2.org/msys/sources/findutils-4.9.0-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/findutils-4.9.0-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/findutils-4.9.0-3.src.tar.zst
         sha256: 666f3ac81d7a1ffe5227c9082156225fab6a6809bae30498014d8417623d649c
         target_directory: source-findutils
     build:
@@ -3084,7 +3126,7 @@ outputs:
         - m2-libiconv
         - m2-libintl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libiconv
         - m2-libintl
@@ -3101,12 +3143,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/autoconf-2.71-3-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.71-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf-2.71-3-any.pkg.tar.zst
         sha256: 703ea0566c4ec85278d23c626eee976af5bfec2d935d1ef3b5995f1ed4c180e7
         target_directory: binary-m2-autoconf
       - url:
             - https://repo.msys2.org/msys/sources/autoconf-2.71-3.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autoconf-2.71-3.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autoconf-2.71-3.src.tar.gz
         sha256: 0a3cec38e60a2a39620aa8f194e0e5a36aa26930b7c4ce56c47e3d6033e76e1c
         target_directory: source-autoconf
     build:
@@ -3122,7 +3164,7 @@ outputs:
         - m2-perl
         - m2-sed
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-gawk
         - m2-m4
@@ -3143,12 +3185,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libtool-2.5.4-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libtool-2.5.4-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libtool-2.5.4-1-x86_64.pkg.tar.zst
         sha256: 82a635ac6a9b6b0bed8866e9a07f95296f53c7c4652ce4a55e713c8a6096a933
         target_directory: binary-m2-libtool
       - url:
             - https://repo.msys2.org/msys/sources/libtool-2.5.4-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libtool-2.5.4-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libtool-2.5.4-1.src.tar.zst
         sha256: f8896eaa7c3259819b1365bfde5545e3d3c16c65796e401c0bce8b1a44a065dc
         target_directory: source-libtool
     build:
@@ -3160,7 +3202,7 @@ outputs:
         - m2-bash
         - m2-libltdl =2.5.4
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-libltdl =2.5.4
@@ -3177,12 +3219,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libltdl-2.5.4-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libltdl-2.5.4-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libltdl-2.5.4-1-x86_64.pkg.tar.zst
         sha256: 83ac4bebaf07f4c47f81b9dd107acecf562ecc16c3ebab5555ead77a9e21bc8c
         target_directory: binary-m2-libltdl
       - url:
             - https://repo.msys2.org/msys/sources/libtool-2.5.4-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libtool-2.5.4-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libtool-2.5.4-1.src.tar.zst
         sha256: f8896eaa7c3259819b1365bfde5545e3d3c16c65796e401c0bce8b1a44a065dc
         target_directory: source-libltdl
     build:
@@ -3192,7 +3234,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -3207,12 +3249,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/sed-4.9-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/sed-4.9-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/sed-4.9-1-x86_64.pkg.tar.zst
         sha256: 3748af28f69e946ec5a42e6670c9bbf6da7352dc93baaa537f69e99c5483b9fc
         target_directory: binary-m2-sed
       - url:
             - https://repo.msys2.org/msys/sources/sed-4.9-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/sed-4.9-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/sed-4.9-1.src.tar.zst
         sha256: a9686da7c1f3cb2ba7ae5f20f30d9ef38f7bba993f9c777b43bd13c7fbd7cc58
         target_directory: source-sed
     build:
@@ -3224,7 +3266,7 @@ outputs:
         - m2-libintl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libintl
         - m2-bash
@@ -3241,12 +3283,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/make-4.4.1-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/make-4.4.1-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/make-4.4.1-2-x86_64.pkg.tar.zst
         sha256: 2408af61717dae87b00c855b132769a125c708907fc94a46bb16dae076113e5c
         target_directory: binary-m2-make
       - url:
             - https://repo.msys2.org/msys/sources/make-4.4.1-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/make-4.4.1-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/make-4.4.1-2.src.tar.zst
         sha256: 9576ed00450801c5f91406311a82775fe8e33bcb26284d7b4ac3b5a0cfcfa0ae
         target_directory: source-make
     build:
@@ -3258,7 +3300,7 @@ outputs:
         - m2-libintl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libintl
         - m2-bash
@@ -3275,12 +3317,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake-wrapper-20240607-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake-wrapper-20240607-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake-wrapper-20240607-1-any.pkg.tar.zst
         sha256: 070e3ff77b0d689c28cdb4986dd0bb29eb466009801ac5381a9259db427378f2
         target_directory: binary-m2-automake-wrapper
       - url:
             - https://repo.msys2.org/msys/sources/autotools-wrappers-20240607-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/autotools-wrappers-20240607-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/autotools-wrappers-20240607-1.src.tar.zst
         sha256: 66bacbe2d290245ceef181308e5ab7eead7671f343bbd723fe0dcc5f9879c679
         target_directory: source-automake-wrapper
     build:
@@ -3299,7 +3341,7 @@ outputs:
         - m2-automake1.16
         - m2-automake1.17
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-gawk
@@ -3323,12 +3365,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.17-1.17-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.17-1.17-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.17-1.17-1-any.pkg.tar.zst
         sha256: bb069dbb6f580c2346d2f6d74268b5e12e625f7ba57299426f9cd6c0fa714191
         target_directory: binary-m2-automake1.17
       - url:
             - https://repo.msys2.org/msys/sources/automake1.17-1.17-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.17-1.17-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.17-1.17-1.src.tar.zst
         sha256: 6d4e34286f6bd3dca049275bc0b2da1ecf41375d6e4d149aec49cf6d911ae736
         target_directory: source-automake1.17
     build:
@@ -3340,7 +3382,7 @@ outputs:
         - m2-bash
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-bash
         - m2-perl
@@ -3357,12 +3399,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.16-1.16.5-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.16-1.16.5-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.16-1.16.5-1-any.pkg.tar.zst
         sha256: 1963b5fa0ab5eaf1bdc311501cd742c6bb19941e831dcc8ab1e51a8c7f1634fe
         target_directory: binary-m2-automake1.16
       - url:
             - https://repo.msys2.org/msys/sources/automake1.16-1.16.5-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.16-1.16.5-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.16-1.16.5-1.src.tar.zst
         sha256: 1a0ed7c268b5361ee40202226b9db34c3002d15d2d4ae617a5a21d9c1465a34b
         target_directory: source-automake1.16
     build:
@@ -3374,7 +3416,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3391,12 +3433,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.15-1.15.1-4-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.15-1.15.1-4-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.15-1.15.1-4-any.pkg.tar.zst
         sha256: e3c73d0094eebbc2353b2ddd0b7c81020917c2ec09d3e4967d7abc9794fa7843
         target_directory: binary-m2-automake1.15
       - url:
             - https://repo.msys2.org/msys/sources/automake1.15-1.15.1-4.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.15-1.15.1-4.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.15-1.15.1-4.src.tar.gz
         sha256: 911542542fb750d2557cc5a3574d5cef64acbae052cf43f222e188e5953999ce
         target_directory: source-automake1.15
     build:
@@ -3408,7 +3450,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3425,12 +3467,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.14-1.14.1-6-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.14-1.14.1-6-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.14-1.14.1-6-any.pkg.tar.zst
         sha256: 0b097559c1fa79124552334b63d13417bcec8a08008ab65f77d27300a4ccc5b4
         target_directory: binary-m2-automake1.14
       - url:
             - https://repo.msys2.org/msys/sources/automake1.14-1.14.1-6.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.14-1.14.1-6.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.14-1.14.1-6.src.tar.gz
         sha256: 688ce712d268b2040b8dca94b9cf4cd3553712e1f5fc173fde35b1f8a21e0f12
         target_directory: source-automake1.14
     build:
@@ -3442,7 +3484,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3459,12 +3501,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.13-1.13.4-7-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.13-1.13.4-7-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.13-1.13.4-7-any.pkg.tar.zst
         sha256: a0d3eb1b359a67c1c8a9161cf79ba681cccabf47c78cb40d3065b5eff02a82f0
         target_directory: binary-m2-automake1.13
       - url:
             - https://repo.msys2.org/msys/sources/automake1.13-1.13.4-7.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.13-1.13.4-7.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.13-1.13.4-7.src.tar.gz
         sha256: 8f9ed14b802833828b0ef895f40915910d57b62cabaf85ef26cb94e830036bf2
         target_directory: source-automake1.13
     build:
@@ -3476,7 +3518,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3493,12 +3535,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.12-1.12.6-6-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.12-1.12.6-6-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.12-1.12.6-6-any.pkg.tar.zst
         sha256: b6c91241999c6ff8d04c5ea8011b10544a373b01eacb7993c66db99e5f4fb373
         target_directory: binary-m2-automake1.12
       - url:
             - https://repo.msys2.org/msys/sources/automake1.12-1.12.6-6.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.12-1.12.6-6.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.12-1.12.6-6.src.tar.gz
         sha256: 2c14d37e393637cf4b66038ec8a01de331a498a698997062bba743ec930860ab
         target_directory: source-automake1.12
     build:
@@ -3510,7 +3552,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3527,12 +3569,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/automake1.11-1.11.6-6-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.11-1.11.6-6-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.11-1.11.6-6-any.pkg.tar.zst
         sha256: 25ecc6296e1416513153c290442cbca6dcb813c1c50e5beb3a708408ba5de3a5
         target_directory: binary-m2-automake1.11
       - url:
             - https://repo.msys2.org/msys/sources/automake1.11-1.11.6-6.src.tar.gz
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/automake1.11-1.11.6-6.src.tar.gz
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/automake1.11-1.11.6-6.src.tar.gz
         sha256: bc45aabc7646aede1eaa4c8f03aef2d8d79f87cffbe37a72013e88f7ce5871f9
         target_directory: source-automake1.11
     build:
@@ -3544,7 +3586,7 @@ outputs:
         - m2-perl
         - m2-bash
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-bash
@@ -3561,12 +3603,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/git-2.49.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/git-2.49.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/git-2.49.0-1-x86_64.pkg.tar.zst
         sha256: effae3203b4607863023d6d819a172f8cfc1708f7d6195fefc60b4e1a89501d5
         target_directory: binary-m2-git
       - url:
             - https://repo.msys2.org/msys/sources/git-2.49.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/git-2.49.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/git-2.49.0-1.src.tar.zst
         sha256: 1d925960f58cf144a8e1cfc68bd43d0032239f9c9f25f09ea05c7a5f5e7dac9e
         target_directory: source-git
     build:
@@ -3590,7 +3632,7 @@ outputs:
         - m2-perl-net-smtp-ssl
         - m2-perl-termreadkey
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-curl
         - m2-libpcre2_8
@@ -3619,12 +3661,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-TermReadKey-2.38-6-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-TermReadKey-2.38-6-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-TermReadKey-2.38-6-x86_64.pkg.tar.zst
         sha256: cec29cd53e9390e6a67e44c3d40b9bc9d18b114bb01e02db0ba69e83945aaa89
         target_directory: binary-m2-perl-termreadkey
       - url:
             - https://repo.msys2.org/msys/sources/perl-TermReadKey-2.38-6.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-TermReadKey-2.38-6.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-TermReadKey-2.38-6.src.tar.zst
         sha256: 5d1af0441bd1aedc0a704211919103e385ba9d602433db901272ad99460b8d61
         target_directory: source-perl-termreadkey
     build:
@@ -3635,7 +3677,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -3651,12 +3693,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Net-SMTP-SSL-1.04-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-SMTP-SSL-1.04-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-SMTP-SSL-1.04-2-any.pkg.tar.zst
         sha256: 31f4d27a07dd5091856e35fe7c4c5b10665744fd6a0f340f0e8f41da4935b655
         target_directory: binary-m2-perl-net-smtp-ssl
       - url:
             - https://repo.msys2.org/msys/sources/perl-Net-SMTP-SSL-1.04-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-SMTP-SSL-1.04-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-SMTP-SSL-1.04-2.src.tar.zst
         sha256: 58c46d51a96374784c99aa1614790f51e008f3aa49eaa09aeb00043bd8b26d93
         target_directory: source-perl-net-smtp-ssl
     build:
@@ -3667,7 +3709,7 @@ outputs:
       host:
         - m2-perl-io-socket-ssl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-io-socket-ssl
         - m2-msys2-runtime
@@ -3683,12 +3725,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-IO-Socket-SSL-2.089-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Socket-SSL-2.089-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Socket-SSL-2.089-1-any.pkg.tar.zst
         sha256: 6c4eadcd530e3ea217435191b25640f6ac3b3df3648f5e608f91a67863f73f42
         target_directory: binary-m2-perl-io-socket-ssl
       - url:
             - https://repo.msys2.org/msys/sources/perl-IO-Socket-SSL-2.089-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Socket-SSL-2.089-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Socket-SSL-2.089-1.src.tar.zst
         sha256: 2bd9a6627bfce9b8c520f3f5e9345f23eebe03805f292b3e2e882ebd9ef4b833
         target_directory: source-perl-io-socket-ssl
     build:
@@ -3701,7 +3743,7 @@ outputs:
         - m2-perl
         - m2-perl-uri
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-net-ssleay
         - m2-perl
@@ -3719,12 +3761,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-URI-5.31-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-URI-5.31-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-URI-5.31-1-any.pkg.tar.zst
         sha256: 4d99d37b81f06fdb1625552fd953c62bba110f1757b6f92b3e115e928a867656
         target_directory: binary-m2-perl-uri
       - url:
             - https://repo.msys2.org/msys/sources/perl-URI-5.31-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-URI-5.31-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-URI-5.31-1.src.tar.zst
         sha256: f93ef860f234d0d3a03cf8a6c9ac8318f63145f8dea47b09f9d7cd65f1f70bbd
         target_directory: source-perl-uri
     build:
@@ -3735,7 +3777,7 @@ outputs:
       host:
         - m2-perl >=5.10.0
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.10.0
         - m2-msys2-runtime
@@ -3751,12 +3793,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Net-SSLeay-1.94-2-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-SSLeay-1.94-2-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-SSLeay-1.94-2-x86_64.pkg.tar.zst
         sha256: 5bf3abc71299d8161350f790fcfbe9c75f06ab256195a629a58d71ba45446aeb
         target_directory: binary-m2-perl-net-ssleay
       - url:
             - https://repo.msys2.org/msys/sources/perl-Net-SSLeay-1.94-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-SSLeay-1.94-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-SSLeay-1.94-2.src.tar.zst
         sha256: fd77566047e44643720fd6cde46a17a0348245d611cfbff26d6be388744e99e2
         target_directory: source-perl-net-ssleay
     build:
@@ -3767,7 +3809,7 @@ outputs:
       host:
         - m2-openssl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-openssl
         - m2-msys2-runtime
@@ -3783,12 +3825,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-MIME-tools-5.515-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-MIME-tools-5.515-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-MIME-tools-5.515-1-any.pkg.tar.zst
         sha256: f88326d4401cf9dafd1495401915149924bfec83ab206bcb2abf6c4da591b727
         target_directory: binary-m2-perl-mime-tools
       - url:
             - https://repo.msys2.org/msys/sources/perl-MIME-tools-5.515-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-MIME-tools-5.515-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-MIME-tools-5.515-1.src.tar.zst
         sha256: 8b39ef664fd2dc0302daa39f55f07070d3ecf881117fdd8d23bc6c1059198bdb
         target_directory: source-perl-mime-tools
     build:
@@ -3801,7 +3843,7 @@ outputs:
         - m2-perl-io-stringy
         - m2-perl-convert-binhex
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-mailtools
         - m2-perl-io-stringy
@@ -3819,12 +3861,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Convert-BinHex-1.125-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Convert-BinHex-1.125-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Convert-BinHex-1.125-2-any.pkg.tar.zst
         sha256: 164e802322370041dbb78d07ad3b59e017de1d281794734889bc905c273b4923
         target_directory: binary-m2-perl-convert-binhex
       - url:
             - https://repo.msys2.org/msys/sources/perl-Convert-BinHex-1.125-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Convert-BinHex-1.125-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Convert-BinHex-1.125-2.src.tar.zst
         sha256: 062d9a2aadc340a930723d01a18aa7ba11a852dfb0318fc4ff90550128ddeef7
         target_directory: source-perl-convert-binhex
     build:
@@ -3835,7 +3877,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -3851,12 +3893,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-IO-Stringy-2.113-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Stringy-2.113-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Stringy-2.113-2-any.pkg.tar.zst
         sha256: 925e0b8f56c8f0a96f9b1dfbd519a503f15e28450d6a6312f11d1a6793e678f9
         target_directory: binary-m2-perl-io-stringy
       - url:
             - https://repo.msys2.org/msys/sources/perl-IO-Stringy-2.113-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Stringy-2.113-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Stringy-2.113-2.src.tar.zst
         sha256: 9e005a9a17f92ad27ed73921ea308ce3b2c64a709a4323c3c2c0b465e2e984eb
         target_directory: source-perl-io-stringy
     build:
@@ -3867,7 +3909,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -3883,12 +3925,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-MailTools-2.22-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-MailTools-2.22-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-MailTools-2.22-1-any.pkg.tar.zst
         sha256: 2a39fdc73fd364715de5038feb535a5401607d657a0badf27548f981224a852e
         target_directory: binary-m2-perl-mailtools
       - url:
             - https://repo.msys2.org/msys/sources/perl-MailTools-2.22-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-MailTools-2.22-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-MailTools-2.22-1.src.tar.zst
         sha256: 29fef1de846cf2f8dbdf917d09506484e3c03e65390ae1ba09f0a9b6edd79c5d
         target_directory: source-perl-mailtools
     build:
@@ -3899,7 +3941,7 @@ outputs:
       host:
         - m2-perl-timedate
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-timedate
         - m2-msys2-runtime
@@ -3915,12 +3957,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-TimeDate-2.33-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-TimeDate-2.33-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-TimeDate-2.33-2-any.pkg.tar.zst
         sha256: 4cbeab8e248a67f21ff982495678723da21adf7bb9ad51d141f09c03472baeda
         target_directory: binary-m2-perl-timedate
       - url:
             - https://repo.msys2.org/msys/sources/perl-TimeDate-2.33-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-TimeDate-2.33-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-TimeDate-2.33-2.src.tar.zst
         sha256: c18cac4df4445cf2fd66948f35d4a448a052ff2521f03cb70281cf1ae3c6f7d7
         target_directory: source-perl-timedate
     build:
@@ -3931,7 +3973,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -3947,12 +3989,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-libwww-6.78-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-libwww-6.78-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-libwww-6.78-1-any.pkg.tar.zst
         sha256: 889e7660bf8fbad9a5ee9e6ef7c6663262a2b59a50dd18c06248c2bc6d5b6cf2
         target_directory: binary-m2-perl-libwww
       - url:
             - https://repo.msys2.org/msys/sources/perl-libwww-6.78-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-libwww-6.78-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-libwww-6.78-1.src.tar.zst
         sha256: 8701adfee49c1921ae950b18d7b88fb3cea3e308ffd391cb79eef759c1d786f1
         target_directory: source-perl-libwww
     build:
@@ -3977,7 +4019,7 @@ outputs:
         - m2-perl-http-message
         - m2-perl-try-tiny
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-perl-encode-locale
@@ -4007,12 +4049,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Try-Tiny-0.32-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Try-Tiny-0.32-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Try-Tiny-0.32-1-any.pkg.tar.zst
         sha256: bea318e67b5eac1c41f0c71a4265b321f8944248a55a7691a0201a8784e48a43
         target_directory: binary-m2-perl-try-tiny
       - url:
             - https://repo.msys2.org/msys/sources/perl-Try-Tiny-0.32-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Try-Tiny-0.32-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Try-Tiny-0.32-1.src.tar.zst
         sha256: 2c382fef45d2b37d27fb33240ac6777fdb7519f2f00c2fab73f373babf860e97
         target_directory: source-perl-try-tiny
     build:
@@ -4023,7 +4065,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4039,12 +4081,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTTP-Message-7.00-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Message-7.00-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Message-7.00-1-any.pkg.tar.zst
         sha256: a6188bebde94c40db3ccf712b8398ccaa1233d51abda2af52e86a05bae7542f3
         target_directory: binary-m2-perl-http-message
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTTP-Message-7.00-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Message-7.00-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Message-7.00-1.src.tar.zst
         sha256: 26dc6c7a80bef2c0b082472b529ecce9898178996eb1fe5f1ea581aab9d53caa
         target_directory: source-perl-http-message
     build:
@@ -4061,7 +4103,7 @@ outputs:
         - m2-perl-lwp-mediatypes >=6
         - m2-perl-uri >=1.10
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.8.8
         - m2-perl-clone
@@ -4083,12 +4125,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-IO-HTML-1.004-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-HTML-1.004-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-HTML-1.004-2-any.pkg.tar.zst
         sha256: d84e9eb722f7e256cfbc8d84894e7413b68498fbda08df83f75a08807bafa3e1
         target_directory: binary-m2-perl-io-html
       - url:
             - https://repo.msys2.org/msys/sources/perl-IO-HTML-1.004-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-HTML-1.004-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-HTML-1.004-2.src.tar.zst
         sha256: 3316a6be0ad3eca58852671e3bd78367745f4d8f8cdc2fcbcb9249602a917a1f
         target_directory: source-perl-io-html
     build:
@@ -4099,7 +4141,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4115,12 +4157,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Clone-0.47-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Clone-0.47-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Clone-0.47-1-x86_64.pkg.tar.zst
         sha256: d89111024b5431cc100699de5a2f35b1d07d9fbc7bfd07ff932308914f2da426
         target_directory: binary-m2-perl-clone
       - url:
             - https://repo.msys2.org/msys/sources/perl-Clone-0.47-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Clone-0.47-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Clone-0.47-1.src.tar.zst
         sha256: c31c1884e488b2a7122d3db8d72656cbb0439387343fa36c4eeda768d45de425
         target_directory: source-perl-clone
     build:
@@ -4131,7 +4173,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4147,12 +4189,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-WWW-RobotRules-6.02-3-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-WWW-RobotRules-6.02-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-WWW-RobotRules-6.02-3-any.pkg.tar.zst
         sha256: 78d4a2ff2f5ce327c9b5e93745b96a5c2e01302ebdf8528d3f1f2bce026ab12d
         target_directory: binary-m2-perl-www-robotrules
       - url:
             - https://repo.msys2.org/msys/sources/perl-WWW-RobotRules-6.02-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-WWW-RobotRules-6.02-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-WWW-RobotRules-6.02-3.src.tar.zst
         sha256: c209b919cea0993c87f92c496f5b28efea09cdc65f8598069f196050597dd631
         target_directory: source-perl-www-robotrules
     build:
@@ -4164,7 +4206,7 @@ outputs:
         - m2-perl
         - m2-perl-uri
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-perl-uri
@@ -4181,12 +4223,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Net-HTTP-6.23-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-HTTP-6.23-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-HTTP-6.23-1-any.pkg.tar.zst
         sha256: f88b4e08d2a51a77002ead4c002fe5940bbc0c57ce6f7263975197f8ca0d2066
         target_directory: binary-m2-perl-net-http
       - url:
             - https://repo.msys2.org/msys/sources/perl-Net-HTTP-6.23-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Net-HTTP-6.23-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Net-HTTP-6.23-1.src.tar.zst
         sha256: 5b178231aa7a53a34212e5302ee77542b6f03a3a2cfd57b17bfc2c81b62c7ede
         target_directory: source-perl-net-http
     build:
@@ -4197,7 +4239,7 @@ outputs:
       host:
         - m2-perl >=5.6.2
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.6.2
         - m2-msys2-runtime
@@ -4213,12 +4255,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-LWP-MediaTypes-6.04-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-LWP-MediaTypes-6.04-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-LWP-MediaTypes-6.04-2-any.pkg.tar.zst
         sha256: 12fd35ab7d0605971c6830e9222365a442d7cc110162d88fe570a913bb64dd2d
         target_directory: binary-m2-perl-lwp-mediatypes
       - url:
             - https://repo.msys2.org/msys/sources/perl-LWP-MediaTypes-6.04-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-LWP-MediaTypes-6.04-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-LWP-MediaTypes-6.04-2.src.tar.zst
         sha256: df1c30ee737b16e36a344243b733377b056f2394bfa4b6b5f5310acf26a0a8ff
         target_directory: source-perl-lwp-mediatypes
     build:
@@ -4229,7 +4271,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4245,12 +4287,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTTP-Negotiate-6.01-3-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Negotiate-6.01-3-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Negotiate-6.01-3-any.pkg.tar.zst
         sha256: 7d436cce8fa8438b718e45abf4e9f529995c302c81893e1cbe8660bf2a15d400
         target_directory: binary-m2-perl-http-negotiate
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTTP-Negotiate-6.01-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Negotiate-6.01-3.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Negotiate-6.01-3.src.tar.zst
         sha256: c62d63d04f0f1782d1e6235a99769e8ea0e81e15fe2a65520ccb3b045fead227
         target_directory: source-perl-http-negotiate
     build:
@@ -4262,7 +4304,7 @@ outputs:
         - m2-perl >=5.8.8
         - m2-perl-http-message
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.8.8
         - m2-perl-http-message
@@ -4279,12 +4321,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTTP-Date-6.06-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Date-6.06-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Date-6.06-1-any.pkg.tar.zst
         sha256: 8a89f624030eaeca3d642fc3f88e36203faa6c9af6eab5e5f6ac6ad89096d7d1
         target_directory: binary-m2-perl-http-date
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTTP-Date-6.06-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Date-6.06-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Date-6.06-1.src.tar.zst
         sha256: 980a29f0c66a4f5beaab2168792fc91c6b4afd5312dacc3a734c6dccf996b6a6
         target_directory: source-perl-http-date
     build:
@@ -4295,7 +4337,7 @@ outputs:
       host:
         - m2-perl >=5.8.8
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.8.8
         - m2-msys2-runtime
@@ -4311,12 +4353,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-http-cookiejar-0.014-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-http-cookiejar-0.014-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-http-cookiejar-0.014-1-any.pkg.tar.zst
         sha256: aceee3419ec000a08fc2707c2972302f7e2b6cd2160dd06c632f280f30f7838a
         target_directory: binary-m2-perl-http-cookiejar
       - url:
             - https://repo.msys2.org/msys/sources/perl-http-cookiejar-0.014-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-http-cookiejar-0.014-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-http-cookiejar-0.014-1.src.tar.zst
         sha256: 5ef62da28f114239738606282730bb2571b68a01062fce3428556866d3479d04
         target_directory: source-perl-http-cookiejar
     build:
@@ -4327,7 +4369,7 @@ outputs:
       host:
         - m2-perl-http-date
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-http-date
         - m2-msys2-runtime
@@ -4343,12 +4385,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTTP-Daemon-6.16-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Daemon-6.16-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Daemon-6.16-1-any.pkg.tar.zst
         sha256: 493f314ee2573916ca88d7615c00311d9ee5c901df96b356a0d319bc19f751d0
         target_directory: binary-m2-perl-http-daemon
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTTP-Daemon-6.16-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Daemon-6.16-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Daemon-6.16-1.src.tar.zst
         sha256: 88874de87f982dbfaf4dc02998d2d76b50a54271ecca26b7701ac1a7af06f0c6
         target_directory: source-perl-http-daemon
     build:
@@ -4363,7 +4405,7 @@ outputs:
         - m2-perl-io-socket-ip
         - m2-perl-lwp-mediatypes
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-perl-http-date
@@ -4383,12 +4425,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-IO-Socket-IP-0.41-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Socket-IP-0.41-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Socket-IP-0.41-2-any.pkg.tar.zst
         sha256: c908185cf19b8f836e960f97dc7cde790df073653061692bf173b373a26eb882
         target_directory: binary-m2-perl-io-socket-ip
       - url:
             - https://repo.msys2.org/msys/sources/perl-IO-Socket-IP-0.41-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-IO-Socket-IP-0.41-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-IO-Socket-IP-0.41-2.src.tar.zst
         sha256: 094d148a77f7069fb8594cd299b26679b14490d21ce55bbfc487626c2ce95500
         target_directory: source-perl-io-socket-ip
     build:
@@ -4399,7 +4441,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4415,12 +4457,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTTP-Cookies-6.11-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Cookies-6.11-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Cookies-6.11-1-any.pkg.tar.zst
         sha256: b243a06754a146b4c7eb0b46e9b4cdd2a61b5a49793e9b33e469cd013248e92e
         target_directory: binary-m2-perl-http-cookies
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTTP-Cookies-6.11-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTTP-Cookies-6.11-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTTP-Cookies-6.11-1.src.tar.zst
         sha256: 5f5d4d7b6664599e5daadd62b55df9710fd50ee890dcbb403f973024099d8aa4
         target_directory: source-perl-http-cookies
     build:
@@ -4433,7 +4475,7 @@ outputs:
         - m2-perl-http-date >=6
         - m2-perl-http-message
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.8.8
         - m2-perl-http-date >=6
@@ -4451,12 +4493,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTML-Parser-3.83-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTML-Parser-3.83-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTML-Parser-3.83-1-x86_64.pkg.tar.zst
         sha256: 7d35ec3b7806b16037e5b897618cb0ea7b0be55501c56127ed493ea41bcb3b6e
         target_directory: binary-m2-perl-html-parser
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTML-Parser-3.83-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTML-Parser-3.83-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTML-Parser-3.83-1.src.tar.zst
         sha256: 29405fd88b7797ab0163c99e198a7db0202e522b97508e7ae9334278b5fb86f1
         target_directory: source-perl-html-parser
     build:
@@ -4470,7 +4512,7 @@ outputs:
         - m2-perl-uri
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl-html-tagset
         - m2-perl-http-message
@@ -4489,12 +4531,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-HTML-Tagset-3.24-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTML-Tagset-3.24-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTML-Tagset-3.24-1-any.pkg.tar.zst
         sha256: 36a89439a14a73d725a40aaab1911434b346c998bb4ead1e15146028cdd6451a
         target_directory: binary-m2-perl-html-tagset
       - url:
             - https://repo.msys2.org/msys/sources/perl-HTML-Tagset-3.24-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-HTML-Tagset-3.24-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-HTML-Tagset-3.24-1.src.tar.zst
         sha256: 15ffd988342b865687c1c0c2986a7fbb9aadc5db4d32736d55c0135e5dcb09fd
         target_directory: source-perl-html-tagset
     build:
@@ -4505,7 +4547,7 @@ outputs:
       host:
         - m2-perl >=5.10.0
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.10.0
         - m2-msys2-runtime
@@ -4521,12 +4563,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-File-Listing-6.16-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-File-Listing-6.16-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-File-Listing-6.16-1-any.pkg.tar.zst
         sha256: d6c5083d5ecd859acf08dccdc4f98f4eed9170b7e7af86e7fcae1ce5789a2a00
         target_directory: binary-m2-perl-file-listing
       - url:
             - https://repo.msys2.org/msys/sources/perl-File-Listing-6.16-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-File-Listing-6.16-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-File-Listing-6.16-1.src.tar.zst
         sha256: 3719167b50b44a0bf8ee248eb3ec0b3b177359862da3badd40ae984d2298a672
         target_directory: source-perl-file-listing
     build:
@@ -4538,7 +4580,7 @@ outputs:
         - m2-perl >=5.8.8
         - m2-perl-http-date >=6
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.8.8
         - m2-perl-http-date >=6
@@ -4555,12 +4597,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Encode-Locale-1.05-2-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Encode-Locale-1.05-2-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Encode-Locale-1.05-2-any.pkg.tar.zst
         sha256: b6d0a57ca9e090073ba5a082cc0493dfbc1a85e6d9feaae70cceabadd28fd018
         target_directory: binary-m2-perl-encode-locale
       - url:
             - https://repo.msys2.org/msys/sources/perl-Encode-Locale-1.05-2.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Encode-Locale-1.05-2.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Encode-Locale-1.05-2.src.tar.zst
         sha256: 1837eff76400148ffbbc9b1d2ba269f40a0da938f786e3a656c010748a84fdaa
         target_directory: source-perl-encode-locale
     build:
@@ -4571,7 +4613,7 @@ outputs:
       host:
         - m2-perl >=5.008
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl >=5.008
         - m2-msys2-runtime
@@ -4583,17 +4625,17 @@ outputs:
 
   - package:
       name: m2-perl-authen-sasl
-      version: "2.1700.1"
+      version: "2.1800.1"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/perl-Authen-SASL-2.1700-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Authen-SASL-2.1700-1-any.pkg.tar.zst
-        sha256: 5c76e76e0e5dc3aea5a38aa9470382e0259f0cbaa83e579813e53f2d979c78e6
+            - https://repo.msys2.org/msys/x86_64/perl-Authen-SASL-2.1800-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Authen-SASL-2.1800-1-any.pkg.tar.zst
+        sha256: 3d2e94cd3157bdda2c96493bad765b5fe40374dfee35c8170027333b8f0c2862
         target_directory: binary-m2-perl-authen-sasl
       - url:
-            - https://repo.msys2.org/msys/sources/perl-Authen-SASL-2.1700-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Authen-SASL-2.1700-1.src.tar.zst
-        sha256: a6242e8ed7656d20ed1258c53b7916b190b6a22abcbe3c20828fd65e96210d27
+            - https://repo.msys2.org/msys/sources/perl-Authen-SASL-2.1800-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Authen-SASL-2.1800-1.src.tar.zst
+        sha256: 0c199bed862b861aa9450f4fd867df92bdf9e57438fbf53e931e3659027f4f08
         target_directory: source-perl-authen-sasl
     build:
       noarch: generic
@@ -4603,7 +4645,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4619,12 +4661,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/perl-Error-0.17030-1-any.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Error-0.17030-1-any.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Error-0.17030-1-any.pkg.tar.zst
         sha256: 25565c40d39442f96c71a3c837b996ea5dd5e39fae44655d04479e4381873467
         target_directory: binary-m2-perl-error
       - url:
             - https://repo.msys2.org/msys/sources/perl-Error-0.17030-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/perl-Error-0.17030-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/perl-Error-0.17030-1.src.tar.zst
         sha256: 941b9ad8c0adc87c3f363084750cdca40674ddef15617471ecfd9531977b995c
         target_directory: source-perl-error
     build:
@@ -4635,7 +4677,7 @@ outputs:
       host:
         - m2-perl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-perl
         - m2-msys2-runtime
@@ -4651,12 +4693,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/openssh-9.9p2-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/openssh-9.9p2-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/openssh-9.9p2-1-x86_64.pkg.tar.zst
         sha256: 06b89518a1a0710747647261c8ed03ebebe040b1272fa943409ac230b7da2243
         target_directory: binary-m2-openssh
       - url:
             - https://repo.msys2.org/msys/sources/openssh-9.9p2-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/openssh-9.9p2-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/openssh-9.9p2-1.src.tar.zst
         sha256: 58f73b1adaedffa5b4dad0deadbc9e18a6d39d468e329f976e740288bb86c80d
         target_directory: source-openssh
     build:
@@ -4671,7 +4713,7 @@ outputs:
         - m2-libfido2
         - m2-openssl
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-heimdal
         - m2-libedit
@@ -4687,17 +4729,17 @@ outputs:
 
   - package:
       name: m2-libfido2
-      version: "1.15.0.3"
+      version: "1.16.0.1"
     source:
       - url:
-            - https://repo.msys2.org/msys/x86_64/libfido2-1.15.0-3-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libfido2-1.15.0-3-x86_64.pkg.tar.zst
-        sha256: 6d9f7a24e0fb8d03fed7e1d5fed1c4bf4ad450036ac65eca354ec302d6fca2a1
+            - https://repo.msys2.org/msys/x86_64/libfido2-1.16.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libfido2-1.16.0-1-x86_64.pkg.tar.zst
+        sha256: f63834057ad3d69b7382cff658d97e7f0a666d8d0b93f6ec3297662168413a1e
         target_directory: binary-m2-libfido2
       - url:
-            - https://repo.msys2.org/msys/sources/libfido2-1.15.0-3.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libfido2-1.15.0-3.src.tar.zst
-        sha256: fc560131a23ca8a25c752424207fea56b7e603ca4239afe3d40ca587a97f01be
+            - https://repo.msys2.org/msys/sources/libfido2-1.16.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libfido2-1.16.0-1.src.tar.zst
+        sha256: 34a54f075de2bcab6b33a5085c1843d536c071108cda0be4a9cfa3fdd2775b43
         target_directory: source-libfido2
     build:
       noarch: generic
@@ -4709,7 +4751,7 @@ outputs:
         - m2-openssl
         - m2-zlib
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-libcbor
         - m2-openssl
@@ -4727,12 +4769,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/libcbor-0.12.0-1-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libcbor-0.12.0-1-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libcbor-0.12.0-1-x86_64.pkg.tar.zst
         sha256: a17b5e4e5fb16b9f44a67a61441a960db63f4ee17c014fbdccec0467732aa03b
         target_directory: binary-m2-libcbor
       - url:
             - https://repo.msys2.org/msys/sources/libcbor-0.12.0-1.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/libcbor-0.12.0-1.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/libcbor-0.12.0-1.src.tar.zst
         sha256: 6bec7b47a376bdc00e4a330057dcff4179cae94e317ec79060526222754e83ce
         target_directory: source-libcbor
     build:
@@ -4742,7 +4784,7 @@ outputs:
     requirements:
       host:
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
@@ -4757,12 +4799,12 @@ outputs:
     source:
       - url:
             - https://repo.msys2.org/msys/x86_64/heimdal-7.8.0-5-x86_64.pkg.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/heimdal-7.8.0-5-x86_64.pkg.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/heimdal-7.8.0-5-x86_64.pkg.tar.zst
         sha256: 4b3906a2a677232d43db712b6fecab50da761c5b229c5018178a577c5c25ec64
         target_directory: binary-m2-heimdal
       - url:
             - https://repo.msys2.org/msys/sources/heimdal-7.8.0-5.src.tar.zst
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250430/heimdal-7.8.0-5.src.tar.zst
+            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/20250515/heimdal-7.8.0-5.src.tar.zst
         sha256: 8c11d29e88431abffac4e79f1a14f4a72cb71adfc532faafd35831efaabe7f19
         target_directory: source-heimdal
     build:
@@ -4773,7 +4815,7 @@ outputs:
       host:
         - m2-heimdal-libs
         - m2-msys2-runtime
-        - m2-conda-epoch =20250430
+        - m2-conda-epoch =20250515
       run:
         - m2-heimdal-libs
         - m2-msys2-runtime

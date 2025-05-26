@@ -12,7 +12,7 @@ import shutil
 from ordered_set import OrderedSet
 
 
-date = "20250430"
+date = "20250515"
 binary_index_url = (
     #"https://repo.msys2.org/msys/x86_64/"
     f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
@@ -44,6 +44,8 @@ to_process = OrderedSet([
         "patchutils",
         "texinfo-tex",
         "pkg-config",
+        # autoconf is 2.71, we need 2.72 as well
+        "autoconf2.72"
     ])
 
 #to_process = OrderedSet([
@@ -78,10 +80,11 @@ seen = {}
 
 def get_pkgs():
     if "github" in binary_index_url:
-        directory_listing = requests.get(binary_index_url + "index.html").text
+        url = binary_index_url + "index.html"
     else:
-        directory_listing = requests.get(binary_index_url).text
-    s = BeautifulSoup(directory_listing, "html.parser")
+        url = binary_index_url
+    subprocess.check_call(["wget", url, "-O", "src-cache/index.html"])
+    s = BeautifulSoup(requests.get(url).text, "html.parser")
     full_names = [
         node.get("href")
         for node in s.find_all("a")
@@ -225,7 +228,7 @@ sources_template = """
 
 meta += """
 build:
-  number: 5
+  number: 6
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
