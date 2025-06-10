@@ -79,12 +79,14 @@ seen = {}
 
 
 def get_pkgs():
-    if "github" in binary_index_url:
-        url = binary_index_url + "index.html"
-    else:
-        url = binary_index_url
-    subprocess.check_call(["wget", url, "-O", "src-cache/index.html"])
-    s = BeautifulSoup(requests.get(url).text, "html.parser")
+    if not os.path.exists("src-cache/index.html"):
+        if "github" in binary_index_url:
+            url = binary_index_url + "index.html"
+        else:
+            url = binary_index_url
+        subprocess.check_call(["wget", url, "-O", "src-cache/index.html"])
+    with open("src-cache/index.html") as f:
+        s = BeautifulSoup(f.read(), "html.parser")
     full_names = [
         node.get("href")
         for node in s.find_all("a")
@@ -228,7 +230,7 @@ sources_template = """
 
 meta += """
 build:
-  number: 6
+  number: 7
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -244,7 +246,8 @@ output_template = """
     build:
       noarch: generic
       script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}{{ prefix_detection }}
+      skip: {{ skip }}
     requirements:
       host:
 {{ host_depends }}
@@ -319,6 +322,19 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     host_depends = depends.copy()
     host_depends += [f"conda-epoch ={date}"]
 
+    prefix_detection = ""
+    if pkg.lower() == "filesystem":
+      prefix_detection = """
+      prefix_detection:
+        force_file_type:
+          text:
+            - etc/fstab"""
+
+    skip = "false"
+
+    if pkg.lower() != "filesystem":
+        skip = "true"
+
     info = {
         "name": pkg.lower(),
         "version": ".".join(filename.split("-")[:2]).replace("~", "!"),
@@ -328,6 +344,8 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
         "summary": desc,
         "url": url,
         "sources": "\n".join(sources),
+        "prefix_detection": prefix_detection,
+        "skip": skip,
     }
     
     text = output_template

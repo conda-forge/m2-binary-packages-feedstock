@@ -3,7 +3,7 @@ recipe:
   version: "20250515"
 
 build:
-  number: 6
+  number: 7
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -27,6 +27,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gawk
@@ -69,6 +70,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-db
@@ -109,6 +111,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gmp
@@ -145,6 +148,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -179,6 +183,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -209,6 +214,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -241,6 +247,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -271,6 +278,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -301,6 +309,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libgdbm =1.25
@@ -333,6 +342,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -373,6 +383,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -405,6 +416,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-ncurses
@@ -437,6 +449,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libdb =6.2.32
@@ -469,6 +482,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -501,6 +515,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -539,6 +554,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gmp >=5.0
@@ -571,6 +587,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libiconv
@@ -603,6 +620,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gawk
@@ -639,6 +657,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-pcre2
@@ -671,6 +690,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libreadline
@@ -715,6 +735,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libpcre2_8 =10.45
@@ -747,6 +768,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -779,6 +801,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -811,6 +834,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -843,6 +867,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -875,6 +900,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -907,6 +933,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -937,6 +964,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -973,6 +1001,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libbz2
@@ -1007,6 +1036,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libbz2
@@ -1039,6 +1069,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libiconv
@@ -1075,6 +1106,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -1167,6 +1199,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -1201,6 +1234,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -1233,6 +1267,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -1265,6 +1300,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -1313,6 +1349,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -1361,6 +1398,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-info
@@ -1393,6 +1431,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libffi
@@ -1429,6 +1468,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -1459,6 +1499,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libhogweed
@@ -1491,6 +1532,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gmp
@@ -1523,6 +1565,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -1557,6 +1600,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libidn2
@@ -1591,6 +1635,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libiconv
@@ -1623,6 +1668,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libunistring
@@ -1657,6 +1703,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-coreutils
@@ -1697,6 +1744,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -1727,6 +1775,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-coreutils
@@ -1763,6 +1812,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -1793,6 +1843,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-dash
@@ -1825,6 +1876,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-file
@@ -1863,6 +1915,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-conda-epoch =20250515
@@ -1892,6 +1945,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-mintty >=1!2.2.1
@@ -1924,6 +1978,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -1954,6 +2009,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -1986,6 +2042,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-ncurses
@@ -2020,6 +2077,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gzip
@@ -2058,6 +2116,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2096,6 +2155,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -2130,6 +2190,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libiconv
@@ -2168,6 +2229,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2200,6 +2262,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libargp
@@ -2232,6 +2295,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -2265,6 +2329,11 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      prefix_detection:
+        force_file_type:
+          text:
+            - etc/fstab
+      skip: false
     requirements:
       host:
         - m2-msys2-runtime
@@ -2295,6 +2364,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2335,6 +2405,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -2365,6 +2436,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-grep
@@ -2401,6 +2473,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libbz2
@@ -2433,6 +2506,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2481,6 +2555,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -2511,6 +2586,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2543,6 +2619,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2575,6 +2652,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -2607,6 +2685,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-ca-certificates
@@ -2651,6 +2730,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libopenssl
@@ -2683,6 +2763,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2715,6 +2796,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-brotli
@@ -2767,6 +2849,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-ca-certificates
@@ -2803,6 +2886,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libdb
@@ -2843,6 +2927,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-ncurses
@@ -2877,6 +2962,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -2909,6 +2995,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -2951,6 +3038,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libp11-kit
@@ -2983,6 +3071,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gcc-libs
@@ -3017,6 +3106,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-info
@@ -3053,6 +3143,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-filesystem
@@ -3085,6 +3176,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -3121,6 +3213,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libiconv
@@ -3155,6 +3248,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-gawk
@@ -3197,6 +3291,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -3231,6 +3326,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -3261,6 +3357,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libintl
@@ -3295,6 +3392,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libintl
@@ -3329,6 +3427,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -3377,6 +3476,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-bash
@@ -3411,6 +3511,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3445,6 +3546,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3479,6 +3581,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3513,6 +3616,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3547,6 +3651,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3581,6 +3686,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3615,6 +3721,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-curl
@@ -3673,6 +3780,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3705,6 +3813,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-io-socket-ssl
@@ -3737,6 +3846,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-net-ssleay
@@ -3773,6 +3883,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.10.0
@@ -3805,6 +3916,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-openssl
@@ -3837,6 +3949,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-mailtools
@@ -3873,6 +3986,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3905,6 +4019,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -3937,6 +4052,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-timedate
@@ -3969,6 +4085,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4001,6 +4118,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4061,6 +4179,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4093,6 +4212,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.8.8
@@ -4137,6 +4257,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4169,6 +4290,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4201,6 +4323,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4235,6 +4358,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.6.2
@@ -4267,6 +4391,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4299,6 +4424,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.8.8
@@ -4333,6 +4459,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.8.8
@@ -4365,6 +4492,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-http-date
@@ -4397,6 +4525,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4437,6 +4566,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4469,6 +4599,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.8.8
@@ -4505,6 +4636,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl-html-tagset
@@ -4543,6 +4675,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.10.0
@@ -4575,6 +4708,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.8.8
@@ -4609,6 +4743,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl >=5.008
@@ -4641,6 +4776,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4673,6 +4809,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-perl
@@ -4705,6 +4842,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-heimdal
@@ -4745,6 +4883,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-libcbor
@@ -4781,6 +4920,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-msys2-runtime
@@ -4811,6 +4951,7 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      skip: true
     requirements:
       host:
         - m2-heimdal-libs
