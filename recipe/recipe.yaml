@@ -3,7 +3,7 @@ recipe:
   version: "20250515"
 
 build:
-  number: 6
+  number: 7
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -2265,6 +2265,10 @@ outputs:
       noarch: generic
       script:
         file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}
+      prefix_detection:
+        force_file_type:
+          text:
+            - etc/fstab
     requirements:
       host:
         - m2-msys2-runtime
