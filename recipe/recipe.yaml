@@ -3,7 +3,7 @@ recipe:
   version: "20250515"
 
 build:
-  number: 7
+  number: 8
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -2332,7 +2332,7 @@ outputs:
       prefix_detection:
         force_file_type:
           text:
-            - etc/fstab
+            - Library/etc/fstab
       skip: false
     requirements:
       host:

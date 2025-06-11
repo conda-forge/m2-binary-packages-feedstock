@@ -230,7 +230,7 @@ sources_template = """
 
 meta += """
 build:
-  number: 7
+  number: 8
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -328,7 +328,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
       prefix_detection:
         force_file_type:
           text:
-            - etc/fstab"""
+            - Library/etc/fstab"""
 
     skip = "false"
 
