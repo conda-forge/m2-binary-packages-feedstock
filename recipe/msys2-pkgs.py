@@ -328,7 +328,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
       prefix_detection:
         force_file_type:
           text:
-            - etc/fstab"""
+            - Library/etc/fstab"""
 
     skip = "false"
 
