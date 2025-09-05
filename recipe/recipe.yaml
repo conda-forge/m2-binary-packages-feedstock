@@ -3,7 +3,7 @@ recipe:
   version: "20250515"
 
 build:
-  number: 8
+  number: 9
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -2336,8 +2336,6 @@ outputs:
       skip: false
     requirements:
       host:
-        - m2-msys2-runtime
-        - m2-conda-epoch =20250515
       run:
         - m2-msys2-runtime
     about:
