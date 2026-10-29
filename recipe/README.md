@@ -19,12 +19,11 @@ checks binary SHA256 hashes, retains existing output names, and verifies that th
 runtime dependency graph is closed and every binary has a source archive.
 `cache/` and `src-cache/` are local download caches, not recipe files.
 
-The 20261029 archives, database and `SHA256SUMS` are staged at:
-https://github.com/wolfv/m2-binary-packages-feedstock/releases/tag/20261029
+The 20261029 archives, database and `SHA256SUMS` are hosted by this feedstock:
+https://github.com/conda-forge/m2-binary-packages-feedstock/releases/tag/20261029
 
-The primary recipe URLs still point to MSYS2. The release is a fallback for
-archives removed from its rolling repository. Maintainers can mirror the assets
-to the upstream feedstock release, change `snapshot_url`, and regenerate.
+The primary recipe URLs still point to MSYS2. The feedstock release is a fallback
+for archives removed from its rolling repository.
 
 ## Prepare a later snapshot
 

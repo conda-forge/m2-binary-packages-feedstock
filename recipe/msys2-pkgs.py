@@ -14,7 +14,7 @@ from ordered_set import OrderedSet
 
 
 date = "20261029"
-snapshot_url = f"https://github.com/wolfv/m2-binary-packages-feedstock/releases/download/{date}"
+snapshot_url = f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}"
 binary_index_url = snapshot_url + "/"
 source_url = snapshot_url + "/"
 
