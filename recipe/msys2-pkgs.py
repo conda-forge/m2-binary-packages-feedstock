@@ -4,23 +4,19 @@
 # Yes, this script is horrible but since it works I do not intend to
 # spend any time 'improving' it.
 
-from bs4 import BeautifulSoup
-import requests
+import hashlib
+import tarfile
+import re
 import subprocess
 import os
 import shutil
 from ordered_set import OrderedSet
 
 
-date = "20250515"
-binary_index_url = (
-    #"https://repo.msys2.org/msys/x86_64/"
-    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
-)
-source_url = (
-    #"https://repo.msys2.org/msys/sources/"
-    f"https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{date}/"
-)
+date = "20261029"
+binary_index_url = "https://repo.msys2.org/msys/x86_64/"
+source_url = "https://repo.msys2.org/msys/sources/"
+snapshot_url = f"https://github.com/wolfv/m2-binary-packages-feedstock/releases/download/{date}"
 
 to_process = OrderedSet([
         "git",
@@ -28,7 +24,7 @@ to_process = OrderedSet([
         "make",
         "sed",
         "libtool",
-        "autoconf",
+        "autoconf-wrapper",
         "findutils",
         "m4",
         "bash",
@@ -43,7 +39,7 @@ to_process = OrderedSet([
         "patch",
         "patchutils",
         "texinfo-tex",
-        "pkg-config",
+        "pkgconf",
         # autoconf is 2.71, we need 2.72 as well
         "autoconf2.72"
     ])
@@ -57,6 +53,8 @@ provides = {
     "libuuid": "libutil-linux",
     "awk": "gawk",
     "perl-IO-stringy": "perl-IO-Stringy",
+    "autoconf": "autoconf-wrapper",
+    "pkg-config": "pkgconf",
 }
 
 license_text_to_spdx = {
@@ -67,6 +65,7 @@ license_text_to_spdx = {
     "LGPL3": "LGPL-3.0-or-later",
     "BSD": "BSD-3-Clause",
     "custom:BSD": "BSD-3-Clause",
+    "custom:unRAR": "LicenseRef-unRAR",
     "BSD-2-Clause": "BSD-2-Clause",
     "MIT": "MIT",
     "custom": "LicenseRef-CustomLicense",
@@ -79,30 +78,40 @@ seen = {}
 
 
 def get_pkgs():
-    if not os.path.exists("src-cache/index.html"):
-        if "github" in binary_index_url:
-            url = binary_index_url + "index.html"
-        else:
-            url = binary_index_url
-        subprocess.check_call(["wget", url, "-O", "src-cache/index.html"])
-    with open("src-cache/index.html") as f:
-        s = BeautifulSoup(f.read(), "html.parser")
-    full_names = [
-        node.get("href")
-        for node in s.find_all("a")
-        if node.get("href").endswith((".tar.zst", "tar.xz"))
-    ]
+    os.makedirs("cache", exist_ok=True)
+    os.makedirs("src-cache", exist_ok=True)
+    database = f"src-cache/msys-{date}.db"
+    if not os.path.exists(database):
+        subprocess.check_call(["wget", binary_index_url + "msys.db", "-O", database + ".part"])
+        os.replace(database + ".part", database)
+    packages = {}
+    checksums = {}
+    # The directory also contains obsolete versions; use the repository's selected packages.
+    with tarfile.open(database) as archive:
+        for member in archive:
+            if not member.name.endswith("/desc"):
+                continue
+            fields = dict(
+                field.split("\n", 1)
+                for field in archive.extractfile(member).read().decode().strip().split("\n\n")
+            )
+            name = fields["%NAME%"]
+            filename = fields["%FILENAME%"]
+            assert name not in packages and filename.startswith(name + "-")
+            packages[name] = filename[len(name) + 1:]
+            checksums[name] = fields["%SHA256SUM%"]
+    assert packages and all(len(checksum) == 64 for checksum in checksums.values())
+    return packages, checksums
 
-    def get_name_ver(pkg):
-        b = os.path.basename(pkg)
-        return ("-".join(b.split("-")[:-3]), "-".join(b.split("-")[-3:]))
 
-    # format: msy2-w32api-headers-10.0.0.r16.g49a56d453-1-x86_64.pkg.tar.zst
-    return list(sorted([get_name_ver(pkg) for pkg in full_names]))
-
-
-pkg_latest_ver = dict(get_pkgs())
-print(pkg_latest_ver)
+pkg_latest_ver, pkg_checksums = get_pkgs()
+# Refresh existing outputs even when they are no longer in the root packages' dependency closure.
+package_names = {name.lower(): name for name in pkg_latest_ver}
+with open("recipe/recipe.yaml") as f:
+    for name in sorted(set(re.findall(r"      name: m2-(.+)", f.read()))):
+        if name in {"autoconf", "pkg-config", "perl-io-socket-ip"}:
+            continue  # Replaced upstream; compatibility outputs are emitted below.
+        to_process.add(package_names[name])
 
 
 def get_info(pkginfo, desc):
@@ -129,13 +138,12 @@ def get_depends(pkg):
     url = f"{binary_index_url}/{pkg}-{info}"
     if not os.path.exists(basename):
         if "github" in url:
-            subprocess.check_call(["wget", url.replace("~", "."), "-O", basename])
-        else:
-            subprocess.check_call(["wget", url, "-O", basename])
-    subprocess.check_call(["mkdir", "-p", "cache/tmp"])
-    subprocess.check_call(["bsdtar", "-xf", basename, "--directory=cache/tmp"])
-    with open("cache/tmp/.PKGINFO") as f:
-        pkginfo = f.readlines()
+            url = url.replace("~", ".")
+        subprocess.check_call(["wget", url, "-O", basename + ".part"])
+        os.replace(basename + ".part", basename)
+    with open(basename, "rb") as f:
+        assert hashlib.file_digest(f, "sha256").hexdigest() == pkg_checksums[pkg], basename
+    pkginfo = subprocess.check_output(["bsdtar", "-xOf", basename, ".PKGINFO"]).decode().splitlines()
 
     # download source
     pkgbases = get_info(pkginfo, "pkgbase")
@@ -157,7 +165,6 @@ def get_depends(pkg):
                     src1,
                     "-O",
                     "src-cache/" + os.path.basename(src1),
-                    "--no-check-certificate",
                 ]
             )
         except subprocess.CalledProcessError:
@@ -170,7 +177,6 @@ def get_depends(pkg):
                         src2,
                         "-O",
                         "src-cache/" + os.path.basename(src2),
-                        "--no-check-certificate",
                     ]
                 )
             except subprocess.CalledProcessError:
@@ -189,13 +195,10 @@ def get_depends(pkg):
     if pkg == "bash":
         # make sure bash comes with the bashrc files
         depends.append("filesystem")
-    elif pkg == "libiconv":
-        # break a cycle
-        depends.remove("libintl")
-    license_text = get_info(pkginfo, "license")[0]
-    spdx = as_spdx(license_text)
+    spdx = " AND ".join(as_spdx(license) for license in get_info(pkginfo, "license"))
+    spdx = re.sub(r" AND ([\w.-]+-exception-[\d.]+)", r" WITH \1", spdx)
     desc = get_info(pkginfo, "pkgdesc")[0]
-    url = get_info(pkginfo, "url")[0]
+    url = get_info(pkginfo, "url")[0] or f"https://packages.msys2.org/package/{pkg}"
     return depends, spdx, desc, url, src_name
 
 
@@ -206,11 +209,15 @@ while to_process:
         dep = full_dep.split(">")[0].split("=")[0].split("<")[0]
         cond = full_dep[len(dep) :]
         dep = provides.get(dep, dep)
+        dep = package_names.get(dep.lower(), dep)
         if cond:
             depends[i] = f"{dep} {cond.replace('~', '!')}"
         else:
             depends[i] = dep
-        if dep not in seen:
+        if dep == "perl-io-socket-ip":
+            if "perl" not in seen:
+                to_process.add("perl")
+        elif dep not in seen:
             to_process.add(dep)
     seen[pkg] = depends, spdx, desc, url, src_name
 
@@ -223,14 +230,14 @@ meta = f"""recipe:
 sources_template = """
       - url:
             - https://repo.msys2.org/msys/{{ msys_type }}/{{ url_base }}
-            - https://github.com/conda-forge/m2-binary-packages-feedstock/releases/download/{{ date }}/{{ url_base }}
+            - {{ snapshot_url }}/{{ snapshot_basename }}
         sha256: {{ sha256 }}
         target_directory: {{ type }}-{{ name }}{{ patches }}
 """
 
 meta += """
 build:
-  number: 8
+  number: 11
   noarch: generic
   dynamic_linking:
     overlinking_behavior: ignore
@@ -246,13 +253,12 @@ output_template = """
     build:
       noarch: generic
       script:
-        file: ${{ "install_pkg.bat" if win else "install_pkg.sh" }}{{ prefix_detection }}
-      skip: {{ skip }}
+        file: ${{ "install_pkg.bat" if build_platform in ["win-64", "win-arm64"] else "install_pkg.sh" }}{{ prefix_detection }}
     requirements:
       host:
 {{ host_depends }}
       run:
-{{ run_depends }}
+{{ run_depends }}{{ tests }}
     about:
       homepage: {{ url }}
       license: {{ license }}
@@ -262,6 +268,22 @@ output_template = """
 
 
 dep_map = {}
+smoke_tests = {
+    "bash": ['bash --noprofile --norc -c "exit 0"'],
+    "make": ["make --version"],
+    "git": ["git --version"],
+    "curl": ["curl --version"],
+    "autoconf-wrapper": ['bash -c "autoconf --version"'],
+    "pkgconf": ["pkg-config --version"],
+    "perl": ['perl -MIO::Socket::IP -e "print $IO::Socket::IP::VERSION"'],
+    "brotli": [
+        "brotli --version",
+        "echo MSYS2 snapshot round trip > original.txt",
+        "brotli --output compressed.br original.txt",
+        "brotli --decompress --output roundtrip.txt compressed.br",
+        "fc /b original.txt roundtrip.txt",
+    ],
+}
 
 for pkg, (depends, spdx, desc, url, src_url) in seen.items():
     print(f"{pkg} {pkg_latest_ver[pkg]} {' '.join(depends)}")
@@ -302,12 +324,14 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
         source_info = {
             "name": pkg.lower(),
             "tarname": f"{pkg}-{filename}",
-            "url_base": url_base.replace("~", "."),
+            "url_base": url_base,
+            "snapshot_basename": url_base.replace("~", "."),
             "sha256": sha256,
             "type": t,
             "msys_type": msys_type,
             "patches": patches,
             "date": date,
+            "snapshot_url": snapshot_url,
         }
 
         text = sources_template.strip("\n")
@@ -330,10 +354,14 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
           text:
             - Library/etc/fstab"""
 
-    skip = "false"
-
-    if pkg.lower() != "filesystem":
-        skip = "true"
+    tests = ""
+    if pkg != "base":
+        tests = '\n    tests:\n      - package_contents:\n          files:\n            - "Library/**"'
+    else:
+        tests = '\n    tests:\n      - script:\n          - echo "MSYS2 base dependencies installed"'
+    if pkg in smoke_tests:
+        tests += '\n      - script:\n          - set "PATH=%PREFIX%\\Library\\usr\\bin;%PATH%"'
+        tests += "".join("\n          - " + command for command in smoke_tests[pkg])
 
     info = {
         "name": pkg.lower(),
@@ -345,7 +373,7 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
         "url": url,
         "sources": "\n".join(sources),
         "prefix_detection": prefix_detection,
-        "skip": skip,
+        "tests": tests,
     }
     
     text = output_template
@@ -355,11 +383,36 @@ for pkg, (depends, spdx, desc, url, src_url) in seen.items():
 
     
 
-# print(dep_map)
+# Keep conda package names that MSYS2 replaced or folded into another package.
+for name, version, replacement in [
+    ("autoconf", "2.73.1", "autoconf-wrapper"),
+    ("pkg-config", "3.0.10.1", "pkgconf"),
+    ("perl-io-socket-ip", "0.43", "perl"),
+]:
+    meta += f"""
+  - package:
+      name: m2-{name}
+      version: "{version}"
+    requirements:
+      host:
+        - m2-conda-epoch ={date}
+      run:
+        - m2-{replacement}
+    tests:
+      - script:
+          - echo "m2-{name} is provided by m2-{replacement}"
+    about:
+      homepage: https://www.msys2.org
+      license: BSD-3-Clause
+      license_file: recipe-scripts-license.txt
+      summary: Compatibility package for m2-{replacement}
+"""
 
 meta += """
 about:
   homepage: https://github.com/conda-forge/m2-binary-packages-feedstock
+  license: BSD-3-Clause
+  license_file: recipe-scripts-license.txt
   summary: Repackaged msys2 x86_64 binaries
 
 extra:
@@ -372,6 +425,14 @@ recipe_dir = (
     if os.path.exists(os.path.join("recipes", "m2-recipes"))
     else "recipe"
 )
+
+output_names = set(re.findall(r"      name: (.+)", meta))
+assert len(output_names) == len(seen) + 3
+for dependencies in dep_map.values():
+    for dependency in dependencies:
+        assert "m2-" + dependency.lower().split()[0] in output_names, dependency
+assert all(info[4] for info in seen.values()), "Every binary must have a source archive"
+assert 'version: "1.2.1.1"' in meta and "skip: true" not in meta
 
 with open(os.path.join(recipe_dir, "recipe.yaml"), "w") as f:
     f.write(meta)

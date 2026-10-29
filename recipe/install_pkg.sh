@@ -1,5 +1,6 @@
-mkdir $PREFIX/Library
-cp -R $SRC_DIR/binary-${PKG_NAME}/* $PREFIX/Library/
+set -eu
+mkdir -p "$PREFIX/Library"
+cp -R "$SRC_DIR/binary-${PKG_NAME}/." "$PREFIX/Library/"
 
 rm -f $PREFIX/Library/.INSTALL
 rm -f $PREFIX/Library/.BUILDINFO
@@ -20,5 +21,5 @@ if [[ "${PKG_NAME}" == "m2-ca-certificates" ]]; then
 fi
 
 if [[ "${PKG_NAME}" == "m2-filesystem" ]]; then
-  echo "$PREFIX /conda_bin ntfs auto" >> ${PREFIX}/Library/etc/fstab
+  echo "${PREFIX}/Library/bin /conda_bin ntfs auto" >> "${PREFIX}/Library/etc/fstab"
 fi
