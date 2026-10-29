@@ -14,9 +14,9 @@ from ordered_set import OrderedSet
 
 
 date = "20261029"
-binary_index_url = "https://repo.msys2.org/msys/x86_64/"
-source_url = "https://repo.msys2.org/msys/sources/"
 snapshot_url = f"https://github.com/wolfv/m2-binary-packages-feedstock/releases/download/{date}"
+binary_index_url = snapshot_url + "/"
+source_url = snapshot_url + "/"
 
 to_process = OrderedSet([
         "git",
@@ -82,7 +82,7 @@ def get_pkgs():
     os.makedirs("src-cache", exist_ok=True)
     database = f"src-cache/msys-{date}.db"
     if not os.path.exists(database):
-        subprocess.check_call(["wget", binary_index_url + "msys.db", "-O", database + ".part"])
+        subprocess.check_call(["wget", snapshot_url + f"/msys-{date}.db", "-O", database + ".part"])
         os.replace(database + ".part", database)
     packages = {}
     checksums = {}
@@ -151,9 +151,6 @@ def get_depends(pkg):
     pkgver = get_info(pkginfo, "pkgver")[0]
     src1 = f"{source_url}/{pkgbase}-{pkgver}.src.tar.zst"
     src2 = f"{source_url}/{pkgbase}-{pkgver}.src.tar.gz"
-    if "github" in source_url:
-        src1 = src1.replace("~", ".")
-        src2 = src2.replace("~", ".")
     if not os.path.exists("src-cache/" + os.path.basename(src1)) and not os.path.exists(
         "src-cache/" + os.path.basename(src2)
     ):
@@ -162,7 +159,7 @@ def get_depends(pkg):
             subprocess.check_call(
                 [
                     "wget",
-                    src1,
+                    src1.replace("~", ".") if "github" in source_url else src1,
                     "-O",
                     "src-cache/" + os.path.basename(src1),
                 ]
@@ -174,7 +171,7 @@ def get_depends(pkg):
                 subprocess.check_call(
                     [
                         "wget",
-                        src2,
+                        src2.replace("~", ".") if "github" in source_url else src2,
                         "-O",
                         "src-cache/" + os.path.basename(src2),
                     ]
