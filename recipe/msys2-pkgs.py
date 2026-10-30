@@ -276,8 +276,8 @@ smoke_tests = {
     "brotli": [
         "brotli --version",
         "echo MSYS2 snapshot round trip > original.txt",
-        "brotli --output compressed.br original.txt",
-        "brotli --decompress --output roundtrip.txt compressed.br",
+        "brotli --output=compressed.br original.txt",
+        "brotli --decompress --output=roundtrip.txt compressed.br",
         "fc /b original.txt roundtrip.txt",
     ],
 }
