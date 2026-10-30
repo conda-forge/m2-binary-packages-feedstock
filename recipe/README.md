@@ -46,8 +46,12 @@ for archives removed from its rolling repository.
 On Windows, with the new epoch available:
 
 ```sh
-rattler-build build -r recipe -m .ci_support/win_64_.yaml --keep-build
+python build-locally.py win_64_
 ```
+
+The generated build wrapper copies the feedstock's `LICENSE.txt` to
+`recipe/recipe-scripts-license.txt` before packaging. That generated copy is not
+tracked in git; direct `rattler-build` invocations must supply it too.
 
 The recipe checks package contents and smoke-tests Bash, Make, Git, curl,
 autoconf, pkg-config, Perl's IO::Socket::IP, and a Brotli round trip. Cross-target
