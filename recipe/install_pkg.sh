@@ -23,3 +23,15 @@ fi
 if [[ "${PKG_NAME}" == "m2-filesystem" ]]; then
   echo "${PREFIX}/Library/bin /conda_bin ntfs auto" >> "${PREFIX}/Library/etc/fstab"
 fi
+
+# MSYS2 now identifies as x86_64-pc-cygwin through /etc/config.site, which
+# conda-build's non-login bash never reads, and libtool 2.6 no longer supports
+# *-pc-msys hosts (static-only builds). Make the config.guess that autoreconf
+# copies into packages report cygwin too.
+if [[ "${PKG_NAME}" == "m2-libtool" || "${PKG_NAME}" == m2-automake1.* ]]; then
+  find "$PREFIX/Library/usr/share" -name config.guess | while read -r f; do
+    sed -e 's/-pc-msys$/-pc-cygwin/' -e 's/x86_64-unknown-msys$/x86_64-pc-cygwin/' "$f" > "$f.new"
+    if cmp -s "$f" "$f.new"; then echo "no msys case found in $f"; exit 1; fi
+    cat "$f.new" > "$f" && rm "$f.new"
+  done
+fi
