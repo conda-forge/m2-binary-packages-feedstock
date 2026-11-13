@@ -41,3 +41,18 @@ if "%PKG_NAME%" == "m2-filesystem" (
   REM Keep the 2 empty lines above so LF is set to linefeed character!
   <nul (set/p=!LF!%LIBRARY_PREFIX:\=/%/bin /conda_bin ntfs auto!LF!) >> %LIBRARY_PREFIX%\etc\fstab || call;
 )
+
+:: MSYS2 now identifies as x86_64-pc-cygwin through /etc/config.site, which
+:: conda-build's non-login bash never reads, and libtool 2.6 no longer supports
+:: *-pc-msys hosts (static-only builds). Make the config.guess that autoreconf
+:: copies into packages report cygwin too.
+set "FIX_CONFIG_GUESS="
+if "%PKG_NAME%" == "m2-libtool" set "FIX_CONFIG_GUESS=1"
+if "%PKG_NAME:~0,12%" == "m2-automake1" set "FIX_CONFIG_GUESS=1"
+if defined FIX_CONFIG_GUESS (
+  for /r "%LIBRARY_PREFIX%\usr\share" %%f in (config.guess) do (
+    if exist "%%f" (
+      powershell -NoProfile -Command "$p = '%%f'; $t = [IO.File]::ReadAllText($p); $n = $t.Replace('-pc-msys' + [char]10, '-pc-cygwin' + [char]10).Replace('x86_64-unknown-msys' + [char]10, 'x86_64-pc-cygwin' + [char]10); if ($n -eq $t) { exit 1 }; [IO.File]::WriteAllText($p, $n)" || exit 1
+    )
+  )
+)
